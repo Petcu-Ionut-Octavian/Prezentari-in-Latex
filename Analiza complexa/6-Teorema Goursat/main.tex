@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema lui Goursat}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+O funcție $f:\Omega \to \mathbb{C}$ se numește \emph{olomorfă} într-un domeniu $\Omega$ dacă este derivabilă complex în fiecare punct al lui $\Omega$.
+\end{definition}
+
+\begin{definition}
+O \emph{curbă închisă, netedă, orientată pozitiv} este o parametrizare
+
+
+\[
+\gamma : [a,b] \to \Omega
+\]
+
+
+care este continuă pe $[a,b]$, derivabilă pe $(a,b)$, satisface $\gamma(a)=\gamma(b)$ și are $\gamma'(t)\neq 0$ pentru toate $t\in(a,b)$.
+\end{definition}
+
+\begin{theorem}
+(\textbf{Teorema lui Goursat})  
+Fie $\Omega \subset \mathbb{C}$ un domeniu și fie $f:\Omega \to \mathbb{C}$ o funcție olomorfă.  
+Atunci, pentru orice triunghi $T$ complet conținut în $\Omega$, are loc
+
+
+\[
+\int_{\partial T} f(z)\,dz = 0.
+\]
+
+
+Cu alte cuvinte, integrala unei funcții olomorfe pe conturul unui triunghi este zero, \emph{fără a presupune continuitatea derivatei} lui $f$.
+\end{theorem}
+
+\begin{proposition}
+(\textbf{Consecință})  
+Dacă $f$ este olomorfă într-un domeniu $\Omega$, atunci pentru orice curbă închisă netedă $\gamma$ cu imaginea conținută în $\Omega$,
+
+
+\[
+\int_{\gamma} f(z)\,dz = 0.
+\]
+
+
+Aceasta este forma generalizată a teoremei lui Cauchy, obținută ca urmare a teoremei lui Goursat.
+\end{proposition}
+
+\end{document}

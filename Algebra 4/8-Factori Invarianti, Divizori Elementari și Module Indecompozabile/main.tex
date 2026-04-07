@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\geometry{a4paper, margin=2.5cm}
+
+\title{Factori Invarianti, Divizori Elementari și Module Indecompozabile}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Observație}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\section*{Factori invarianti}
+
+\begin{definition}
+Fie $R$ un PID și $M$ un $R$-modul finit generat. O \emph{reprezentare în factori invarianti} este o scriere
+
+
+\[
+M \cong R^k \oplus R/d_1R \oplus \cdots \oplus R/d_mR,
+\]
+
+
+unde $d_1, \dots, d_m \in R \setminus \{0\}$ satisfac
+
+
+\[
+d_1 \mid d_2 \mid \cdots \mid d_m.
+\]
+
+
+Elementele $d_1, \dots, d_m$ se numesc \emph{factori invarianti}.
+\end{definition}
+
+\begin{remark}
+Condiția de divizibilitate $d_1 \mid d_2 \mid \cdots \mid d_m$ face reprezentarea \emph{unică} până la unități.
+\end{remark}
+
+\begin{proposition}
+Factorii invarianti descriu modulul torsional ca sumă directă ordonată:
+
+
+\[
+t(M) \cong R/d_1R \oplus \cdots \oplus R/d_mR.
+\]
+
+
+\end{proposition}
+
+\section*{Divizori elementari}
+
+\begin{definition}
+Fie $R$ un PID. O \emph{reprezentare în divizori elementari} este o scriere
+
+
+\[
+M \cong R^k \oplus R/p_1^{e_1}R \oplus \cdots \oplus R/p_s^{e_s}R,
+\]
+
+
+unde $p_i$ sunt primi (până la unități), iar $e_i \ge 1$.
+\end{definition}
+
+\begin{remark}
+Divizorii elementari sunt unici până la permutare și unități. Ei corespund componentelor $p$-primare.
+\end{remark}
+
+\begin{theorem}[Legătura dintre factori invarianti și divizori elementari]
+Dacă
+
+
+\[
+d_i = p_{i1}^{e_{i1}} \cdots p_{ik_i}^{e_{ik_i}}
+\]
+
+
+este factorizarea în factori primi, atunci
+
+
+\[
+R/d_iR \cong R/p_{i1}^{e_{i1}}R \oplus \cdots \oplus R/p_{ik_i}^{e_{ik_i}}R.
+\]
+
+
+Astfel, factori invarianti determină divizorii elementari și invers.
+\end{theorem}
+
+\begin{remark}
+Reprezentarea în factori invarianti este „globală”, iar cea în divizori elementari este „locală” (pe fiecare prim).
+\end{remark}
+
+\section*{Module decompozabile și indecompozabile}
+
+\begin{definition}
+Un modul $M$ se numește \emph{decompozabil} dacă există submodule nenule $M_1, M_2$ cu
+
+
+\[
+M = M_1 \oplus M_2.
+\]
+
+
+Dacă nu există o astfel de descompunere, modulul se numește \emph{indecompozabil}.
+\end{definition}
+
+\begin{proposition}
+Dacă $R$ este un PID, atunci modulele indecompozabile finit generate sunt exact cele de forma
+
+
+\[
+R/p^eR,
+\]
+
+
+unde $p$ este prim și $e \ge 1$.
+\end{proposition}
+
+\begin{remark}
+Modulele de forma $R/p^eR$ sunt „blocurile atomice” din care se construiesc toate modulele finit generate.
+\end{remark}
+
+\begin{theorem}[Decompoziția în indecompozabile]
+Fie $R$ un PID și $M$ un $R$-modul finit generat. Atunci
+
+
+\[
+M \cong R^k \oplus \bigoplus_{i=1}^s R/p_i^{e_i}R,
+\]
+
+
+iar această descompunere este unică până la permutarea factorilor indecompozabili.
+\end{theorem}
+
+\begin{remark}
+Aceasta este versiunea pentru PID a teoremei Krull--Schmidt.
+\end{remark}
+
+\end{document}

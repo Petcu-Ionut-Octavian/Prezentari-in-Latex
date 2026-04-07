@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{\Large\textbf{Principiul de Reflexie al lui Schwarz}}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{proposition}[Principiul de reflexie al lui Schwarz]
+Fie $\Omega$ o mulțime deschisă din semiplanul superior
+
+
+\[
+\mathbb{H} = \{ z \in \mathbb{C} : \operatorname{Im} z > 0 \},
+\]
+
+
+astfel încât $\Omega$ intersectează axa reală într-un interval deschis $I \subset \mathbb{R}$.
+
+Presupunem că $f : \Omega \cup I \to \mathbb{C}$ este continuă pe $\Omega \cup I$, olomorfă în $\Omega$, iar pe $I$ satisface
+
+
+\[
+f(x) \in \mathbb{R} \quad \text{pentru orice } x \in I.
+\]
+
+
+
+Definim funcția extinsă
+
+
+\[
+F(z) =
+\begin{cases}
+f(z), & \operatorname{Im} z \ge 0, \\
+\overline{f(\overline{z})}, & \operatorname{Im} z < 0.
+\end{cases}
+\]
+
+
+
+Atunci $F$ este olomorfă în mulțimea simetrică
+
+
+\[
+\Omega \cup I \cup \{ \overline{z} : z \in \Omega \},
+\]
+
+
+și reprezintă reflexia olomorfă a lui $f$ prin axa reală.
+\end{proposition}
+
+\end{document}

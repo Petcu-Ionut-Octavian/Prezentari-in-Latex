@@ -1,0 +1,43 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Funcție Aditivă}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $(\Omega, \mathcal{F})$ un spațiu măsurabil. 
+O funcție $\mu : \mathcal{F} \to [0, \infty]$ se numește \emph{funcție aditivă} (sau \emph{finit aditivă}) dacă pentru orice două mulțimi disjuncte $A, B \in \mathcal{F}$ avem
+
+
+\[
+    \mu(A \cup B) = \mu(A) + \mu(B).
+\]
+
+
+\end{definition}
+
+\noindent
+Echivalent, $\mu$ este aditivă dacă este închisă la reuniuni finite de mulțimi disjuncte:
+
+
+\[
+    \mu\!\left(\bigcup_{i=1}^n A_i\right)
+    = \sum_{i=1}^n \mu(A_i),
+    \quad A_i \cap A_j = \varnothing \text{ pentru } i \neq j.
+\]
+
+
+
+\end{document}

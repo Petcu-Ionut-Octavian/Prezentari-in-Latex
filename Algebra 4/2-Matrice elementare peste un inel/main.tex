@@ -1,0 +1,297 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Matrice Elementare}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\section*{Matrice elementare}
+
+\begin{definition}
+Fie $R$ un inel comutativ unitate și $n \ge 1$. O matrice $E \in M_n(R)$ se numește
+\emph{matrice elementară} dacă se obține din matricea identitate $I_n$ printr-o singură
+operație elementară pe linii (sau coloane). Există trei tipuri fundamentale:
+\end{definition}
+
+\begin{definition}[Tipul I: Permutare]
+Pentru $1 \le i < j \le n$, matricea
+
+
+\[
+P_{ij}
+\]
+
+
+se obține prin permutarea liniilor $i$ și $j$ ale lui $I_n$. Este inversabilă, cu
+
+
+\[
+P_{ij}^{-1} = P_{ij}.
+\]
+
+
+\end{definition}
+
+\begin{definition}[Tipul II: Scalare]
+Pentru $a \in R^\times$ (unitate), matricea
+
+
+\[
+D_i(a)
+\]
+
+
+se obține înmulțind linia $i$ a lui $I_n$ cu $a$. Inversa este
+
+
+\[
+D_i(a)^{-1} = D_i(a^{-1}).
+\]
+
+
+\end{definition}
+
+\begin{definition}[Tipul III: Adăugare de multiplu]
+Pentru $i \ne j$ și $a \in R$, matricea
+
+
+\[
+T_{ij}(a)
+\]
+
+
+se obține adăugând $a$ ori linia $j$ la linia $i$ în $I_n$. Inversa este
+
+
+\[
+T_{ij}(a)^{-1} = T_{ij}(-a).
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Toate matricile elementare sunt inversabile. Mai mult:
+
+
+\[
+P_{ij}^2 = I_n, \qquad
+D_i(a) D_i(b) = D_i(ab), \qquad
+T_{ij}(a) T_{ij}(b) = T_{ij}(a+b).
+\]
+
+
+\end{proposition}
+
+\begin{proposition}
+Pentru orice $A \in M_n(R)$, aplicarea unei operații elementare pe linii este echivalentă cu
+înlocuirea lui $A$ prin $EA$, unde $E$ este o matrice elementară.
+Analog, operațiile pe coloane sunt de forma $AE$.
+\end{proposition}
+
+\begin{proposition}
+Dacă $R$ este un PID, atunci orice matrice inversabilă $U \in GL_n(R)$ se poate scrie ca un produs finit de matrici elementare:
+
+
+\[
+U = E_1 E_2 \cdots E_k.
+\]
+
+
+\end{proposition}
+
+\begin{proposition}
+Matricele elementare generează grupul $GL_n(R)$:
+
+
+\[
+GL_n(R) = \langle P_{ij},\, D_i(a),\, T_{ij}(a) \rangle.
+\]
+
+
+\end{proposition}
+
+\begin{proposition}[Comutații utile]
+Pentru $i,j,k$ distincte și $a,b \in R$:
+
+
+\[
+T_{ij}(a) T_{ik}(b) = T_{ik}(b) T_{ij}(a),
+\]
+
+
+
+
+\[
+T_{ij}(a) T_{kj}(b) = T_{kj}(b) T_{ij}(a),
+\]
+
+
+
+
+\[
+T_{ij}(a) T_{jk}(b) = T_{jk}(b) T_{ik}(ab) T_{ij}(a).
+\]
+
+
+Aceste relații sunt fundamentale în reducerea matricilor la forma Smith.
+\end{proposition}
+
+
+
+\section*{Matrice elementare scrise explicit}
+
+\subsection*{1. Matricea de permutare $P_{ij}$}
+
+Matricea $P_{ij}$ se obține prin permutarea liniilor $i$ și $j$ ale lui $I_n$:
+
+
+
+\[
+P_{ij} =
+\begin{pmatrix}
+1      &        &        &        &        &        \\
+       & \ddots &        &        &        &        \\
+       &        & 0      & \cdots & 1      &        \\
+       &        & \vdots & \ddots & \vdots &        \\
+       &        & 1      & \cdots & 0      &        \\
+       &        &        &        &        & \ddots \\
+\end{pmatrix}
+\]
+
+
+
+unde liniile (sau coloanele) $i$ și $j$ sunt schimbate între ele.
+
+
+
+\[
+P_{ij}^{-1} = P_{ij}.
+\]
+
+
+
+\subsection*{2. Matricea de scalare $D_i(a)$}
+
+Matricea $D_i(a)$ se obține înmulțind linia $i$ cu $a$:
+
+
+
+\[
+D_i(a) =
+\begin{pmatrix}
+1      &        &        &        &        \\
+       & \ddots &        &        &        \\
+       &        & a      &        &        \\
+       &        &        & \ddots &        \\
+       &        &        &        & 1
+\end{pmatrix}
+\]
+
+
+
+unde $a$ apare pe poziția $(i,i)$.
+
+
+
+\[
+D_i(a)^{-1} = D_i(a^{-1}).
+\]
+
+
+
+\subsection*{3. Matricea de adăugare $T_{ij}(a)$}
+
+Matricea $T_{ij}(a)$ se obține adăugând $a$ ori linia $j$ la linia $i$:
+
+
+
+\[
+T_{ij}(a) =
+\begin{pmatrix}
+1      &        &        &        &        \\
+       & \ddots &        &        &        \\
+       &        & 1      &        &        \\
+       &        & a      & 1      &        \\
+       &        &        &        & \ddots
+\end{pmatrix}
+\]
+
+
+
+unde elementul $(i,j)$ este $a$, iar restul sunt ca în $I_n$.
+
+
+
+\[
+T_{ij}(a)^{-1} = T_{ij}(-a).
+\]
+
+
+
+\subsection*{4. Matricea $Q_{ij}$}
+
+Matricea $Q_{ij}$ se obține din matricea identitate $I_n$ înlocuind blocul $2\times 2$
+corespunzător liniilor și coloanelor $i$ și $j$ cu
+
+
+
+\[
+\begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix}.
+\]
+
+
+
+Explicit,
+
+
+\[
+Q_{ij} =
+\begin{pmatrix}
+1      &        &        &        &        &        \\
+       & \ddots &        &        &        &        \\
+       &        & 0      & -1     &        &        \\
+       &        & 1      & 0      &        &        \\
+       &        &        &        & \ddots &        \\
+       &        &        &        &        & 1
+\end{pmatrix}.
+\]
+
+
+
+Avem
+
+
+\[
+\det Q_{ij} = 1, \qquad Q_{ij}^{-1} = Q_{ij}^T =
+\begin{pmatrix}
+0 & 1 \\
+-1 & 0
+\end{pmatrix}
+\text{ în blocul } (i,j).
+\]
+
+
+
+
+
+
+
+\end{document}

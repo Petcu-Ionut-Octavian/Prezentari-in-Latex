@@ -1,0 +1,104 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[romanian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+
+\title{Concepte Fundamentale în Bazele de Date}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{RDBMS}
+Un \textbf{RDBMS} (Relational Database Management System) este un sistem de
+gestiune a bazelor de date care stochează informațiile sub formă de relații
+(tabele). Exemple: MySQL, PostgreSQL, SQL Server, Oracle.
+
+Caracteristici:
+\begin{itemize}[noitemsep]
+    \item model bazat pe tabele, chei primare și străine;
+    \item integritate referențială;
+    \item limbaj standardizat (SQL);
+    \item tranzacții conforme cu modelul ACID.
+\end{itemize}
+
+\section{Modelul ACID}
+Tranzacțiile dintr-un RDBMS trebuie să respecte proprietățile \textbf{ACID}:
+\begin{itemize}[noitemsep]
+    \item \textbf{Atomicitate}: tranzacția se execută complet sau deloc.
+    \item \textbf{Consistență}: baza de date trece dintr-o stare validă în alta.
+    \item \textbf{Izolare}: tranzacțiile nu se afectează reciproc.
+    \item \textbf{Durabilitate}: modificările persistă după confirmare.
+\end{itemize}
+
+\section{SQL}
+\textbf{SQL} (Structured Query Language) este limbajul standard pentru lucrul cu
+baze de date relaționale. Permite:
+\begin{itemize}[noitemsep]
+    \item definirea structurii bazei de date;
+    \item manipularea datelor;
+    \item controlul accesului și al tranzacțiilor.
+\end{itemize}
+
+\section{NoSQL}
+\textbf{NoSQL} reprezintă o categorie de sisteme de stocare non-relaționale,
+optimizate pentru scalabilitate și flexibilitate. Tipuri:
+\begin{itemize}[noitemsep]
+    \item baze de date document (ex.: MongoDB);
+    \item baze de date key--value (ex.: Redis);
+    \item baze de date graf (ex.: Neo4j);
+    \item baze de date column-store (ex.: Cassandra).
+\end{itemize}
+
+Caracteristici:
+\begin{itemize}[noitemsep]
+    \item schemă flexibilă;
+    \item scalare orizontală;
+    \item performanță ridicată pentru volume mari de date.
+\end{itemize}
+
+\section{LDD, LMD, LCD}
+În SQL, operațiile sunt împărțite în trei categorii:
+
+\subsection*{LDD -- Limbaj de Definire a Datelor}
+Definește structura bazei de date.
+\begin{itemize}[noitemsep]
+    \item \texttt{CREATE}, \texttt{ALTER}, \texttt{DROP}
+\end{itemize}
+
+\subsection*{LMD -- Limbaj de Manipulare a Datelor}
+Manipulează rândurile din tabele.
+\begin{itemize}[noitemsep]
+    \item \texttt{SELECT}, \texttt{INSERT}, \texttt{UPDATE}, \texttt{DELETE}
+\end{itemize}
+
+\subsection*{LCD -- Limbaj de Control al Datelor}
+Controlează accesul și permisiunile.
+\begin{itemize}[noitemsep]
+    \item \texttt{GRANT}, \texttt{REVOKE}
+\end{itemize}
+
+\section{Designul Bazelor de Date}
+Designul unei baze de date urmărește:
+\begin{itemize}[noitemsep]
+    \item identificarea entităților și atributelor;
+    \item definirea relațiilor și a cheilor;
+    \item normalizarea (1NF, 2NF, 3NF etc.);
+    \item optimizarea performanței și a integrității;
+    \item proiectarea fizică (indexuri, partiționare).
+\end{itemize}
+
+Procesul tipic:
+\begin{enumerate}[noitemsep]
+    \item analiza cerințelor;
+    \item model conceptual (ERD);
+    \item model logic (relații, chei);
+    \item model fizic (implementare în RDBMS).
+\end{enumerate}
+
+\end{document}

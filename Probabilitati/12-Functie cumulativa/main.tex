@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Funcția Cumulativă de Repartiție și Teorema de Existență și Unicitate}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\section{Definiție}
+
+Fie $(\Omega, \mathcal{F}, \mathbb{P})$ un spațiu de probabilitate.
+Pentru o variabilă aleatoare reală $X : \Omega \to \mathbb{R}$, funcția
+\textbf{cumulativă de repartiție} este:
+
+
+
+\[
+F_X(x) = \mathbb{P}(X \le x), \qquad x \in \mathbb{R}.
+\]
+
+
+
+\section{Proprietăți fundamentale}
+
+Funcția de repartiție $F_X$ satisface:
+
+\begin{enumerate}
+    \item \textbf{Monotonie:}
+    
+
+\[
+        x_1 \le x_2 \implies F_X(x_1) \le F_X(x_2).
+    \]
+
+
+
+    \item \textbf{Limite la infinit:}
+    
+
+\[
+        \lim_{x \to -\infty} F_X(x) = 0, \qquad
+        \lim_{x \to +\infty} F_X(x) = 1.
+    \]
+
+
+
+    \item \textbf{Continuitate la dreapta:}
+    
+
+\[
+        \lim_{t \downarrow x} F_X(t) = F_X(x).
+    \]
+
+
+
+    \item \textbf{Salturile lui $F_X$:}
+    
+
+\[
+        F_X(x) - F_X(x^-) = \mathbb{P}(X = x).
+    \]
+
+
+\end{enumerate}
+
+\section{Teorema de existență și unicitate}
+
+\begin{theorem}[Existență și Unicitate a măsurii asociate]
+Fie $F : \mathbb{R} \to [0,1]$ o funcție care satisface:
+
+\begin{enumerate}
+    \item este monoton crescătoare;
+    \item este continuă la dreapta;
+    \item $\displaystyle \lim_{x \to -\infty} F(x) = 0$ și 
+          $\displaystyle \lim_{x \to +\infty} F(x) = 1$.
+\end{enumerate}
+
+Atunci există o \textbf{unică} măsură de probabilitate 
+$\mathbb{P}$ pe spațiul măsurabil $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ astfel încât:
+
+
+
+\[
+\mathbb{P}((-\infty, x]) = F(x), \qquad \forall x \in \mathbb{R}.
+\]
+
+
+
+Mai mult, această măsură este complet determinată de valorile lui $F$.
+\end{theorem}
+
+\section{Exemple}
+
+Pentru o variabilă aleatoare continuă cu densitate $f$:
+
+
+\[
+F(x) = \int_{-\infty}^{x} f(t)\, dt.
+\]
+
+
+
+Pentru o variabilă aleatoare discretă cu valori $x_k$ și probabilități $p_k$:
+
+
+\[
+F(x) = \sum_{x_k \le x} p_k.
+\]
+
+
+
+\end{document}

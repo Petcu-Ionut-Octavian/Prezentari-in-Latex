@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Ecuațiile Cauchy--Riemann}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $f:\Omega \subset \mathbb{C} \to \mathbb{C}$ o funcție scrisă sub forma
+
+
+\[
+f(z) = u(x,y) + i\, v(x,y), \qquad z = x + i y,
+\]
+
+
+unde $u, v : \Omega \to \mathbb{R}$ sunt funcții reale de două variabile.
+Spunem că $u$ și $v$ sunt derivabile în sens real în punctul $(x_0,y_0)$ dacă toate derivatele parțiale
+$u_x, u_y, v_x, v_y$ există în acel punct.
+\end{definition}
+
+\begin{theorem}
+(\textbf{Ecuațiile Cauchy--Riemann})  
+Fie $f:\Omega \to \mathbb{C}$, $f(z)=u(x,y)+i\,v(x,y)$, și fie $z_0=x_0+iy_0 \in \Omega$.
+Dacă $f$ este derivabilă complex în $z_0$, atunci derivatele parțiale ale lui $u$ și $v$ există în $(x_0,y_0)$ și satisfac
+
+
+\[
+u_x(x_0,y_0) = v_y(x_0,y_0), \qquad
+u_y(x_0,y_0) = -\, v_x(x_0,y_0).
+\]
+
+
+Acestea se numesc \emph{ecuațiile Cauchy--Riemann}.
+\end{theorem}
+
+\begin{proposition}
+(\textbf{Caracterizare punctuală})  
+Dacă funcțiile $u$ și $v$ sunt derivabile în sens real într-un punct $(x_0,y_0)$ și satisfac ecuațiile Cauchy--Riemann în acel punct, atunci $f$ este derivabilă complex în $z_0 = x_0 + i y_0$.
+\end{proposition}
+
+\begin{theorem}
+(\textbf{Criteriu de olomorfie})  
+Fie $f:\Omega \to \mathbb{C}$, $f(z)=u(x,y)+i\,v(x,y)$, cu $u$ și $v$ funcții reale de două variabile.
+Presupunem că $u$ și $v$ sunt de clasă $C^1$ pe $\Omega$ (adică au derivate parțiale continue) și că în fiecare punct $(x,y) \in \Omega$ sunt satisfăcute ecuațiile Cauchy--Riemann
+
+
+\[
+u_x(x,y) = v_y(x,y), \qquad
+u_y(x,y) = -\, v_x(x,y).
+\]
+
+
+Atunci funcția $f$ este olomorfă pe $\Omega$.
+\end{theorem}
+
+\end{document}

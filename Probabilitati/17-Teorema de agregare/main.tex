@@ -1,0 +1,120 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema de Agregare pentru Familii de Mulțimi Independente}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\section{Definiție: Familii de mulțimi independente}
+
+Fie $(\Omega, \mathcal{F}, \mathbb{P})$ un spațiu de probabilitate.
+Familiile de mulțimi
+
+
+\[
+\mathcal{A}_1, \mathcal{A}_2, \dots, \mathcal{A}_n \subseteq \mathcal{F}
+\]
+
+
+se numesc \textbf{independente} dacă pentru orice alegere de mulțimi
+
+
+\[
+A_i \in \mathcal{A}_i, \qquad i = 1,2,\dots,n,
+\]
+
+
+avem relația:
+
+
+\[
+\mathbb{P}(A_1 \cap A_2 \cap \dots \cap A_n)
+= \mathbb{P}(A_1)\,\mathbb{P}(A_2)\cdots\mathbb{P}(A_n).
+\]
+
+
+
+Aceasta înseamnă că orice selecție de evenimente, câte unul din fiecare familie,
+formează un set de evenimente independente.
+
+\section{Teorema de Agregare}
+
+\begin{theorem}[Teorema de Agregare]
+Fie $\mathcal{A}_1, \mathcal{A}_2, \dots, \mathcal{A}_n$ familii de mulțimi
+din $\mathcal{F}$.
+
+Presupunem că familiile sunt independente în sensul definiției de mai sus.
+
+Atunci pentru orice alegere de mulțimi
+
+
+\[
+A_i \in \mathcal{A}_i, \qquad i = 1,2,\dots,n,
+\]
+
+
+mulțimile $A_1, A_2, \dots, A_n$ sunt independente, adică:
+
+
+\[
+\mathbb{P}(A_1 \cap A_2 \cap \dots \cap A_n)
+= \mathbb{P}(A_1)\,\mathbb{P}(A_2)\cdots\mathbb{P}(A_n).
+\]
+
+
+
+Cu alte cuvinte, independența familiilor implică independența oricărei
+selecții de evenimente câte unul din fiecare familie.
+\end{theorem}
+
+\section{Interpretare}
+
+Teorema afirmă că:
+
+\begin{itemize}
+    \item dacă familiile de evenimente sunt independente între ele,
+    \item atunci orice alegere de evenimente, câte unul din fiecare familie,
+          este independentă,
+    \item deci independența se ,,agregă'' de la familii la evenimente individuale.
+\end{itemize}
+
+Aceasta este o teoremă fundamentală în teoria probabilităților, deoarece
+permite construirea independenței pentru structuri complexe pornind de la
+familii independente.
+
+\section{Exemplu}
+
+Dacă $X$ și $Y$ sunt variabile aleatoare independente, atunci familiile:
+
+
+\[
+\mathcal{A}_X = \{ X \in B : B \in \mathcal{B}(\mathbb{R}) \}, \qquad
+\mathcal{A}_Y = \{ Y \in C : C \in \mathcal{B}(\mathbb{R}) \}
+\]
+
+
+sunt independente.
+
+Prin teorema de agregare, pentru orice mulțimi măsurabile $B$ și $C$,
+evenimentele
+
+
+\[
+\{X \in B\}, \qquad \{Y \in C\}
+\]
+
+
+sunt independente.
+
+\end{document}

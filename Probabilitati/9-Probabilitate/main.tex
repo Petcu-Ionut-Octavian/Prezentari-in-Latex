@@ -1,0 +1,39 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Probabilitate}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $(\Omega, \mathcal{F})$ un spațiu măsurabil. 
+O funcție $\mathbb{P} : \mathcal{F} \to [0,1]$ se numește \emph{probabilitate} dacă:
+\begin{enumerate}
+    \item $\mathbb{P}(\Omega) = 1$;
+    \item pentru orice familie de mulțimi disjuncte două câte două $(A_n)_{n \ge 1}$ din $\mathcal{F}$ avem
+    
+
+\[
+        \mathbb{P}\!\left( \bigcup_{n=1}^{\infty} A_n \right)
+        = \sum_{n=1}^{\infty} \mathbb{P}(A_n).
+    \]
+
+
+\end{enumerate}
+\end{definition}
+
+\noindent
+Tripletul $(\Omega, \mathcal{F}, \mathbb{P})$ se numește \emph{spațiu de probabilitate}.
+
+\end{document}

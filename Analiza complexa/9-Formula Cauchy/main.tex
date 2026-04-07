@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teoreme Fundamentale din Analiza Complexă}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{theorem}
+\textbf{Formula integrală a lui Cauchy.}  
+Fie $f$ o funcție olomorfă în interiorul și pe conturul unei curbe închise netede $\gamma$, orientată pozitiv.  
+Pentru orice punct $z$ din interiorul lui $\gamma$ are loc
+
+
+
+\[
+f(z) = \frac{1}{2\pi i} \int_{\gamma} \frac{f(w)}{w - z} \, dw.
+\]
+
+
+
+Aceasta exprimă valoarea funcției în interiorul conturului prin valorile sale pe contur.
+\end{theorem}
+
+\begin{theorem}
+\textbf{Formula lui Cauchy pentru derivate.}  
+În ipotezele teoremei precedente, pentru orice $n \ge 1$ și orice punct $z$ din interiorul lui $\gamma$ are loc
+
+
+
+\[
+f^{(n)}(z) = \frac{n!}{2\pi i} \int_{\gamma} \frac{f(w)}{(w - z)^{n+1}} \, dw.
+\]
+
+
+
+Aceasta arată că toate derivatele unei funcții olomorfe sunt determinate de valorile funcției pe contur.
+\end{theorem}
+
+\begin{theorem}
+\textbf{Inegalitatea lui Cauchy.}  
+Fie $f$ olomorfă în discul $D(z_0, R)$ și fie
+
+
+
+\[
+M = \max_{|z - z_0| = R} |f(z)|.
+\]
+
+
+
+Atunci, pentru orice $n \ge 0$ și orice $z$ cu $|z - z_0| < R$ are loc
+
+
+
+\[
+|f^{(n)}(z_0)| \le \frac{n! \, M}{R^n}.
+\]
+
+
+
+Aceasta oferă o estimare a derivatelor unei funcții olomorfe în funcție de valorile sale pe cercul de rază $R$.
+\end{theorem}
+
+\end{document}

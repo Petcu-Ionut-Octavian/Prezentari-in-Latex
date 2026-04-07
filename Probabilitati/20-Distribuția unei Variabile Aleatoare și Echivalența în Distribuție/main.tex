@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs} % pentru S caligrafic
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Distribuția unei Variabile Aleatoare și Echivalența în Distribuție}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definiție}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{corollary}{Corolar}
+
+\begin{document}
+
+\maketitle
+
+\section{Distribuția unei variabile aleatoare}
+
+\begin{definition}
+Fie $(\Omega, \mathcal{F}, \mathbb{P})$ un spațiu de probabilitate și
+$X : \Omega \to S$ o variabilă aleatoare cu valori într-un spațiu măsurabil
+$(S, \mathscr{S})$.
+\textbf{Distribuția} (sau \textbf{legea}) lui $X$ este măsura de probabilitate
+$\mathbb{P}_X$ definită pe $(S, \mathscr{S})$ prin:
+
+
+\[
+\mathbb{P}_X(A) := \mathbb{P}(X \in A),
+\qquad A \in \mathscr{S}.
+\]
+
+
+\end{definition}
+
+Distribuția lui $X$ este imaginea măsurii $\mathbb{P}$ prin aplicația $X$:
+
+
+\[
+\mathbb{P}_X = \mathbb{P} \circ X^{-1}.
+\]
+
+
+
+\begin{proposition}
+Distribuția $\mathbb{P}_X$ este o măsură de probabilitate pe
+$(S, \mathscr{S})$ și este determinată în mod unic de valorile sale pe
+o familie generatoare a lui $\mathscr{S}$.
+\end{proposition}
+
+\section{Echivalența în distribuție}
+
+\begin{definition}
+Două variabile aleatoare $X, Y : \Omega \to S$ se numesc
+\textbf{egale în distribuție} sau \textbf{echivalente în distribuție} dacă
+au aceeași distribuție, adică:
+
+
+\[
+\mathbb{P}_X = \mathbb{P}_Y.
+\]
+
+
+Scriem:
+
+
+\[
+X \overset{d}{=} Y.
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Pentru două variabile aleatoare $X, Y : \Omega \to S$, următoarele afirmații sunt echivalente:
+\begin{enumerate}
+    \item $X \overset{d}{=} Y$;
+    \item $\mathbb{P}(X \in A) = \mathbb{P}(Y \in A)$ pentru orice $A \in \mathscr{S}$;
+    \item pentru orice funcție măsurabilă $g : S \to \mathbb{R}$ avem:
+    
+
+\[
+    \mathbb{P}(g(X) \le t) = \mathbb{P}(g(Y) \le t)
+    \quad \text{pentru toate } t \in \mathbb{R}.
+    \]
+
+
+\end{enumerate}
+\end{proposition}
+
+\begin{corollary}
+Dacă $X \overset{d}{=} Y$, atunci pentru orice funcție măsurabilă
+$g : S \to T$ între două spații măsurabile $(S, \mathscr{S})$ și
+$(T, \mathcal{T})$ avem:
+
+
+\[
+g(X) \overset{d}{=} g(Y).
+\]
+
+
+\end{corollary}
+
+\end{document}

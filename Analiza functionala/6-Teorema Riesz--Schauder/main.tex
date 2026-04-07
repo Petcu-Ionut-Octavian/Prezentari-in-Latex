@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema Riesz--Schauder}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $X$ un spațiu Banach. Un operator liniar continuu $T : X \to X$ se numește \emph{compact} dacă imaginea oricărei mulțimi mărginită este relativ compactă, adică
+
+
+\[
+B \subset X \text{ mărginită } \implies T(B) \text{ are aderență compactă}.
+\]
+
+
+Spectrul lui $T$ este mulțimea
+
+
+\[
+\sigma(T) = \{ \lambda \in \mathbb{C} : T - \lambda I \text{ nu este invertibil} \}.
+\]
+
+
+\end{definition}
+
+\begin{theorem}[Riesz--Schauder]
+Fie $X$ un spațiu Banach și $T : X \to X$ un operator compact. Atunci:
+\begin{enumerate}
+    \item[(i)] $0 \in \sigma(T)$.
+    \item[(ii)] Orice $\lambda \in \sigma(T)$, $\lambda \ne 0$, este valoare proprie.
+    \item[(iii)] Pentru $\lambda \ne 0$, spațiul propriu
+    
+
+\[
+    E_\lambda = \ker(T - \lambda I)
+    \]
+
+
+    este finit dimensional.
+    \item[(iv)] Singurele puncte de acumulare ale spectrului sunt $0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+Pentru un operator compact $T : X \to X$, următoarele afirmații sunt echivalente pentru $\lambda \ne 0$:
+\begin{enumerate}
+    \item[(i)] $\lambda \in \sigma(T)$.
+    \item[(ii)] $T - \lambda I$ nu este surjectiv.
+    \item[(iii)] $T - \lambda I$ nu este injectiv.
+    \item[(iv)] $\lambda$ este valoare proprie a lui $T$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Fie $X$ un spațiu Banach și $T : X \to X$ un operator compact. Atunci pentru operatorul $I - T$ au loc următoarele proprietăți fundamentale:
+\begin{enumerate}
+    \item[(i)] Nucleul este finit dimensional,
+    
+
+\[
+    N(I-T) = \ker(I-T) \quad \text{este finit dimensional};
+    \]
+
+
+    \item[(ii)] Imaginea este închisă,
+    
+
+\[
+    R(I-T) = \operatorname{Im}(I-T) \quad \text{este închisă în } X;
+    \]
+
+
+    \item[(iii)] Următoarele afirmații sunt echivalente:
+    
+
+\[
+    N(I-T) = \{0\}
+    \quad \Longleftrightarrow \quad
+    R(I-T) = X.
+    \]
+
+
+\end{enumerate}
+\end{proposition}
+
+
+\end{document}

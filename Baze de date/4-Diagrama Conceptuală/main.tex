@@ -1,0 +1,141 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[romanian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+
+\title{Diagrama Conceptuală \\ Modelarea Conceptuală a Domeniului}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Modelarea Conceptuală}
+Modelarea conceptuală reprezintă descrierea completă a domeniului (universului de
+discurs), incluzând structuri, reguli, procese, entități, relații și constrângeri.
+Rezultatul este \textbf{diagrama conceptuală}, care precede modelul logic (ERD).
+
+\section{Componentele unei Diagrame Conceptuale}
+
+\subsection*{1. Entități}
+Obiecte sau concepte relevante pentru domeniu.
+
+\textbf{Tipuri:}
+\begin{itemize}[noitemsep]
+    \item entități strong (independente);
+    \item entități weak (dependente);
+    \item entități asociative (pentru relații M:N);
+    \item entități abstracte (în generalizare/specializare).
+\end{itemize}
+
+\subsection*{2. Atribute}
+Proprietăți ale entităților.
+
+\textbf{Tipuri:}
+\begin{itemize}[noitemsep]
+    \item simple, compuse, multivaloare, derivate;
+    \item atribute-cheie (candidate, primare, alternative);
+    \item domenii conceptuale (tipuri de date la nivel conceptual).
+\end{itemize}
+
+\subsection*{3. Relații}
+Asocieri între entități.
+
+\textbf{Tipuri:}
+\begin{itemize}[noitemsep]
+    \item unare (recursive);
+    \item binare;
+    \item ternare și n-are;
+    \item relații de agregare și compoziție.
+\end{itemize}
+
+\subsection*{4. Cardinalități și Participare}
+\begin{itemize}[noitemsep]
+    \item min-max: (0,1), (1,1), (0,N), (1,N);
+    \item participare totală sau parțială;
+    \item constrângeri de rol (cine participă și cum).
+\end{itemize}
+
+\subsection*{5. Reguli de Business}
+Reguli care guvernează domeniul, independente de implementare.
+
+\textbf{Exemple:}
+\begin{itemize}[noitemsep]
+    \item un student nu poate fi înscris la mai mult de 6 cursuri;
+    \item un profesor poate preda doar cursuri din specializarea sa.
+\end{itemize}
+
+\subsection*{6. Procese și Evenimente}
+Descriu dinamica domeniului.
+
+\textbf{Exemple:}
+\begin{itemize}[noitemsep]
+    \item proces: înscrierea unui student la un curs;
+    \item eveniment: actualizarea notei;
+    \item fluxuri: aprobarea unei cereri.
+\end{itemize}
+
+\subsection*{7. Generalizare / Specializare (ISA)}
+\begin{itemize}[noitemsep]
+    \item disjoint / overlapping;
+    \item total / partial;
+    \item moștenirea atributelor și relațiilor.
+\end{itemize}
+
+\subsection*{8. Constrângeri Conceptuale}
+\begin{itemize}[noitemsep]
+    \item integritate semantică;
+    \item dependențe conceptuale;
+    \item reguli de consistență între entități.
+\end{itemize}
+
+\subsection*{9. Perspective și Roluri}
+\begin{itemize}[noitemsep]
+    \item actori (student, profesor, administrator);
+    \item responsabilități și interacțiuni;
+    \item puncte de vedere asupra datelor.
+\end{itemize}
+
+\section{Mini-Diagramă Conceptuală (Textuală)}
+
+\subsection*{Entități}
+\begin{itemize}[noitemsep]
+    \item Student(StudID, Nume, Email, DataNasterii)
+    \item Curs(CursID, Denumire, Credite)
+    \item Profesor(ProfID, Nume, Titlu)
+    \item Inscriere(StudID, CursID, Data, Nota)
+    \item TelefonStudent(StudID, NrTelefon)
+\end{itemize}
+
+\subsection*{Relații}
+\begin{itemize}[noitemsep]
+    \item Student (1,N) TelefonStudent
+    \item Student (0,N) Curs prin Inscriere
+    \item Profesor (1,N) Curs
+    \item Angajat (1,N) seSubordonează Angajat (unară)
+\end{itemize}
+
+\subsection*{Reguli de Business}
+\begin{itemize}[noitemsep]
+    \item un student poate avea mai multe numere de telefon;
+    \item un curs poate avea un singur profesor titular;
+    \item un student poate fi înscris la maximum 6 cursuri simultan.
+\end{itemize}
+
+\subsection*{Generalizare}
+\begin{itemize}[noitemsep]
+    \item Angajat → Profesor, Administrator (disjoint, partial)
+\end{itemize}
+
+\subsection*{Procese}
+\begin{itemize}[noitemsep]
+    \item înscrierea la curs;
+    \item evaluarea studentului;
+    \item actualizarea datelor personale.
+\end{itemize}
+
+\end{document}

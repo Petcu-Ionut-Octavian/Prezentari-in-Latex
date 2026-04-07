@@ -1,0 +1,166 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Histograme și Variabile Aleatoare Discrete}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definiție}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{example}{Exemplu}
+
+\begin{document}
+
+\maketitle
+
+\section{Histograme}
+
+\begin{definition}
+Fie $X$ o variabilă aleatoare reală și fie $x_1, \dots, x_n$ un eșantion
+independent extras din distribuția lui $X$.
+\textbf{Histograma} eșantionului este funcția care asociază fiecărui interval
+$B$ numărul (sau proporția) de observații care cad în $B$:
+
+
+\[
+H_n(B) := \frac{1}{n} \sum_{i=1}^n \mathbf{1}_{\{x_i \in B\}}.
+\]
+
+
+\end{definition}
+
+Histograma este o aproximare empirică a distribuției lui $X$:
+
+
+\[
+H_n(B) \approx \mathbb{P}(X \in B).
+\]
+
+
+
+\section{Variabile aleatoare discrete}
+
+\begin{definition}
+O variabilă aleatoare $X : \Omega \to S$ se numește
+\textbf{discretă} dacă imaginea sa este cel mult numărabilă:
+
+
+\[
+X(\Omega) = \{x_1, x_2, \dots\}.
+\]
+
+
+Distribuția lui $X$ este determinată de probabilitățile:
+
+
+\[
+p_k := \mathbb{P}(X = x_k).
+\]
+
+
+Funcția $p : S \to [0,1]$ definită prin $p(x_k) = p_k$ se numește
+\textbf{funcție de masă a probabilității}.
+\end{definition}
+
+\section{Exemple fundamentale}
+
+\subsection{Variabila Bernoulli}
+
+\begin{definition}
+O variabilă aleatoare $X$ se numește \textbf{Bernoulli} cu parametru $p \in [0,1]$
+dacă:
+
+
+\[
+\mathbb{P}(X = 1) = p, \qquad \mathbb{P}(X = 0) = 1 - p.
+\]
+
+
+Notăm:
+
+
+\[
+X \sim \mathrm{Bernoulli}(p).
+\]
+
+
+\end{definition}
+
+\begin{example}
+Aruncarea unei monede:
+
+
+\[
+X = 
+\begin{cases}
+1, & \text{dacă apare ``cap''},\\
+0, & \text{dacă apare ``pajură''}.
+\end{cases}
+\]
+
+
+\end{example}
+
+\subsection{Zar cu $k$ fețe}
+
+\begin{definition}
+Fie $k \ge 2$. O variabilă aleatoare $X$ se numește
+\textbf{zar cu $k$ fețe} dacă:
+
+
+\[
+\mathbb{P}(X = i) = \frac{1}{k}, \qquad i = 1, \dots, k.
+\]
+
+
+\end{definition}
+
+\begin{example}
+Zar obișnuit:
+
+
+\[
+X(\Omega) = \{1,2,3,4,5,6\}, \qquad \mathbb{P}(X=i)=\frac{1}{6}.
+\]
+
+
+\end{example}
+
+\subsection{Distribuția binomială}
+
+\begin{definition}
+Fie $n \in \mathbb{N}$ și $p \in [0,1]$.
+O variabilă aleatoare $X$ se numește \textbf{binomială} cu parametrii $(n,p)$ dacă:
+
+
+\[
+\mathbb{P}(X = k)
+= \binom{n}{k} p^k (1-p)^{n-k},
+\qquad k = 0,1,\dots,n.
+\]
+
+
+Notăm:
+
+
+\[
+X \sim \mathrm{Bin}(n,p).
+\]
+
+
+\end{definition}
+
+\begin{example}
+Numărul de succese în $n$ aruncări independente ale unei monede cu probabilitatea $p$ de succes.
+\end{example}
+
+\end{document}

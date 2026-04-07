@@ -1,0 +1,231 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Variabile Aleatoare și Vectori Aleatori}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{corollary}{Corolar}
+\newtheorem{definition}{Definiție}
+
+\begin{document}
+
+\maketitle
+
+\section{Variabile aleatoare}
+
+Fie $(\Omega, \mathcal{F}, \mathbb{P})$ un spațiu de probabilitate.
+O aplicație
+
+
+
+\[
+X : \Omega \to \mathbb{R}
+\]
+
+
+
+se numește \textbf{variabilă aleatoare} dacă este măsurabilă, adică:
+
+
+
+\[
+X^{-1}(B) \in \mathcal{F}
+\quad \text{pentru orice } B \in \mathcal{B}(\mathbb{R}).
+\]
+
+
+
+Aceasta înseamnă că preimaginile mulțimilor boreliene sunt evenimente.
+
+\section{Criteriu de măsurabilitate}
+
+\begin{proposition}
+O aplicație $X : \Omega \to \mathbb{R}$ este variabilă aleatoare dacă și numai dacă
+pentru orice mulțime de forma
+
+
+
+\[
+(-\infty, a], \qquad a \in \mathbb{R},
+\]
+
+
+
+avem:
+
+
+
+\[
+X^{-1}((-\infty, a]) \in \mathcal{F}.
+\]
+
+
+
+Mulțimile de forma $(-\infty, a]$ generează sigma-algebra boreliană
+$\mathcal{B}(\mathbb{R})$, deci este suficient să verificăm măsurabilitatea
+doar pe această familie generatoare.
+\end{proposition}
+
+\section{Vectori aleatori}
+
+Pentru $n \ge 2$, o aplicație
+
+
+
+\[
+X = (X_1, X_2, \dots, X_n) : \Omega \to \mathbb{R}^n
+\]
+
+
+
+se numește \textbf{vector aleator} dacă este măsurabilă față de
+$\mathcal{F}$ și $\mathcal{B}(\mathbb{R}^n)$, adică:
+
+
+
+\[
+X^{-1}(B) \in \mathcal{F}
+\quad \text{pentru orice } B \in \mathcal{B}(\mathbb{R}^n).
+\]
+
+
+
+\section{Criteriu de măsurabilitate pentru vectori aleatori}
+
+\begin{proposition}
+O aplicație $X = (X_1, \dots, X_n)$ este vector aleator dacă și numai dacă
+fiecare componentă $X_i$ este variabilă aleatoare.
+
+Echivalent:
+
+
+
+\[
+X \text{ este măsurabil } \Longleftrightarrow
+X_i \text{ este măsurabil pentru toate } i = 1,\dots,n.
+\]
+
+
+\end{proposition}
+
+\section{Interpretare}
+
+\begin{itemize}
+    \item O variabilă aleatoare este o funcție reală măsurabilă.
+    \item Un vector aleator este o funcție cu valori în $\mathbb{R}^n$,
+          măsurabilă în sensul produsului.
+    \item Măsurabilitatea se verifică doar pe o familie generatoare,
+          ceea ce simplifică mult demonstrațiile.
+\end{itemize}
+
+\section{Proprietăți suplimentare ale variabilelor aleatoare}
+
+\begin{proposition}
+Fie $(\Omega, \mathcal{F}, \mathbb{P})$ un spațiu de probabilitate,
+$X : \Omega \to \mathbb{R}$ o variabilă aleatoare
+și $g : \mathbb{R} \to \mathbb{R}$ o funcție măsurabilă față de
+$\mathcal{B}(\mathbb{R})$.
+Atunci compunerea
+
+
+
+\[
+g \circ X : \Omega \to \mathbb{R}
+\]
+
+
+
+este variabilă aleatoare.
+\end{proposition}
+
+\begin{proposition}
+Fie $X : \Omega \to S$ o aplicație măsurabilă între
+$(\Omega, \mathcal{F})$ și un spațiu măsurabil $(S, \mathcal{S})$.
+Pentru orice subfamilie $\mathcal{C} \subseteq \mathcal{S}$ avem:
+
+
+
+\[
+\sigma(X^{-1}(\mathcal{C})) = X^{-1}(\sigma(\mathcal{C})).
+\]
+
+
+\end{proposition}
+
+\begin{corollary}
+Pentru a verifica că o aplicație $X : \Omega \to S$ este măsurabilă,
+este suficient să verificăm că
+
+
+
+\[
+X^{-1}(C) \in \mathcal{F}
+\quad \text{pentru toate } C \in \mathcal{C},
+\]
+
+
+
+unde $\mathcal{C}$ este o familie de mulțimi care generează
+$\sigma$-algebra $\mathcal{S}$ a spațiului țintă.
+\end{corollary}
+
+\subsection{Variabile aleatoare extinse}
+
+\begin{definition}
+O aplicație
+
+
+
+\[
+X : \Omega \to \overline{\mathbb{R}} := \mathbb{R} \cup \{-\infty, +\infty\}
+\]
+
+
+
+se numește \textbf{variabilă aleatoare extinsă} dacă este măsurabilă
+față de $\mathcal{F}$ și $\mathcal{B}(\overline{\mathbb{R}})$,
+sigma-algebra boreliană extinsă.
+\end{definition}
+
+\begin{proposition}
+Fie $X, Y : \Omega \to \mathbb{R}$ variabile aleatoare.
+Atunci următoarele aplicații sunt variabile aleatoare:
+
+
+
+\[
+X + Y, \qquad X \cdot Y, \qquad \frac{X}{Y} \ \text{ pe mulțimea } \{Y \neq 0\}.
+\]
+
+
+\end{proposition}
+
+\begin{proposition}
+Fie $(X_n)_{n \ge 1}$ un șir de variabile aleatoare extinse.
+Atunci următoarele aplicații sunt variabile aleatoare extinse:
+
+
+
+\[
+\inf_{n \ge 1} X_n, \qquad
+\sup_{n \ge 1} X_n, \qquad
+\liminf_{n \to \infty} X_n, \qquad
+\limsup_{n \to \infty} X_n, \qquad
+\lim_{n \to \infty} X_n \ \text{ (când există)}.
+\]
+
+
+\end{proposition}
+
+\end{document}

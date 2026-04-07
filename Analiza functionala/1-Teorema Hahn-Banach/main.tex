@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema Hahn--Banach}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $X$ un spațiu vectorial real și $p : X \to \mathbb{R}$ o funcție subliniară, adică
+
+
+\[
+p(x+y) \le p(x) + p(y), \qquad p(\lambda x) = \lambda p(x) \quad \text{pentru } \lambda \ge 0.
+\]
+
+
+Dacă $Y \subset X$ este un subspațiu și $f_0 : Y \to \mathbb{R}$ este o aplicație liniară, spunem că $f_0$ este \emph{dominată} de $p$ dacă
+
+
+\[
+f_0(y) \le p(y) \quad \text{pentru toate } y \in Y.
+\]
+
+
+\end{definition}
+
+\begin{theorem}[Hahn--Banach, forma reală]
+Fie $X$ un spațiu vectorial real, $p : X \to \mathbb{R}$ o funcție subliniară și $Y \subset X$ un subspațiu. Dacă $f_0 : Y \to \mathbb{R}$ este liniară și dominată de $p$, atunci există o aplicație liniară $f : X \to \mathbb{R}$ cu proprietățile:
+\begin{enumerate}
+    \item[(i)] $f$ extinde pe $f_0$, adică $f|_Y = f_0$;
+    \item[(ii)] $f$ este dominată de $p$, adică
+    
+
+\[
+    f(x) \le p(x) \quad \text{pentru toate } x \in X.
+    \]
+
+
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+În ipotezele teoremei Hahn--Banach, următoarele afirmații sunt echivalente pentru o extensie $f : X \to \mathbb{R}$:
+\begin{enumerate}
+    \item[(i)] $f$ este o extensie liniară a lui $f_0$ dominată de $p$.
+    \item[(ii)] Există o funcție $\psi : X \to \mathbb{R}$, cu $\psi(x) \ge 0$ pentru toate $x$, astfel încât
+    
+
+\[
+    f(x) = f_0(y) + \psi(x-y)
+    \]
+
+
+    pentru orice descompunere $x = y + (x-y)$ cu $y \in Y$, iar $\psi$ satisface
+    
+
+\[
+    \psi(z) \le p(z) \quad \text{pentru toate } z \in X.
+    \]
+
+
+\end{enumerate}
+\end{proposition}
+
+\end{document}

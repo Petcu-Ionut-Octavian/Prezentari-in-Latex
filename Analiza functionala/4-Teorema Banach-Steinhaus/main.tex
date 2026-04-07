@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema Banach--Steinhaus}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $X$ un spațiu Banach și $Y$ un spațiu normat. O familie $\mathcal{F} \subset \mathcal{L}(X,Y)$
+de operatori liniari și continui se numește \emph{punctat mărginită} dacă pentru fiecare $x \in X$ există o constantă $M_x > 0$ astfel încât
+
+
+\[
+\sup_{T \in \mathcal{F}} \|T x\| \le M_x.
+\]
+
+
+\end{definition}
+
+\begin{theorem}[Banach--Steinhaus, Principiul Uniformei Limitări]
+Fie $X$ un spațiu Banach și $Y$ un spațiu normat. Dacă $\mathcal{F} \subset \mathcal{L}(X,Y)$ este o familie de operatori liniari continui, punctat mărginită, atunci:
+
+
+\[
+\sup_{T \in \mathcal{F}} \|T\| < \infty.
+\]
+
+
+Cu alte cuvinte, punctata mărginitate implică mărginitate uniformă a normelor operatorilor.
+\end{theorem}
+
+\begin{proposition}
+În ipotezele teoremei Banach--Steinhaus, următoarele afirmații sunt echivalente:
+\begin{enumerate}
+    \item[(i)] Familia $\mathcal{F}$ este punctat mărginită.
+    \item[(ii)] Pentru orice mulțime mărginită $B \subset X$, mulțimea
+    
+
+\[
+    \mathcal{F}(B) = \{ T(x) : T \in \mathcal{F},\, x \in B \}
+    \]
+
+
+    este mărginită în $Y$.
+\end{enumerate}
+\end{proposition}
+
+\end{document}

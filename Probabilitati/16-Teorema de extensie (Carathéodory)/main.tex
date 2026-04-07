@@ -1,0 +1,101 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema de Extensie (Carathéodory)}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\section{Definiție: Pre-măsură}
+
+Fie $(X, \mathcal{A})$ un spațiu măsurabil, unde $\mathcal{A}$ este o
+algebră de mulțimi.
+
+O aplicație
+
+
+\[
+\mu_0 : \mathcal{A} \to [0, \infty]
+\]
+
+
+se numește \textbf{pre-măsură} dacă:
+
+\begin{enumerate}
+    \item $\mu_0(\emptyset) = 0$;
+    \item este \textbf{sigma-aditivă} pe $\mathcal{A}$, adică pentru orice familie
+    de mulțimi disjuncte $A_1, A_2, \dots \in \mathcal{A}$ cu
+    $\bigcup_{n=1}^\infty A_n \in \mathcal{A}$,
+    
+
+\[
+        \mu_0\!\left(\bigcup_{n=1}^\infty A_n\right)
+        = \sum_{n=1}^\infty \mu_0(A_n).
+    \]
+
+
+\end{enumerate}
+
+O pre-măsură este o măsură ,,incompletă'', definită doar pe o algebră.
+
+\section{Teorema de Extensie (Carathéodory)}
+
+\begin{theorem}[Teorema de Extensie]
+Fie $\mathcal{A}$ o algebră de mulțimi pe $X$ și fie
+$\mu_0 : \mathcal{A} \to [0,\infty]$ o pre-măsură.
+
+Atunci există o \textbf{sigma-algebră} $\sigma(\mathcal{A})$ și o
+\textbf{măsură} $\mu : \sigma(\mathcal{A}) \to [0,\infty]$ astfel încât:
+
+
+
+\[
+\mu(A) = \mu_0(A), \qquad \forall A \in \mathcal{A}.
+\]
+
+
+
+Mai mult, dacă $\mu_0$ este \textbf{sigma-finită}, atunci această măsură
+$\mu$ este \textbf{unică}.
+\end{theorem}
+
+\section{Interpretare}
+
+Teorema afirmă că:
+
+\begin{itemize}
+    \item dacă definim o măsură pe o algebră simplă de mulțimi,
+    \item atunci ea poate fi extinsă riguros la întreaga sigma-algebră generată,
+    \item iar dacă pre-măsura este sigma-finită, extensia este unică.
+\end{itemize}
+
+Aceasta este teorema fundamentală care permite construirea măsurii Lebesgue
+și a multor alte măsuri importante în analiză și probabilități.
+
+\section{Exemplu}
+
+Pe $\mathbb{R}$, definim pe algebră mulțimilor de tip interval finit:
+
+
+
+\[
+\mu_0((a,b]) = b - a.
+\]
+
+
+
+Aceasta este o pre-măsură.  
+Prin teorema de extensie, ea se extinde în mod unic la măsura Lebesgue
+pe $\mathcal{B}(\mathbb{R})$.
+
+\end{document}

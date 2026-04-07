@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Omotopie și Domenii Simplu Conexe}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+(\textbf{Omotopia a două curbe})  
+Fie $\gamma_0, \gamma_1 : [a,b] \to \Omega$ două curbe cu aceleași capete, adică
+
+
+
+\[
+\gamma_0(a)=\gamma_1(a), \qquad \gamma_0(b)=\gamma_1(b).
+\]
+
+
+
+Spunem că $\gamma_0$ și $\gamma_1$ sunt omotope în $\Omega$ dacă există o funcție continuă
+
+
+
+\[
+H : [a,b] \times [0,1] \to \Omega
+\]
+
+
+
+astfel încât
+
+
+
+\[
+H(t,0)=\gamma_0(t), \qquad H(t,1)=\gamma_1(t),
+\]
+
+
+
+iar pentru fiecare $s\in[0,1]$, curba $t \mapsto H(t,s)$ are aceleași capete.
+\end{definition}
+
+\begin{definition}
+(\textbf{Curbă închisă omotopă cu un punct})  
+O curbă închisă $\gamma : [a,b] \to \Omega$ se numește omotopă cu un punct în $\Omega$ dacă există o omotopie
+
+
+
+\[
+H : [a,b] \times [0,1] \to \Omega
+\]
+
+
+
+astfel încât
+
+
+
+\[
+H(t,0)=\gamma(t), \qquad H(t,1)=z_0,
+\]
+
+
+
+unde $z_0$ este un punct fix din $\Omega$.  
+În acest caz, curba poate fi contractată continuu până la punctul $z_0$ fără a părăsi domeniul.
+\end{definition}
+
+\begin{definition}
+(\textbf{Mulțime simplu conexă})  
+Un domeniu $\Omega \subset \mathbb{C}$ se numește simplu conex dacă orice curbă închisă din $\Omega$ este omotopă cu un punct în $\Omega$.  
+Echivalent: orice buclă din $\Omega$ poate fi contractată continuu la un punct fără a ieși din domeniu.
+\end{definition}
+
+\begin{theorem}
+\textbf{Teorema lui Cauchy pe domenii simplu conexe.}  
+Fie $\Omega$ un domeniu simplu conex și $f:\Omega \to \mathbb{C}$ o funcție olomorfă.  
+Dacă $\gamma_0$ și $\gamma_1$ sunt două curbe omotope în $\Omega$ și au aceleași capete, atunci
+
+
+
+\[
+\int_{\gamma_0} f(z)\,dz = \int_{\gamma_1} f(z)\,dz.
+\]
+
+
+
+În special, pentru orice curbă închisă $\gamma$ din $\Omega$ are loc
+
+
+
+\[
+\int_{\gamma} f(z)\,dz = 0.
+\]
+
+
+\end{theorem}
+
+\end{document}

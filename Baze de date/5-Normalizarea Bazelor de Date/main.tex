@@ -1,0 +1,80 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[romanian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+
+\title{Normalizarea Bazelor de Date \\ Formele Normale 1NF--6NF}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Normalizarea}
+Normalizarea este un proces de organizare a datelor într-o bază de date relațională
+cu scopul de a elimina redundanța, anomaliile de actualizare și inconsistențele.
+
+\section{Prima Formă Normală (1NF)}
+O relație se află în \textbf{1NF} dacă:
+\begin{itemize}[noitemsep]
+    \item toate atributele conțin valori atomice;
+    \item fiecare rând este unic;
+    \item nu există atribute multivaloare sau compuse.
+\end{itemize}
+
+\section{A Doua Formă Normală (2NF)}
+O relație este în \textbf{2NF} dacă:
+\begin{itemize}[noitemsep]
+    \item este în 1NF;
+    \item toate atributele non-cheie depind complet de cheia primară;
+    \item nu există dependențe parțiale.
+\end{itemize}
+
+\section{A Treia Formă Normală (3NF)}
+O relație este în \textbf{3NF} dacă:
+\begin{itemize}[noitemsep]
+    \item este în 2NF;
+    \item nu există dependențe tranzitive între atributele non-cheie.
+\end{itemize}
+
+\section{Superchei, Chei Candidate și Cheia Primară}
+
+\subsection{Supercheie}
+O supercheie este orice set de atribute care identifică unic fiecare tuplu dintr-o relație.
+
+\subsection{Chei Candidate}
+Cheile candidate sunt superchei minimale, din care nu se poate elimina niciun atribut.
+
+\subsection{Cheia Primară}
+Cheia primară este cheia candidată aleasă pentru identificarea oficială a tuplurilor.
+
+\section{Forma Normală Boyce--Codd (BCNF)}
+O relație este în BCNF dacă pentru orice dependență funcțională
+\( X \rightarrow Y \), X este supercheie.
+
+\section{A Patra Formă Normală (4NF)}
+O relație este în 4NF dacă:
+\begin{itemize}[noitemsep]
+    \item este în BCNF;
+    \item nu conține dependențe multivaloare independente.
+\end{itemize}
+
+\section{A Cincea Formă Normală (5NF)}
+O relație este în 5NF dacă:
+\begin{itemize}[noitemsep]
+    \item este în 4NF;
+    \item nu poate fi descompusă în tabele mai mici fără pierdere de informație.
+\end{itemize}
+
+\section{A Șasea Formă Normală (6NF)}
+O relație este în 6NF dacă:
+\begin{itemize}[noitemsep]
+    \item nu mai poate fi descompusă deloc fără pierdere de informație;
+    \item fiecare tabel conține o singură dependență.
+\end{itemize}
+
+\end{document}

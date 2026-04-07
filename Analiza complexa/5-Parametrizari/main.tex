@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Parametrizări și Primitivă în $\mathbb{C}$}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+(\textbf{Parametrizare în $\mathbb{C}$})  
+O funcție 
+
+
+\[
+\gamma : [a,b] \to \mathbb{C}
+\]
+
+
+se numește \emph{parametrizare} dacă este continuă pe $[a,b]$ și derivabilă pe $(a,b)$.  
+Punctele $\gamma(t)$ descriu traseul curbei în planul complex.
+\end{definition}
+
+\begin{definition}
+(\textbf{Echivalența a două parametrizări})  
+Două parametrizări 
+
+
+\[
+\gamma_1 : [a,b] \to \mathbb{C}, \qquad 
+\gamma_2 : [c,d] \to \mathbb{C}
+\]
+
+
+sunt \emph{echivalente} dacă există o funcție bijectivă, continuă, strict monotonă și derivabilă
+
+
+\[
+\phi : [c,d] \to [a,b]
+\]
+
+
+astfel încât
+
+
+\[
+\gamma_2(t) = \gamma_1(\phi(t)) \quad \text{pentru toate } t \in [c,d].
+\]
+
+
+\end{definition}
+
+\begin{definition}
+(\textbf{Curbă închisă, netedă})  
+O parametrizare $\gamma : [a,b] \to \mathbb{C}$ se numește \emph{curbă închisă} dacă
+
+
+\[
+\gamma(a) = \gamma(b).
+\]
+
+
+Ea este \emph{netedă} dacă $\gamma'$ este continuă pe $(a,b)$ și
+
+
+\[
+\gamma'(t) \neq 0 \quad \text{pentru toate } t \in (a,b).
+\]
+
+
+\end{definition}
+
+\begin{definition}
+(\textbf{Primitivă})  
+Fie $f:\Omega \to \mathbb{C}$ o funcție continuă pe un domeniu $\Omega \subset \mathbb{C}$.  
+O funcție $F:\Omega \to \mathbb{C}$ se numește \emph{primitivă} a lui $f$ dacă
+
+
+\[
+F'(z) = f(z) \quad \text{pentru toate } z \in \Omega.
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+(\textbf{Leibniz–Newton pentru curbe în $\mathbb{C}$})  
+Fie $f:\Omega \to \mathbb{C}$ o funcție care admite o primitivă $F$ în $\Omega$, și fie
+
+
+\[
+\gamma : [a,b] \to \Omega
+\]
+
+
+o parametrizare netedă.  
+Atunci integrala lui $f$ de-a lungul curbei $\gamma$ este
+
+
+\[
+\int_{\gamma} f(z)\,dz = F(\gamma(b)) - F(\gamma(a)).
+\]
+
+
+În special, dacă $\gamma$ este o curbă închisă, atunci
+
+
+\[
+\int_{\gamma} f(z)\,dz = 0.
+\]
+
+
+\end{proposition}
+
+\end{document}

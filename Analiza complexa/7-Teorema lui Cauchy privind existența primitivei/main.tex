@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Existența Primitivei pentru Funcții Olomorfe}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{corollary}{Corolar}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $\Omega \subset \mathbb{C}$ un domeniu.  
+O funcție $F:\Omega \to \mathbb{C}$ se numește \emph{primitivă} a funcției $f:\Omega \to \mathbb{C}$ dacă
+
+
+\[
+F'(z) = f(z) \quad \text{pentru toate } z \in \Omega.
+\]
+
+
+\end{definition}
+
+\begin{theorem}
+(\textbf{Teorema lui Cauchy privind existența primitivei})  
+Fie $D = D(z_0, R)$ un disc deschis în $\mathbb{C}$ și fie $f : D \to \mathbb{C}$ o funcție olomorfă.  
+Atunci $f$ admite o primitivă în $D$.  
+Mai precis, funcția
+
+
+\[
+F(z) = \int_{\gamma_{z_0,z}} f(w)\,dw,
+\]
+
+
+unde $\gamma_{z_0,z}$ este orice curbă netedă din $z_0$ la $z$ în interiorul discului, este bine definită și satisface
+
+
+\[
+F'(z) = f(z).
+\]
+
+
+\end{theorem}
+
+\begin{proposition}
+(\textbf{Unicitatea primitivei})  
+Dacă $F$ și $G$ sunt două primitive ale aceleiași funcții olomorfe $f$ într-un disc, atunci
+
+
+\[
+F(z) - G(z) = \text{constantă}.
+\]
+
+
+\end{proposition}
+
+\begin{corollary}
+(\textbf{Integrala unei funcții olomorfe pe o curbă închisă dintr-un disc})  
+Fie $D = D(z_0, R)$ un disc și $f : D \to \mathbb{C}$ o funcție olomorfă.  
+Atunci, pentru orice curbă închisă netedă $\gamma : [a,b] \to D$, are loc
+
+
+\[
+\int_{\gamma} f(z)\,dz = 0.
+\]
+
+
+\textit{În special, orice funcție olomorfă pe un disc are integrală nulă pe orice contur închis conținut în disc.}
+\end{corollary}
+
+\end{document}

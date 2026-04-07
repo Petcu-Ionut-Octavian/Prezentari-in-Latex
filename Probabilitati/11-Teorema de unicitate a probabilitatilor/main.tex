@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema de Unicitate a Probabilităților}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{theorem}[Teorema de unicitate a probabilităților]
+Fie $(\Omega, \mathcal{F})$ un spațiu măsurabil și fie 
+$\mathbb{P}_1, \mathbb{P}_2 : \mathcal{F} \to [0,1]$ două probabilități.
+Fie $\mathcal{C} \subseteq \mathcal{F}$ o familie de mulțimi.
+
+\begin{enumerate}
+    \item Dacă $\mathbb{P}_1$ și $\mathbb{P}_2$ coincid pe $\mathcal{C}$, atunci ele coincid pe lambda-sistemul generat de $\mathcal{C}$:
+    
+
+\[
+        \mathbb{P}_1(A) = \mathbb{P}_2(A)
+        \quad \text{pentru toate } A \in \lambda(\mathcal{C}).
+    \]
+
+
+
+    \item Dacă, în plus, $\mathcal{C}$ este un $\pi$-sistem, atunci
+    
+
+\[
+        \lambda(\mathcal{C}) = \sigma(\mathcal{C}),
+    \]
+
+
+    iar probabilitățile coincid pe întreaga sigma-algebră generată:
+    
+
+\[
+        \mathbb{P}_1(A) = \mathbb{P}_2(A)
+        \quad \text{pentru toate } A \in \sigma(\mathcal{C}).
+    \]
+
+
+\end{enumerate}
+\end{theorem}
+
+\end{document}

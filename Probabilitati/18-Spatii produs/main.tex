@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Spații Produs și Măsuri Produs}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\section{Spații măsurabile produs}
+
+Fie $(X, \mathcal{A})$ și $(Y, \mathcal{B})$ două spații măsurabile.
+Definim \textbf{spațiul măsurabil produs} ca fiind:
+
+
+
+\[
+(X \times Y, \ \mathcal{A} \otimes \mathcal{B}),
+\]
+
+
+
+unde $\mathcal{A} \otimes \mathcal{B}$ este \textbf{sigma-algebra produs},
+definită ca sigma-algebra generată de mulțimile dreptunghi:
+
+
+
+\[
+A \times B, \qquad A \in \mathcal{A}, \ B \in \mathcal{B}.
+\]
+
+
+
+Aceasta este cea mai mică sigma-algebră care conține toate dreptunghiurile
+măsurabile.
+
+\section{Măsura produs}
+
+Fie $(X, \mathcal{A}, \mu)$ și $(Y, \mathcal{B}, \nu)$ două spații măsurabile
+cu măsuri.
+
+O măsură $\lambda$ pe spațiul produs
+
+
+\[
+(X \times Y, \ \mathcal{A} \otimes \mathcal{B})
+\]
+
+
+se numește \textbf{măsură produs} dacă pentru toate dreptunghiurile măsurabile:
+
+
+
+\[
+\lambda(A \times B) = \mu(A)\,\nu(B).
+\]
+
+
+
+\section{Teorema de existență și unicitate a măsurii produs}
+
+\begin{theorem}[Teorema măsurii produs]
+Fie $(X, \mathcal{A}, \mu)$ și $(Y, \mathcal{B}, \nu)$ două spații măsurabile
+sigma-finite.
+
+Atunci există o \textbf{unică} măsură $\mu \otimes \nu$ pe
+$\mathcal{A} \otimes \mathcal{B}$ astfel încât:
+
+
+
+\[
+(\mu \otimes \nu)(A \times B) = \mu(A)\,\nu(B),
+\qquad A \in \mathcal{A}, \ B \in \mathcal{B}.
+\]
+
+
+
+Această măsură se numește \textbf{măsura produs} a lui $\mu$ și $\nu$.
+\end{theorem}
+
+\section{Interpretare}
+
+Teorema afirmă că:
+
+\begin{itemize}
+    \item dacă avem două spații măsurabile sigma-finite,
+    \item atunci putem construi în mod riguros o măsură pe spațiul lor produs,
+    \item iar această măsură este unică și se comportă corect pe dreptunghiuri.
+\end{itemize}
+
+Aceasta este baza pentru integralele multiple, teorema lui Fubini și
+construcția distribuțiilor comune ale variabilelor aleatoare.
+
+\section{Exemplu}
+
+Pe $\mathbb{R}^2$, dacă $\mu = \nu = \lambda$ este măsura Lebesgue pe
+$\mathbb{R}$, atunci măsura produs:
+
+
+
+\[
+\lambda \otimes \lambda
+\]
+
+
+
+este măsura Lebesgue bidimensională (măsura ariei).
+
+\end{document}

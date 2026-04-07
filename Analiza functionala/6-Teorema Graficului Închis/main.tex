@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema Graficului Închis}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $X$ și $Y$ două spații Banach. Pentru un operator liniar $T : X \to Y$, \emph{graficul} lui $T$ este mulțimea
+
+
+\[
+\Gamma(T) = \{ (x, Tx) : x \in X \} \subset X \times Y.
+\]
+
+
+Spunem că $T$ are \emph{grafic închis} dacă $\Gamma(T)$ este închisă în spațiul produs $X \times Y$ (cu norma
+$\|(x,y)\| = \|x\| + \|y\|$).
+\end{definition}
+
+\begin{theorem}[Teorema Graficului Închis]
+Fie $X$ și $Y$ două spații Banach. Dacă $T : X \to Y$ este un operator liniar cu graficul închis, atunci $T$ este continuu.
+
+Echivalent, dacă din
+
+
+\[
+x_n \to x \quad \text{în } X, \qquad Tx_n \to y \quad \text{în } Y
+\]
+
+
+urmează că $y = Tx$, atunci $T$ este continuu.
+\end{theorem}
+
+\begin{proposition}
+Pentru un operator liniar $T : X \to Y$ între spații Banach, următoarele afirmații sunt echivalente:
+\begin{enumerate}
+    \item[(i)] $T$ este continuu.
+    \item[(ii)] Graficul $\Gamma(T)$ este închis în $X \times Y$.
+    \item[(iii)] Există o constantă $C > 0$ astfel încât
+    
+
+\[
+    \|Tx\| \le C \|x\| \quad \text{pentru toate } x \in X.
+    \]
+
+
+\end{enumerate}
+\end{proposition}
+
+\end{document}

@@ -1,0 +1,157 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[romanian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+
+\title{Modelarea Conceptuală a Bazelor de Date \\ ERD, Entități, Relații, Atribute}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Entități}
+O \textbf{entitate} reprezintă un obiect sau concept din lumea reală care poate fi
+identificat în mod unic.
+
+\subsection*{Entități Strong}
+O entitate \textbf{strong} (puternică):
+\begin{itemize}[noitemsep]
+    \item are existență independentă;
+    \item are o cheie primară proprie;
+    \item nu depinde de alte entități pentru identificare.
+\end{itemize}
+
+\textbf{Exemplu:} \texttt{Student(StudID, Nume, Email)}
+
+\subsection*{Entități Weak}
+O entitate \textbf{weak} (slabă):
+\begin{itemize}[noitemsep]
+    \item nu poate fi identificată fără o entitate strong;
+    \item depinde de cheia primară a entității strong;
+    \item are o cheie parțială (\textit{discriminator}).
+\end{itemize}
+
+\textbf{Exemplu:} \texttt{TelefonStudent(StudID, NrTelefon)}  
+Aici \texttt{StudID} provine din entitatea strong \texttt{Student}.
+
+\section{Atribute}
+Atributele descriu proprietățile unei entități.
+
+\subsection*{Tipuri de atribute}
+\begin{itemize}[noitemsep]
+    \item \textbf{Simple}: nu pot fi divizate (ex.: \texttt{Nume}).
+    \item \textbf{Compuse}: pot fi împărțite în sub-atribute (ex.: \texttt{Adresă}).
+    \item \textbf{Multivaloare}: pot avea mai multe valori (ex.: \texttt{Telefon}).
+    \item \textbf{Derivate}: se calculează din alte atribute (ex.: \texttt{Vârstă}).
+\end{itemize}
+
+\section{Chei}
+\subsection*{Cheia Primară}
+\textbf{Cheia primară} este un atribut sau un set de atribute care identifică în mod
+unic fiecare tuplu dintr-o entitate.
+
+Proprietăți:
+\begin{itemize}[noitemsep]
+    \item unicitate;
+    \item minimalitate;
+    \item non-null.
+\end{itemize}
+
+\subsection*{Chei Candidate și Superchei}
+\begin{itemize}[noitemsep]
+    \item \textbf{Chei candidate}: toate seturile minimale de atribute care pot fi chei primare.
+    \item \textbf{Superchei}: orice set de atribute care identifică unic tuplurile, dar nu neapărat minimal.
+\end{itemize}
+
+\section{Relații}
+O \textbf{relație} descrie asocierea dintre două sau mai multe entități. Relațiile se clasifică după aritate și cardinalitate.
+
+\subsection*{Relații Unare (Recursive)}
+O relație este \textbf{unară} dacă o entitate se relaționează cu ea însăși.
+
+\textbf{Exemple:}
+\begin{itemize}[noitemsep]
+    \item \textbf{Angajat -- seSubordonează -- Angajat} (relație ierarhică)
+    \item \textbf{Produs -- esteComponență -- Produs} (structuri compuse)
+\end{itemize}
+
+\subsection*{Relații Binare}
+Relațiile \textbf{binare} implică două entități distincte și sunt cele mai frecvente.
+
+\textbf{Exemple:}
+\begin{itemize}[noitemsep]
+    \item Student -- seÎnscrie -- Curs
+    \item Profesor -- predă -- Curs
+    \item Student -- areCard -- CardAcces
+\end{itemize}
+
+\subsection*{Relații N-are (Ternare și Superioare)}
+O relație este \textbf{ternară} dacă implică trei entități, sau \textbf{n-ară} dacă implică mai multe.
+
+\textbf{Exemplu ternar:}
+\begin{itemize}[noitemsep]
+    \item \textbf{Furnizor -- livrează -- Produs -- către -- Magazin}
+\end{itemize}
+
+\section{Cardinalitatea Relațiilor}
+Cardinalitatea definește numărul minim și maxim de participări ale unei entități
+într-o relație.
+
+\subsection*{Tipuri de cardinalități}
+\begin{itemize}[noitemsep]
+    \item \textbf{(0,1)} participare opțională, maxim un element;
+    \item \textbf{(1,1)} participare obligatorie, exact un element;
+    \item \textbf{(0,N)} participare opțională, mai multe elemente;
+    \item \textbf{(1,N)} participare obligatorie, mai multe elemente.
+\end{itemize}
+
+\subsection*{Tipuri de relații după cardinalitate}
+\begin{itemize}[noitemsep]
+    \item \textbf{1:1}: un student are un singur card de acces.
+    \item \textbf{1:N}: un profesor predă mai multe cursuri.
+    \item \textbf{M:N}: un student se înscrie la mai multe cursuri, iar un curs are mai mulți studenți.
+\end{itemize}
+
+\section{Mini-ERD Textual Complet}
+
+\subsection*{Entități}
+\begin{itemize}[noitemsep]
+    \item \textbf{Student(StudID, Nume, Email, DataNasterii)} -- entitate strong
+    \item \textbf{Curs(CursID, Denumire, Credite)} -- entitate strong
+    \item \textbf{Profesor(ProfID, Nume, Titlu)} -- entitate strong
+    \item \textbf{TelefonStudent(StudID, NrTelefon)} -- entitate weak
+\end{itemize}
+
+\subsection*{Atribute speciale}
+\begin{itemize}[noitemsep]
+    \item \texttt{Adresă} pentru Student poate fi atribut compus: (Stradă, Număr, Oraș).
+    \item \texttt{NrTelefon} este atribut multivaloare pentru Student, modelat prin entitatea weak \texttt{TelefonStudent}.
+    \item \texttt{Vârstă} poate fi atribut derivat din \texttt{DataNasterii}.
+\end{itemize}
+
+\subsection*{Relații și Cardinalități}
+\begin{itemize}[noitemsep]
+    \item \textbf{Student -- TelefonStudent}: relație 1:N (un student poate avea mai multe telefoane).
+    \item \textbf{Student -- Curs}: relație M:N prin entitatea asociativă:
+    \begin{itemize}[noitemsep]
+        \item \textbf{Inscriere(StudID, CursID, Nota)}
+    \end{itemize}
+    \item \textbf{Profesor -- Curs}: relație 1:N (un profesor poate preda mai multe cursuri).
+    \item \textbf{Angajat -- seSubordonează -- Angajat}: relație unară 1:N (un manager coordonează mai mulți angajați).
+\end{itemize}
+
+\subsection*{Chei Primare în Mini-ERD}
+\begin{itemize}[noitemsep]
+    \item \textbf{Student}: \texttt{StudID} (cheie primară).
+    \item \textbf{Curs}: \texttt{CursID}.
+    \item \textbf{Profesor}: \texttt{ProfID}.
+    \item \textbf{TelefonStudent}: \texttt{(StudID, NrTelefon)} (cheie compusă).
+    \item \textbf{Inscriere}: \texttt{(StudID, CursID)} (cheie compusă).
+\end{itemize}
+
+\end{document}

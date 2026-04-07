@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Măsura Dirac}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\section{Definiție}
+
+Fie $(X, \mathcal{B})$ un spațiu măsurabil și fie $x_0 \in X$ un punct fixat.
+\textbf{Măsura Dirac în punctul $x_0$}, notată $\delta_{x_0}$, este aplicația:
+
+
+
+\[
+\delta_{x_0} : \mathcal{B} \to \{0,1\}, \qquad
+\delta_{x_0}(A) = 
+\begin{cases}
+1, & \text{dacă } x_0 \in A, \\
+0, & \text{dacă } x_0 \notin A.
+\end{cases}
+\]
+
+
+
+Aceasta este o măsură de probabilitate concentrată în întregime în punctul $x_0$.
+
+\section{Proprietăți}
+
+\begin{enumerate}
+    \item $\delta_{x_0}$ este o măsură de probabilitate:
+    
+
+\[
+        \delta_{x_0}(X) = 1.
+    \]
+
+
+
+    \item Este complet atomică, cu un singur atom:
+    
+
+\[
+        \delta_{x_0}(\{x_0\}) = 1.
+    \]
+
+
+
+    \item Pentru orice funcție măsurabilă $f : X \to \mathbb{R}$,
+    integrala față de măsura Dirac este:
+    
+
+\[
+        \int_X f \, d\delta_{x_0} = f(x_0).
+    \]
+
+
+
+    \item Pentru orice mulțime măsurabilă $A$,
+    
+
+\[
+        \delta_{x_0}(A) = \mathbf{1}_A(x_0),
+    \]
+
+
+    unde $\mathbf{1}_A$ este funcția indicator.
+\end{enumerate}
+
+\section{Teoremă fundamentală}
+
+\begin{theorem}[Caracterizarea măsurii Dirac]
+Fie $\mu$ o măsură de probabilitate pe $(X, \mathcal{B})$.
+Atunci $\mu$ este o măsură Dirac dacă și numai dacă există un punct $x_0 \in X$ astfel încât:
+
+
+
+\[
+\mu(A) = \mathbf{1}_A(x_0), \qquad \forall A \in \mathcal{B}.
+\]
+
+
+
+În acest caz, $\mu = \delta_{x_0}$.
+\end{theorem}
+
+\section{Exemplu}
+
+Pe spațiul $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$, măsura Dirac în punctul $a \in \mathbb{R}$ este:
+
+
+
+\[
+\delta_a((-\infty, x]) =
+\begin{cases}
+0, & x < a, \\
+1, & x \ge a.
+\end{cases}
+\]
+
+
+
+Aceasta este funcția de repartiție a unei variabile aleatoare degenerate în $a$.
+
+\end{document}

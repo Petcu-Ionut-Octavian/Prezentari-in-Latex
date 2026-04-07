@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Decompoziția unui Modul Finit Generat peste un PID}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $R$ un domeniu principal (PID) și $M$ un $R$-modul. Partea torsională a lui $M$ este
+
+
+\[
+t(M) = \{\, x \in M : \exists\, 0 \ne r \in R \text{ cu } rx = 0 \,\}.
+\]
+
+
+\end{definition}
+
+\begin{theorem}[Decompoziția torsională]
+Fie $R$ un PID și $M$ un $R$-modul finit generat. Atunci există un submodul liber
+$F \subseteq M$ astfel încât
+
+
+\[
+M = t(M) \oplus F.
+\]
+
+
+În special, $F$ este un modul liber de rang egal cu rangul lui $M$.
+\end{theorem}
+
+\begin{theorem}[Unicitatea părții libere]
+În ipotezele teoremei precedente, rangul submodulului liber $F$ este unic, iar orice două
+submodule libere $F_1, F_2 \subseteq M$ pentru care
+
+
+\[
+M = t(M) \oplus F_i
+\]
+
+
+sunt izomorfe ca $R$-module libere.
+\end{theorem}
+
+\end{document}

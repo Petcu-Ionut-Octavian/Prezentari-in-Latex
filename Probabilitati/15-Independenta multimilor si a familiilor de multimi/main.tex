@@ -1,0 +1,35 @@
+\begin{definition}
+Fie $\Omega \subset \mathbb{C}$ o mulțime deschisă și $f:\Omega \to \mathbb{C}$. 
+Spunem că $f$ este \emph{derivabilă complex} în punctul $z_0 \in \Omega$ dacă există limita
+
+
+\[
+f'(z_0) = \lim_{h \to 0} \frac{f(z_0 + h) - f(z_0)}{h}.
+\]
+
+
+Funcția $f$ se numește \emph{olomorfă} în $\Omega$ dacă este derivabilă în fiecare punct al lui $\Omega$.
+\end{definition}
+
+\noindent
+\textbf{Propoziție.}
+Fie $f:\Omega \to \mathbb{C}$ și $z_0 \in \Omega$. Următoarele afirmații sunt echivalente:
+\begin{enumerate}
+    \item[(i)] Funcția $f$ este derivabilă în $z_0$, iar derivata este $f'(z_0)=a$.
+    \item[(ii)] Există o funcție $\psi$, definită în vecinătatea lui $0$, cu proprietatea
+    
+
+\[
+    \lim_{h \to 0} \psi(h) = 0,
+    \]
+
+
+    astfel încât pentru $h$ suficient de mic are loc relația
+    
+
+\[
+    f(z_0 + h) - f(z_0) - a h = h \psi(h).
+    \]
+
+
+\end{enumerate}

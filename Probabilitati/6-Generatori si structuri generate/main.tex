@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Generatori și Structuri Generate}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\begin{document}
+
+\maketitle
+
+\section{Generatori}
+
+\begin{definition}
+Fie $\Omega$ un spațiu și $\mathcal{G} \subseteq \mathcal{P}(\Omega)$ o familie de mulțimi.
+Spunem că $\mathcal{G}$ este un \emph{generator} pentru o anumită clasă de structuri (algebre, sigma-algebre, lambda-sisteme, clase monotone, $\pi$-sisteme) dacă structura dorită se obține ca cea mai mică structură de acel tip care conține $\mathcal{G}$, adică drept intersecția tuturor structurilor de acel tip care conțin $\mathcal{G}$.
+\end{definition}
+
+\noindent
+Formal, dacă $\mathcal{C}$ este o clasă de structuri (de exemplu toate sigma-algebrele de pe $\Omega$), atunci structura generată de $\mathcal{G}$ este
+
+
+\[
+    \bigcap \{\mathcal{S} \in \mathcal{C} : \mathcal{G} \subseteq \mathcal{S}\}.
+\]
+
+
+
+\section{Algebra generată}
+
+\begin{definition}
+Fie $\mathcal{G} \subseteq \mathcal{P}(\Omega)$. \emph{Algebra generată} de $\mathcal{G}$ este
+
+
+\[
+    \operatorname{Alg}(\mathcal{G})
+    :=
+    \bigcap \{\mathcal{A} : \mathcal{A} \text{ este algebră de mulțimi și } \mathcal{G} \subseteq \mathcal{A}\}.
+\]
+
+
+Este cea mai mică algebră de mulțimi care conține familia $\mathcal{G}$.
+\end{definition}
+
+\section{Sigma-algebra generată}
+
+\begin{definition}
+Fie $\mathcal{G} \subseteq \mathcal{P}(\Omega)$. \emph{Sigma-algebra generată} de $\mathcal{G}$ este
+
+
+\[
+    \sigma(\mathcal{G})
+    :=
+    \bigcap \{\mathcal{F} : \mathcal{F} \text{ este sigma-algebră și } \mathcal{G} \subseteq \mathcal{F}\}.
+\]
+
+
+Este cea mai mică sigma-algebră care conține familia $\mathcal{G}$.
+\end{definition}
+
+\section{Lambda-sistemul generat}
+
+\begin{definition}
+Fie $\mathcal{G} \subseteq \mathcal{P}(\Omega)$. \emph{Lambda-sistemul generat} de $\mathcal{G}$ este
+
+
+\[
+    \lambda(\mathcal{G})
+    :=
+    \bigcap \{\mathcal{D} : \mathcal{D} \text{ este lambda-sistem și } \mathcal{G} \subseteq \mathcal{D}\}.
+\]
+
+
+Este cel mai mic lambda-sistem care conține familia $\mathcal{G}$.
+\end{definition}
+
+\section{Clasa monotonă generată}
+
+\begin{definition}
+Fie $\mathcal{G} \subseteq \mathcal{P}(\Omega)$. \emph{Clasa monotonă generată} de $\mathcal{G}$ este
+
+
+\[
+    \mathcal{M}(\mathcal{G})
+    :=
+    \bigcap \{\mathcal{M} : \mathcal{M} \text{ este clasă monotonă și } \mathcal{G} \subseteq \mathcal{M}\}.
+\]
+
+
+Este cea mai mică clasă monotonă care conține familia $\mathcal{G}$.
+\end{definition}
+
+\section{Pi-sistemul generat}
+
+\begin{definition}
+Fie $\mathcal{G} \subseteq \mathcal{P}(\Omega)$. \emph{Pi-sistemul generat} de $\mathcal{G}$ este
+
+
+\[
+    \pi(\mathcal{G})
+    :=
+    \bigcap \{\mathcal{P} : \mathcal{P} \text{ este pi-sistem și } \mathcal{G} \subseteq \mathcal{P}\}.
+\]
+
+
+Este cel mai mic pi-sistem (adică familie închisă la intersecții finite) care conține familia $\mathcal{G}$.
+\end{definition}
+
+\section{Relații între structurile generate}
+
+\noindent
+Dacă $\mathcal{G}$ este un $\pi$-sistem, atunci sunt valabile relațiile clasice:
+\begin{itemize}
+    \item $\sigma(\mathcal{G}) = \lambda(\mathcal{G})$ (teorema Dynkin--$\pi$),
+    \item $\sigma(\mathcal{G}) = \mathcal{M}(\mathcal{G})$ (teorema clasei monotone).
+\end{itemize}
+
+\end{document}

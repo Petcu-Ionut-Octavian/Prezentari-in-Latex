@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema Casorati--Weierstrass}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $f$ o funcție olomorfă în domeniul perforat
+
+
+\[
+0 < |z - z_0| < r.
+\]
+
+
+Spunem că $z_0$ este o \emph{singularitate esențială} a lui $f$ dacă seria Laurent a lui $f$ în jurul lui $z_0$ conține o infinitate de termeni negativi, sau echivalent, dacă singularitatea nu este nici eliminabilă, nici pol.
+\end{definition}
+
+\begin{theorem}[Casorati--Weierstrass]
+Fie $z_0$ o singularitate esențială a funcției olomorfe $f$. Atunci imaginea lui $f$ în orice vecinătate perforată a lui $z_0$ este densă în $\mathbb{C}$.
+
+Mai precis, pentru orice $w \in \mathbb{C}$ și orice $\varepsilon > 0$, există $z$ cu $0 < |z - z_0| < \varepsilon$ astfel încât
+
+
+\[
+f(z) \in B(w, \varepsilon).
+\]
+
+
+\end{theorem}
+
+\begin{proposition}
+În ipotezele teoremei, următoarele afirmații sunt echivalente:
+\begin{enumerate}
+    \item[(i)] $z_0$ este o singularitate esențială a lui $f$;
+    \item[(ii)] $f$ nu este mărginită în nicio vecinătate perforată a lui $z_0$;
+    \item[(iii)] Imaginea lui $f$ în orice vecinătate perforată a lui $z_0$ este densă în $\mathbb{C}$.
+\end{enumerate}
+\end{proposition}
+
+\end{document}

@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema de Descompunere Laurent}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $f$ o funcție olomorfă într-o vecinătate a punctului $z_0$. Spunem că $f$ are un
+\emph{zero de ordin $k \ge 1$} în $z_0$ dacă
+
+
+\[
+f(z_0) = f'(z_0) = \cdots = f^{(k-1)}(z_0) = 0, 
+\qquad f^{(k)}(z_0) \ne 0.
+\]
+
+
+Echivalent,
+
+
+\[
+f(z) = (z - z_0)^k g(z),
+\]
+
+
+unde $g$ este olomorfă în vecinătatea lui $z_0$ și $g(z_0) \ne 0$.
+\end{definition}
+
+\begin{definition}
+Fie $f$ olomorfă în domeniul perforat $0 < |z - z_0| < r$. Spunem că $f$ admite o
+\emph{serie Laurent} în jurul lui $z_0$ dacă există coeficienți $(a_n)_{n \in \mathbb{Z}}$ astfel încât
+
+
+\[
+f(z) = \sum_{n=-\infty}^{\infty} a_n (z - z_0)^n,
+\]
+
+
+iar seria converge pentru $0 < |z - z_0| < r$.
+\end{definition}
+
+\begin{theorem}[Descompunerea Laurent]
+Fie $f$ o funcție olomorfă în domeniul perforat
+
+
+\[
+A = \{ z \in \mathbb{C} : 0 < |z - z_0| < R \}.
+\]
+
+
+Atunci $f$ admite o reprezentare unică sub forma unei serii Laurent:
+
+
+\[
+f(z) = \sum_{n=-\infty}^{\infty} a_n (z - z_0)^n,
+\]
+
+
+care converge pentru orice $z \in A$.
+
+Coeficienții sunt dați de formula Cauchy:
+
+
+\[
+a_n = \frac{1}{2\pi i} \int_{\gamma} \frac{f(\zeta)}{(\zeta - z_0)^{n+1}} \, d\zeta,
+\]
+
+
+unde $\gamma$ este un cerc mic în jurul lui $z_0$ conținut în $A$.
+\end{theorem}
+
+\end{document}

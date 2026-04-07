@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema de Caracterizare a Probabilităților}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{theorem}[Teorema de caracterizare a probabilităților]
+Fie $(\Omega, \mathcal{F})$ un spațiu măsurabil și fie 
+$\mu : \mathcal{F} \to [0,1]$ o funcție finit aditivă, adică
+
+
+\[
+    \mu(A \cup B) = \mu(A) + \mu(B)
+    \quad \text{pentru } A \cap B = \varnothing.
+\]
+
+
+Atunci $\mu$ este o probabilitate (adică este $\sigma$-aditivă) dacă și numai dacă este continuă la creștere, adică pentru orice șir de mulțimi
+
+
+\[
+    A_1 \subseteq A_2 \subseteq \cdots,
+\]
+
+
+avem
+
+
+\[
+    \mu(A_n) \uparrow \mu\!\left( \bigcup_{n=1}^{\infty} A_n \right).
+\]
+
+
+\end{theorem}
+
+\noindent
+Echivalent, $\mu$ este probabilitate dacă și numai dacă este continuă la scădere pe șiruri cu măsură finită:
+
+
+\[
+    A_1 \supseteq A_2 \supseteq \cdots, \quad \mu(A_1) < \infty
+    \;\Rightarrow\;
+    \mu(A_n) \downarrow \mu\!\left( \bigcap_{n=1}^{\infty} A_n \right).
+\]
+
+
+
+\end{document}

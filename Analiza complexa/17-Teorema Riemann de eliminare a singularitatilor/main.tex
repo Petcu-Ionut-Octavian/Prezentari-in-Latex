@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{\Large\textbf{Teorema lui Riemann de eliminare a singularităților}}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{theorem}[Riemann]
+Fie $\Omega \subset \mathbb{C}$ o mulțime deschisă și fie $a \in \Omega$.  
+Presupunem că funcția
+
+
+\[
+f : \Omega \setminus \{a\} \to \mathbb{C}
+\]
+
+
+este olomorfă și este mărginită în vecinătatea punctului $a$.
+
+Atunci $f$ admite o extensie olomorfă în întreg $\Omega$, adică există o funcție
+
+
+\[
+F : \Omega \to \mathbb{C}
+\]
+
+
+olomorfă în $\Omega$ astfel încât $F(z) = f(z)$ pentru orice $z \ne a$.
+
+În particular, singularitatea lui $f$ în $a$ este eliminabilă.
+\end{theorem}
+
+\end{document}

@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema lui Fréchet}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $X$ și $Y$ două spații Banach. Un operator liniar $T : X \to Y$ se numește \emph{închis} dacă pentru orice șir $(x_n)$ din $X$ cu
+
+
+\[
+x_n \to x \quad \text{în } X, \qquad Tx_n \to y \quad \text{în } Y,
+\]
+
+
+urmează că $x \in \operatorname{Dom}(T)$ și $Tx = y$.
+\end{definition}
+
+\begin{theorem}[Fréchet]
+Fie $X$ și $Y$ două spații Banach și $T : X \to Y$ un operator liniar definit pe tot spațiul $X$. Atunci următoarele afirmații sunt echivalente:
+\begin{enumerate}
+    \item[(i)] $T$ este continuu;
+    \item[(ii)] $T$ este închis;
+    \item[(iii)] Graficul lui $T$,
+    
+
+\[
+    \Gamma(T) = \{(x,Tx) : x \in X\},
+    \]
+
+
+    este închis în $X \times Y$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+În ipotezele teoremei lui Fréchet, următoarele condiții sunt echivalente pentru un operator liniar $T : X \to Y$:
+\begin{enumerate}
+    \item[(i)] Există o constantă $C > 0$ astfel încât
+    
+
+\[
+    \|Tx\| \le C \|x\| \quad \text{pentru toate } x \in X.
+    \]
+
+
+    \item[(ii)] Graficul $\Gamma(T)$ este închis.
+    \item[(iii)] $T$ este continuu în $0$.
+\end{enumerate}
+\end{proposition}
+
+\end{document}

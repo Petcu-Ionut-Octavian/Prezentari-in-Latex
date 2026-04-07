@@ -1,0 +1,48 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[romanian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+
+\title{Modelul Relațional și Regulile lui Codd}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Modelul Relațional}
+Modelul relațional, introdus de E.F. Codd, reprezintă datele sub forma unor relații
+(tabele), fiecare tabel fiind compus din:
+\begin{itemize}[noitemsep]
+    \item tupluri (rânduri),
+    \item atribute (coloane),
+    \item o cheie primară,
+    \item reguli de integritate.
+\end{itemize}
+
+Acest model stă la baza tuturor sistemelor moderne de gestiune a bazelor de date.
+
+\section{Regulile lui Codd (0--12)}
+Codd a formulat 13 reguli care definesc cerințele unui SGBD relațional complet.
+
+\begin{enumerate}[label=\textbf{Regula \arabic*:}, leftmargin=2cm]
+    \item \textbf{Regula fundamentală (0):} Sistemul trebuie să gestioneze datele exclusiv prin capabilități relaționale.
+    \item \textbf{Regula informației:} Toate datele sunt reprezentate sub formă de valori în tabele.
+    \item \textbf{Acces garantat:} Fiecare valoare atomică este accesibilă prin tabel--cheie--coloană.
+    \item \textbf{Tratamentul valorilor NULL:} NULL trebuie tratat uniform, distinct de zero sau șirul vid.
+    \item \textbf{Catalog online activ:} Metadatele trebuie stocate în tabele accesibile prin limbajul relațional.
+    \item \textbf{Limbaj de date complet:} Sistemul trebuie să ofere un limbaj complet (ex.: SQL).
+    \item \textbf{Actualizarea vizualizărilor:} View-urile actualizabile trebuie să poată fi actualizate.
+    \item \textbf{Operații la nivel de set:} Manipularea datelor trebuie să funcționeze pe seturi, nu doar pe elemente individuale.
+    \item \textbf{Independență fizică:} Modificările fizice nu afectează aplicațiile.
+    \item \textbf{Independență logică:} Modificările logice nu afectează aplicațiile existente.
+    \item \textbf{Independența integrității:} Regulile de integritate trebuie definite în baza de date.
+    \item \textbf{Independența distribuției:} Sistemul trebuie să funcționeze identic în medii distribuite.
+    \item \textbf{Nonsubversion:} Niciun mecanism de nivel inferior nu trebuie să ocolească regulile relaționale.
+\end{enumerate}
+
+\end{document}

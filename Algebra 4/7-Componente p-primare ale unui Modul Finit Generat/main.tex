@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Componente p-primare ale unui Modul Finit Generat}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $R$ un domeniu principal (PID) și $M$ un $R$-modul. Pentru un element prim $p \in R$,
+definim \emph{componenta $p$-primară} a lui $M$ prin
+
+
+\[
+M_p = \{\, x \in M : \exists\, r \ge 1 \text{ cu } p^r x = 0 \,\}.
+\]
+
+
+\end{definition}
+
+\begin{definition}
+Partea torsională a lui $M$ este
+
+
+\[
+t(M) = \{\, x \in M : \exists\, 0 \ne r \in R \text{ cu } rx = 0 \,\}.
+\]
+
+
+Un modul se numește \emph{modul de torsiune} dacă $t(M) = M$, respectiv
+\emph{modul liber} dacă este izomorf cu $R^k$ pentru un anumit $k$.
+\end{definition}
+
+\begin{theorem}[Decompoziția p-primară]
+Fie $R$ un PID și $M$ un $R$-modul finit generat. Fie $P$ un sistem de reprezentanți
+pentru clasele de asocieri ale elementelor prime din $R$.
+
+Atunci:
+\begin{enumerate}
+    \item[(i)] $M_p \ne 0$ doar pentru un număr finit de primi $p \in P$;
+    \item[(ii)] partea torsională se descompune ca sumă directă
+    
+
+\[
+    t(M) = \bigoplus_{p \in P} M_p,
+    \]
+
+
+    unde suma este finită;
+    \item[(iii)] în special, dacă $M$ este un modul de torsiune, atunci
+    
+
+\[
+    M = M_{p_1} \oplus \cdots \oplus M_{p_s}
+    \]
+
+
+    pentru unici primi $p_1, \dots, p_s$ (până la unități).
+\end{enumerate}
+\end{theorem}
+
+\end{document}

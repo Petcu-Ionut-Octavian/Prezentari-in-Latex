@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Forma Normală Smith}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $R$ un domeniu principal (PID). Două matrici $A, B \in M_{m,n}(R)$ se numesc
+\emph{aritmetic echivalente} dacă există matrici inversabile
+
+
+\[
+U \in GL_m(R), \qquad V \in GL_n(R)
+\]
+
+
+astfel încât
+
+
+\[
+B = UAV.
+\]
+
+
+\end{definition}
+
+\begin{definition}
+Pentru o matrice $A \in M_{m,n}(R)$, notăm prin $\Delta_k$ cel mai mare divizor comun al tuturor minorilor de ordin $k$ ai lui $A$. Acestea se numesc \emph{determinante elementare} ale lui $A$.
+\end{definition}
+
+\begin{theorem}[Forma Normală Smith]
+Fie $R$ un PID și $A \in M_{m,n}(R)$. Atunci există matrici inversabile
+
+
+\[
+U \in GL_m(R), \qquad V \in GL_n(R)
+\]
+
+
+astfel încât
+
+
+\[
+UAV = D,
+\]
+
+
+unde $D$ este o matrice diagonală de forma
+
+
+\[
+D = \operatorname{diag}(d_1, d_2, \dots, d_r, 0, \dots, 0),
+\]
+
+
+cu proprietățile:
+\begin{enumerate}
+    \item[(i)] $d_i \ne 0$ pentru $1 \le i \le r$;
+    \item[(ii)] $d_1 \mid d_2 \mid \cdots \mid d_r$;
+    \item[(iii)] $D$ este unică până la unități din $R$.
+\end{enumerate}
+Numerele $d_1, \dots, d_r$ se numesc \emph{divizori invarianti} ai lui $A$.
+\end{theorem}
+
+\begin{theorem}[Legătura cu determinantele elementare]
+În ipotezele teoremei precedente, divizorii invarianti $d_1,\dots,d_r$ satisfac relațiile:
+
+
+\[
+d_1 \sim \Delta_1, \qquad
+d_2 \sim \frac{\Delta_2}{\Delta_1}, \qquad
+\dots, \qquad
+d_r \sim \frac{\Delta_r}{\Delta_{r-1}},
+\]
+
+
+unde $\Delta_k$ este cel mai mare divizor comun al minorilor de ordin $k$ ai lui A, iar $\sim$ înseamnă egalitate până la un element unitate din $R$.
+\end{theorem}
+
+\end{document}

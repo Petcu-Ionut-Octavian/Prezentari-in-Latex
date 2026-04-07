@@ -1,0 +1,114 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[romanian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+
+\title{Indexarea în SGBD \\ Tipuri de Indexuri și Access Paths}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Indexarea în SGBD}
+Indexarea este un mecanism de accelerare a operațiilor de căutare, sortare și 
+filtrare în tabele. Un index funcționează similar unui tabel auxiliar, organizat 
+într-o structură optimizată pentru acces rapid.
+
+\section{Tipuri de Indexuri}
+
+\subsection*{Index Clustered}
+\begin{itemize}[noitemsep]
+    \item determină ordinea fizică a rândurilor din tabel;
+    \item există \textbf{un singur} index clustered per tabel;
+    \item nu necesită memorie suplimentară pentru stocarea rândurilor, deoarece 
+          datele sunt ordonate direct în tabel;
+    \item structura tipică: \textbf{B-Tree} sau \textbf{B+Tree}.
+\end{itemize}
+
+\subsection*{Index Nonclustered}
+\begin{itemize}[noitemsep]
+    \item nu afectează ordinea fizică a datelor;
+    \item stochează separat o structură de tip \textbf{B+Tree};
+    \item necesită \textbf{memorie suplimentară} pentru index entries;
+    \item fiecare nod frunză conține: \textit{(cheie, pointer către rând)}.
+\end{itemize}
+
+\section{Structuri de Indexare}
+
+\subsection*{B-Tree}
+\begin{itemize}[noitemsep]
+    \item arbore echilibrat;
+    \item nodurile interne conțin chei și pointeri;
+    \item frunzele pot conține date sau pointeri către date.
+\end{itemize}
+
+\subsection*{B+Tree}
+\begin{itemize}[noitemsep]
+    \item toate datele se află în nodurile frunză;
+    \item nodurile interne conțin doar chei pentru navigare;
+    \item frunzele sunt legate secvențial, optim pentru \textbf{range scans}.
+\end{itemize}
+
+\section{Index Entry}
+Un \textbf{index entry} reprezintă o înregistrare dintr-un nod frunză al indexului.
+
+Conține:
+\begin{itemize}[noitemsep]
+    \item valoarea cheii indexate;
+    \item pointer către rând (pentru nonclustered);
+    \item pointer către pagina de date (pentru clustered).
+\end{itemize}
+
+\section{Access Paths}
+Access paths reprezintă modurile în care un SGBD poate accesa datele folosind 
+indexuri sau scanări directe.
+
+\subsection*{Index Unique Scan}
+\begin{itemize}[noitemsep]
+    \item folosit când indexul este \textbf{unic};
+    \item returnează cel mult un rând;
+    \item cost minim, acces direct în arbore.
+\end{itemize}
+
+\subsection*{Index Range Scan}
+\begin{itemize}[noitemsep]
+    \item folosit pentru intervale: \texttt{WHERE x BETWEEN a AND b};
+    \item navigare în B+Tree până la primul nod relevant, apoi parcurgere secvențială;
+    \item eficient pentru date ordonate.
+\end{itemize}
+
+\subsection*{Index Full Scan}
+\begin{itemize}[noitemsep]
+    \item parcurge toate nodurile frunză ale indexului;
+    \item util când indexul acoperă toate coloanele necesare (covering index);
+    \item mai rapid decât un full table scan dacă indexul este mai mic decât tabelul.
+\end{itemize}
+
+\subsection*{Table Full Scan}
+\begin{itemize}[noitemsep]
+    \item parcurge întregul tabel;
+    \item folosit când nu există index util sau filtrarea este slab selectivă.
+\end{itemize}
+
+\section{Avantaje și Dezavantaje ale Indexării}
+
+\subsection*{Avantaje}
+\begin{itemize}[noitemsep]
+    \item accelerarea interogărilor;
+    \item optim pentru căutări, sortări și join-uri;
+    \item reduce costul operațiilor de acces.
+\end{itemize}
+
+\subsection*{Dezavantaje}
+\begin{itemize}[noitemsep]
+    \item consum de memorie suplimentară (nonclustered);
+    \item încetinirea operațiilor \texttt{INSERT}, \texttt{UPDATE}, \texttt{DELETE};
+    \item necesitatea întreținerii structurii arborelui.
+\end{itemize}
+
+\end{document}

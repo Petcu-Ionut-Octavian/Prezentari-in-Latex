@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema de Structură a Modulelor Finit Generate peste un PID}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Pentru un $R$-modul $M$ și un element $x \in M$, \emph{anihilatorul} lui $x$ este idealul
+
+
+\[
+\operatorname{ann}(x) = \{\, r \in R : r x = 0 \,\}.
+\]
+
+
+\end{definition}
+
+\begin{theorem}[Teorema de structură pentru module finit generate peste un PID]
+Fie $R$ un domeniu principal (PID) și $M$ un $R$-modul finit generat. Atunci există
+elemente $x_1, \dots, x_m \in M$ și elemente nenule $d_1, \dots, d_m \in R$ cu
+
+
+\[
+d_1 \mid d_2 \mid \cdots \mid d_m
+\]
+
+
+astfel încât
+
+
+\[
+M \cong R/d_1 R \;\oplus\; R/d_2 R \;\oplus\; \cdots \;\oplus\; R/d_m R \;\oplus\; R^k,
+\]
+
+
+unde $k$ este rangul liber al lui $M$.
+
+Mai mult, putem alege $x_i$ astfel încât
+
+
+\[
+\operatorname{ann}(x_i) = d_i R.
+\]
+
+
+\end{theorem}
+
+\begin{theorem}[Forma în factori invarianti]
+În ipotezele teoremei, există o bază a unui modul liber $F$ și un submodul $E$ astfel încât
+
+
+\[
+M \cong F/E,
+\]
+
+
+iar $E$ este generat de elementele
+
+
+\[
+d_1 u_1,\; d_2 u_2,\; \dots,\; d_m u_m,
+\]
+
+
+cu $d_1 \mid d_2 \mid \cdots \mid d_m$.
+\end{theorem}
+
+\begin{theorem}[Forma în factori elementari]
+Fie $d_i = p_{i1}^{e_{i1}} \cdots p_{ik_i}^{e_{ik_i}}$ factorizarea în factori primi.
+Atunci
+
+
+\[
+M \cong \bigoplus_{i=1}^m \bigoplus_{j=1}^{k_i} R / p_{ij}^{\, e_{ij}} R.
+\]
+
+
+Aceasta este descompunerea în factori elementari.
+\end{theorem}
+
+\end{document}

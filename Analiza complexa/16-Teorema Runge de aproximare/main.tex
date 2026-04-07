@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{\Large\textbf{Teorema de aproximare a lui Runge}}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{theorem}[Runge]
+Fie $\Omega \subset \mathbb{C}$ o mulțime deschisă și fie $K \subset \Omega$ o submulțime compactă
+astfel încât $\mathbb{C} \setminus K$ este conexă.
+
+Atunci pentru orice funcție $f$ olomorfă în $\Omega$ și pentru orice $\varepsilon > 0$ există un polinom $P$
+cu proprietatea
+
+
+\[
+\sup_{z \in K} |f(z) - P(z)| < \varepsilon.
+\]
+
+
+
+Cu alte cuvinte, orice funcție olomorfă pe o mulțime deschisă poate fi aproximată uniform pe compacte
+prin polinoame, atâta timp cât complementul compactului este conex.
+\end{theorem}
+
+\end{document}

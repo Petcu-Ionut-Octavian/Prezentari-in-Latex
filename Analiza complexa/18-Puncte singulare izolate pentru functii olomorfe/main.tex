@@ -1,0 +1,155 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Puncte Singulare Izolate ale Funcțiilor Olomorfe}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $\Omega \subset \mathbb{C}$ o mulțime deschisă și $z_0 \in \Omega$. Spunem că $z_0$ este
+\emph{punct singular izolat} pentru o funcție $f : \Omega \setminus \{z_0\} \to \mathbb{C}$ dacă
+există $r > 0$ astfel încât $f$ este olomorfă în domeniul perforat
+
+
+\[
+0 < |z - z_0| < r.
+\]
+
+
+\end{definition}
+
+\begin{definition}
+Fie $z_0$ un punct singular izolat al funcției $f$. Clasificarea singularității este:
+\begin{enumerate}
+    \item[(i)] \emph{Singularitate eliminabilă}: dacă există o funcție olomorfă $\tilde f$ definită
+    în $|z - z_0| < r$ astfel încât $\tilde f(z) = f(z)$ pentru $z \ne z_0$.
+
+    \item[(ii)] \emph{Pol de ordin $m$}: dacă există $m \ge 1$ astfel încât funcția
+    
+
+\[
+    (z - z_0)^m f(z)
+    \]
+
+
+    se extinde la o funcție olomorfă nenulă în $z_0$.
+
+    \item[(iii)] \emph{Singularitate esențială}: dacă singularitatea nu este nici eliminabilă,
+    nici pol; echivalent, seria Laurent a lui $f$ în jurul lui $z_0$ conține o infinitate de termeni negativi.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+Fie $z_0$ un punct singular izolat al funcției $f$. Atunci:
+\begin{enumerate}
+    \item[(i)] $z_0$ este o singularitate eliminabilă dacă și numai dacă
+    
+
+\[
+    \lim_{z \to z_0} f(z) \ \text{există și este finită}.
+    \]
+
+
+
+    \item[(ii)] $z_0$ este un pol dacă și numai dacă
+    
+
+\[
+    \lim_{z \to z_0} |f(z)| = \infty.
+    \]
+
+
+
+    \item[(iii)] $z_0$ este o singularitate esențială dacă și numai dacă limitele de mai sus nu există,
+    iar $f$ nu este mărginită în nicio vecinătate perforată a lui $z_0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+Fie $f$ o funcție olomorfă în afara unui disc suficient de mare, adică există $R > 0$ astfel încât
+
+
+\[
+f \text{ este olomorfă în } \{ z \in \mathbb{C} : |z| > R \}.
+\]
+
+
+Spunem că \emph{infinitul} este un punct singular izolat al lui $f$ dacă funcția
+
+
+\[
+g(z) = f\!\left(\frac{1}{z}\right)
+\]
+
+
+are un punct singular izolat în $z = 0$.
+\end{definition}
+
+\begin{definition}
+Clasificarea singularității lui $f$ la infinit se face prin funcția $g(z) = f(1/z)$:
+\begin{enumerate}
+    \item[(i)] \emph{Infinitul este o singularitate eliminabilă} dacă $g$ are o singularitate eliminabilă în $0$, adică
+    
+
+\[
+    \lim_{z \to 0} g(z) \ \text{există și este finită}.
+    \]
+
+
+
+    \item[(ii)] \emph{Infinitul este un pol de ordin $m$} dacă $g$ are un pol de ordin $m$ în $0$, adică
+    
+
+\[
+    \lim_{z \to 0} |g(z)| = \infty.
+    \]
+
+
+
+    \item[(iii)] \emph{Infinitul este o singularitate esențială} dacă $g$ are o singularitate esențială în $0$, adică
+    limitele de mai sus nu există, iar $g$ nu este mărginită în nicio vecinătate perforată a lui $0$.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+Pentru o funcție olomorfă $f$ în afara unui disc suficient de mare, următoarele caracterizări sunt valabile:
+\begin{enumerate}
+    \item[(i)] Infinitul este o singularitate eliminabilă $\Longleftrightarrow$
+    
+
+\[
+    \lim_{z \to \infty} f(z) \ \text{există și este finită}.
+    \]
+
+
+
+    \item[(ii)] Infinitul este un pol $\Longleftrightarrow$
+    
+
+\[
+    \lim_{z \to \infty} |f(z)| = \infty.
+    \]
+
+
+
+    \item[(iii)] Infinitul este o singularitate esențială $\Longleftrightarrow$
+    $f$ nu este mărginită în nicio regiune de forma $\{ |z| > R \}$.
+\end{enumerate}
+\end{proposition}
+
+
+\end{document}

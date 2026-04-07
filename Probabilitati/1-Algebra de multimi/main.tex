@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Algebră de Mulțimi}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $\Omega$ un spațiu. O familie de submulțimi $\mathcal{A} \subseteq \mathcal{P}(\Omega)$ se numește \emph{algebră de mulțimi} dacă:
+\begin{enumerate}
+    \item $\Omega \in \mathcal{A}$.
+    \item Dacă $A \in \mathcal{A}$, atunci $A^{c} \in \mathcal{A}$.
+    \item Dacă $A, B \in \mathcal{A}$, atunci $A \cup B \in \mathcal{A}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+O algebră este închisă la complement și reuniuni finite.
+
+\end{document}

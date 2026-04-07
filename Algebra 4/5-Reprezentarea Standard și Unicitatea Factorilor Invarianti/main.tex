@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Reprezentarea Standard și Unicitatea Factorilor Invarianti}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $R$ un domeniu principal (PID). Un $R$-modul finit generat $M$ se numește
+\emph{reprezentat în formă standard} dacă există elemente nenule
+
+
+\[
+d_1, \dots, d_m \in R, \qquad d_1 \mid d_2 \mid \cdots \mid d_m,
+\]
+
+
+și un întreg $k \ge 0$ astfel încât
+
+
+\[
+M \cong R^k \;\oplus\; R/d_1 R \;\oplus\; R/d_2 R \;\oplus\; \cdots \;\oplus\; R/d_m R.
+\]
+
+
+Numerele $d_1, \dots, d_m$ se numesc \emph{factori invarianti} ai lui $M$.
+\end{definition}
+
+\begin{theorem}[Reprezentarea standard]
+Fie $R$ un PID și $M$ un $R$-modul finit generat. Atunci $M$ admite o reprezentare standard, adică există
+
+
+\[
+k \ge 0,\quad d_1, \dots, d_m \in R \setminus \{0\},\quad d_1 \mid d_2 \mid \cdots \mid d_m,
+\]
+
+
+astfel încât
+
+
+\[
+M \cong R^k \oplus R/d_1 R \oplus \cdots \oplus R/d_m R.
+\]
+
+
+Mai mult, putem alege elemente $x_1, \dots, x_m \in M$ astfel încât
+
+
+\[
+\operatorname{ann}(x_i) = d_i R.
+\]
+
+
+\end{theorem}
+
+\begin{theorem}[Unicitatea reprezentării standard]
+În ipotezele teoremei precedente, numerele $k$ și $d_1, \dots, d_m$ sunt unice
+până la unități din $R$.
+
+Mai precis:
+\begin{enumerate}
+    \item[(i)] rangul liber $k$ este unic;
+    \item[(ii)] numărul $m$ de factori torsionali este unic;
+    \item[(iii)] fiecare $d_i$ este unic până la înmulțire cu o unitate din $R$;
+    \item[(iv)] condiția de divizibilitate
+    
+
+\[
+    d_1 \mid d_2 \mid \cdots \mid d_m
+    \]
+
+
+    determină în mod unic șirul factorilor invarianti.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Caracterizare prin anihilatori]
+În reprezentarea standard, elementele $x_1, \dots, x_m$ pot fi alese astfel încât
+
+
+\[
+M_{\text{tors}} = Rx_1 \oplus \cdots \oplus Rx_m,
+\]
+
+
+iar
+
+
+\[
+\operatorname{ann}(x_i) = d_i R.
+\]
+
+
+Astfel, factorii invarianti sunt determinați de anihilatorii generatorilor torsionali.
+\end{theorem}
+
+\end{document}

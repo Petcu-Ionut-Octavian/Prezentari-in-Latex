@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{\Large\textbf{Propoziția lui Weierstrass privind derivarea sub integrală}}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{proposition}[Weierstrass]
+Fie $\Omega$ o mulțime deschisă din $\mathbb{C}$ și fie $[a,b]$ un interval închis.  
+Considerăm o funcție
+
+
+\[
+F : \Omega \times [a,b] \to \mathbb{C},
+\]
+
+
+continuă pe $\Omega \times [a,b]$, iar pentru fiecare $t \in [a,b]$ funcția
+
+
+\[
+z \mapsto F(z,t)
+\]
+
+
+este olomorfă în $\Omega$.
+
+Definim
+
+
+\[
+G(z) = \int_a^b F(z,t)\, dt.
+\]
+
+
+
+Atunci $G$ este olomorfă în $\Omega$, iar pentru orice $z \in \Omega$ are loc
+
+
+\[
+G'(z) = \int_a^b \frac{\partial F}{\partial z}(z,t)\, dt.
+\]
+
+
+\end{proposition}
+
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Sigma-Algebră}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+O familie de mulțimi $\mathcal{F}$ se numește \emph{sigma-algebră} dacă:
+\begin{enumerate}
+    \item $\Omega \in \mathcal{F}$.
+    \item Dacă $A \in \mathcal{F}$, atunci $A^{c} \in \mathcal{F}$.
+    \item Dacă $(A_n)_{n \ge 1}$ este o familie de mulțimi din $\mathcal{F}$, atunci
+    
+
+\[
+        \bigcup_{n=1}^{\infty} A_n \in \mathcal{F}.
+    \]
+
+
+\end{enumerate}
+\end{definition}
+
+\noindent
+Sigma-algebre sunt închise la reuniuni numărabile.
+
+\end{document}

@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema Banach--Alaoglu}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $X$ un spațiu normat. Notăm prin $X^\ast$ spațiul dual, adică mulțimea tuturor funcționalelor liniare continue $f : X \to \mathbb{R}$ (sau $\mathbb{C}$), înzestrat cu norma
+
+
+\[
+\|f\| = \sup_{\|x\|\le 1} |f(x)|.
+\]
+
+
+Pentru $M > 0$, mulțimea
+
+
+\[
+B_{X^\ast}(0,M) = \{ f \in X^\ast : \|f\| \le M \}
+\]
+
+
+se numește \emph{discul închis de rază $M$ din dual}.
+\end{definition}
+
+\begin{theorem}[Banach--Alaoglu]
+Fie $X$ un spațiu normat. Atunci discul unitar închis din dual,
+
+
+\[
+B_{X^\ast}(0,1) = \{ f \in X^\ast : \|f\| \le 1 \},
+\]
+
+
+este compact în topologia $\sigma(X^\ast, X)$, adică în topologia slab‑$\ast$ generată de aplicațiile
+
+
+\[
+f \mapsto f(x), \qquad x \in X.
+\]
+
+
+\end{theorem}
+
+\begin{proposition}
+În ipotezele teoremei Banach--Alaoglu, următoarele afirmații sunt echivalente pentru o mulțime $K \subset X^\ast$:
+\begin{enumerate}
+    \item[(i)] $K$ este slab‑$\ast$ compact.
+    \item[(ii)] $K$ este închisă în topologia slab‑$\ast$ și este conținută într-un disc închis
+    
+
+\[
+    K \subset B_{X^\ast}(0,M)
+    \]
+
+
+    pentru un anumit $M > 0$.
+\end{enumerate}
+\end{proposition}
+
+\end{document}

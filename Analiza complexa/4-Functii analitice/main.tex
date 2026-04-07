@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Funcții Analitice și Olomorfe}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $\Omega \subset \mathbb{C}$ un domeniu.  
+O funcție $f:\Omega \to \mathbb{C}$ se numește \emph{analitică} în $\Omega$ dacă pentru orice punct $z_0 \in \Omega$ există un disc $D(z_0,r)$ și o serie de puteri
+
+
+\[
+f(z) = \sum_{n=0}^{\infty} a_n (z - z_0)^n
+\]
+
+
+care converge către $f(z)$ pentru toate $z \in D(z_0,r)$.
+\end{definition}
+
+\begin{proposition}
+(\textbf{Echivalența dintre analitic și olomorf})  
+Fie $\Omega \subset \mathbb{C}$ un domeniu și $f:\Omega \to \mathbb{C}$ o funcție.  
+Atunci următoarele afirmații sunt echivalente:
+\begin{enumerate}
+    \item[(i)] Funcția $f$ este \emph{analitică} în $\Omega$.
+    \item[(ii)] Funcția $f$ este \emph{olomorfă} în $\Omega$, adică derivabilă complex în fiecare punct al lui $\Omega$.
+\end{enumerate}
+Cu alte cuvinte, într-un domeniu din $\mathbb{C}$, analiticitatea și olomorfia coincid.
+\end{proposition}
+
+\end{document}

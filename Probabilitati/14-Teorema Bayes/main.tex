@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Formula lui Bayes: Definiție și Teoremă}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\section{Definiție}
+
+Fie $(\Omega, \mathcal{F}, \mathbb{P})$ un spațiu de probabilitate.
+Pentru două evenimente $A$ și $B$ cu $\mathbb{P}(B) > 0$, 
+\textbf{probabilitatea condiționată} a lui $A$ dat $B$ este definită prin:
+
+
+
+\[
+\mathbb{P}(A \mid B)
+= \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}.
+\]
+
+
+
+Această definiție stă la baza formulei lui Bayes.
+
+\section{Formula lui Bayes}
+
+\begin{theorem}[Formula lui Bayes]
+Fie $A$ și $B$ două evenimente cu $\mathbb{P}(A) > 0$ și $\mathbb{P}(B) > 0$.
+Atunci probabilitatea condiționată a lui $A$ dat $B$ este:
+
+
+
+\[
+\mathbb{P}(A \mid B)
+= \frac{\mathbb{P}(B \mid A)\,\mathbb{P}(A)}
+       {\mathbb{P}(B)}.
+\]
+
+
+
+Dacă evenimentul $B$ poate fi descompus printr-o partiție finită
+$\{A_1, A_2, \dots, A_n\}$ a lui $\Omega$, atunci:
+
+
+
+\[
+\mathbb{P}(A_k \mid B)
+= \frac{\mathbb{P}(B \mid A_k)\,\mathbb{P}(A_k)}
+       {\sum_{i=1}^n \mathbb{P}(B \mid A_i)\,\mathbb{P}(A_i)}.
+\]
+
+
+
+Aceasta este forma generală a teoremei lui Bayes.
+\end{theorem}
+
+\section{Interpretare}
+
+Formula lui Bayes permite actualizarea probabilităților în funcție de informații noi.
+Probabilitatea \emph{a priori} $\mathbb{P}(A)$ este actualizată în probabilitatea
+\emph{a posteriori} $\mathbb{P}(A \mid B)$ după observarea evenimentului $B$.
+
+\end{document}

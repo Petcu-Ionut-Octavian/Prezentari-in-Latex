@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Teorema Aplicației Deschise}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teoremă}
+\newtheorem{proposition}{Propoziție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $X$ și $Y$ două spații Banach. Un operator liniar continuu
+
+
+\[
+T : X \to Y
+\]
+
+
+se numește \emph{surjectiv} dacă pentru orice $y \in Y$ există $x \in X$ cu $T(x) = y$.
+\end{definition}
+
+\begin{theorem}[Teorema Aplicației Deschise]
+Fie $X$ și $Y$ două spații Banach și $T : X \to Y$ un operator liniar continuu și surjectiv. Atunci $T$ este o aplicație deschisă, adică pentru orice mulțime deschisă $U \subset X$, imaginea $T(U)$ este deschisă în $Y$.
+
+Echivalent, există o constantă $c > 0$ astfel încât
+
+
+\[
+T(B_X(0,1)) \supset B_Y(0,c),
+\]
+
+
+unde $B_X(0,1)$ și $B_Y(0,c)$ sunt bilele deschise de rază $1$, respectiv $c$.
+\end{theorem}
+
+\begin{proposition}
+În ipotezele teoremei aplicației deschise, următoarele afirmații sunt echivalente:
+\begin{enumerate}
+    \item[(i)] $T$ este surjectiv.
+    \item[(ii)] Există $c > 0$ astfel încât pentru orice $y \in Y$ există $x \in X$ cu $T(x) = y$ și
+    
+
+\[
+    \|x\| \le c \|y\|.
+    \]
+
+
+    \item[(iii)] Imaginea lui $T$ conține o bilă deschisă nenulă.
+\end{enumerate}
+\end{proposition}
+
+\end{document}
