@@ -1,0 +1,451 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Analiză Funcțională — Probleme tip examen}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+\begin{proposition}
+Fie $E$ un spațiu Banach și $B^* \subset E^*$ o mulțime cu proprietatea că pentru fiecare $x \in E$ mulțimea
+
+
+\[
+\{ f(x) : f \in B^* \}
+\]
+
+
+este mărginită. Atunci $B^*$ este mărginită în $E^*$, adică există $M \ge 0$ astfel încât
+
+
+\[
+\|f\| \le M \quad \text{pentru toți } f \in B^*.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Considerăm familia de operatori liniari continui
+
+
+\[
+\mathcal{F} := B^* \subset \mathcal{L}(E,\mathbb{R}).
+\]
+
+
+Pentru fiecare $x \in E$, ipoteza spune că mulțimea
+
+
+\[
+\{ |f(x)| : f \in B^* \}
+\]
+
+
+este mărginită. Prin teorema Banach--Steinhaus (principiul bornelor uniforme), rezultă că
+
+
+\[
+\sup_{f \in B^*} \|f\| < \infty.
+\]
+
+
+Prin urmare, există $M \ge 0$ astfel încât $\|f\| \le M$ pentru toți $f \in B^*$, deci $B^*$ este mărginită în $E^*$.
+\end{proof}
+
+\begin{proposition}
+Fie $E,F$ spații Banach și $f : E \times F \to \mathbb{R}$ o formă biliniară astfel încât:
+\begin{itemize}
+  \item pentru fiecare $y \in F$, aplicația $x \mapsto f(x,y)$ este continuă pe $E$;
+  \item pentru fiecare $x \in E$, aplicația $y \mapsto f(x,y)$ este continuă pe $F$.
+\end{itemize}
+Atunci există o constantă $C \ge 0$ astfel încât
+
+
+\[
+|f(x,y)| \le C \,\|x\|\,\|y\| \quad \text{pentru toți } x \in E,\, y \in F.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Pentru fiecare $y \in F$, definim
+
+
+\[
+T_y : E \to \mathbb{R}, \quad T_y(x) := f(x,y).
+\]
+
+
+Prin ipoteză, $T_y$ este liniară și continuă, deci $T_y \in E^*$. Definim aplicația
+
+
+\[
+T : F \to E^*, \quad T(y) := T_y.
+\]
+
+
+Arătăm că $T$ este liniară: pentru $y_1,y_2 \in F$ și $\alpha,\beta \in \mathbb{R}$ avem
+
+
+\[
+T_{\alpha y_1 + \beta y_2}(x)
+= f(x,\alpha y_1 + \beta y_2)
+= \alpha f(x,y_1) + \beta f(x,y_2)
+= \alpha T_{y_1}(x) + \beta T_{y_2}(x),
+\]
+
+
+deci $T_{\alpha y_1 + \beta y_2} = \alpha T_{y_1} + \beta T_{y_2}$.
+
+Pentru fiecare $x \in E$, considerăm funcționalul
+
+
+\[
+\varphi_x : F \to \mathbb{R}, \quad \varphi_x(y) := f(x,y).
+\]
+
+
+Prin ipoteză, $\varphi_x$ este continuu, deci $\varphi_x \in F^*$. Observăm că
+
+
+\[
+\varphi_x(y) = f(x,y) = T_y(x) = T(y)(x).
+\]
+
+
+Fixăm $x \in E$ cu $\|x\| = 1$. Atunci aplicația
+
+
+\[
+F \to \mathbb{R}, \quad y \mapsto T(y)(x) = f(x,y)
+\]
+
+
+este continuă. Rezultă că pentru fiecare $x$ cu $\|x\|=1$, mulțimea
+
+
+\[
+\{ |T(y)(x)| : \|y\| \le 1 \}
+\]
+
+
+este mărginită.
+
+Aplicăm teorema Banach--Steinhaus pentru familia
+
+
+\[
+\mathcal{G} := \{ T(y) : \|y\| \le 1 \} \subset E^*.
+\]
+
+
+Pentru fiecare $x \in E$, mulțimea $\{ |T(y)(x)| : \|y\| \le 1 \}$ este mărginită, deci
+
+
+\[
+\sup_{\|y\|\le 1} \|T(y)\| < \infty.
+\]
+
+
+Există $C \ge 0$ astfel încât
+
+
+\[
+\|T(y)\| \le C \quad \text{pentru toți } y \text{ cu } \|y\|\le 1.
+\]
+
+
+Pentru un $y$ arbitrar, dacă $y \neq 0$, scriem $y = \|y\| \cdot \frac{y}{\|y\|}$ și obținem
+
+
+\[
+\|T(y)\|
+= \|y\| \,\Big\|T\Big(\frac{y}{\|y\|}\Big)\Big\|
+\le \|y\| \, C.
+\]
+
+
+Prin urmare,
+
+
+\[
+|f(x,y)| = |T(y)(x)| \le \|T(y)\|\,\|x\| \le C \,\|x\|\,\|y\|.
+\]
+
+
+\end{proof}
+
+\begin{proposition}
+Fie $V$ un spațiu vectorial înzestrat cu două norme $\|\cdot\|_1$ și $\|\cdot\|_2$ astfel încât $(V,\|\cdot\|_1)$ și $(V,\|\cdot\|_2)$ sunt spații Banach. Presupunem că există $C>0$ cu
+
+
+\[
+\|v\|_1 \le C \,\|v\|_2 \quad \text{pentru toți } v \in V.
+\]
+
+
+Atunci există $K \ge 0$ astfel încât
+
+
+\[
+\|v\|_2 \le K \,\|v\|_1 \quad \text{pentru toți } v \in V.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Considerăm aplicația identitate
+
+
+\[
+I : (V,\|\cdot\|_2) \to (V,\|\cdot\|_1), \quad I(v) = v.
+\]
+
+
+Inegalitatea $\|v\|_1 \le C \|v\|_2$ arată că $I$ este liniară și continuă, cu $\|I\| \le C$. Aplicația $I$ este bijectivă, cu inversa tot identitatea
+
+
+\[
+I^{-1} : (V,\|\cdot\|_1) \to (V,\|\cdot\|_2).
+\]
+
+
+Prin teorema aplicației deschise (Open Mapping Theorem), deoarece $I$ este un izomorfism liniar continuu între spații Banach, inversa $I^{-1}$ este și ea continuă. Prin urmare, există $K \ge 0$ astfel încât
+
+
+\[
+\|v\|_2 = \|I^{-1}(v)\|_2 \le K \,\|v\|_1 \quad \text{pentru toți } v \in V.
+\]
+
+
+\end{proof}
+
+\begin{proposition}
+Considerăm spațiile $C([0,1])$ și $C^1([0,1])$ înzestrate ambele cu norma
+
+
+\[
+\|f\|_\infty := \sup_{x \in [0,1]} |f(x)|.
+\]
+
+
+Operatorul derivare
+
+
+\[
+D : C^1([0,1]) \to C([0,1]), \quad D(f) = f',
+\]
+
+
+este nemărginit, dar are graficul închis.
+\end{proposition}
+
+\begin{proof}
+\textbf{\\Nemărginit.} Considerăm șirul
+
+
+\[
+f_n(x) := x^n, \quad x \in [0,1].
+\]
+
+
+Atunci $f_n \in C^1([0,1])$ și
+
+
+\[
+\|f_n\|_\infty = \sup_{x \in [0,1]} |x^n| = 1.
+\]
+
+
+Derivata este
+
+
+\[
+f_n'(x) = n x^{n-1},
+\]
+
+
+de unde
+
+
+\[
+\|f_n'\|_\infty = \sup_{x \in [0,1]} |n x^{n-1}| = n.
+\]
+
+
+Dacă $D$ ar fi mărginit, ar exista $M \ge 0$ astfel încât
+
+
+\[
+\|f_n'\|_\infty \le M \|f_n\|_\infty = M \quad \text{pentru toți } n,
+\]
+
+
+ceea ce este imposibil deoarece $\|f_n'\|_\infty = n \to \infty$. Deci $D$ este nemărginit.
+
+\medskip
+
+\textbf{Grafic închis.} Graficul lui $D$ este
+
+
+\[
+\mathcal{G}(D) := \{ (f,g) \in C^1([0,1]) \times C([0,1]) : g = f' \}.
+\]
+
+
+Fie o succesiune $(f_n,g_n) \in \mathcal{G}(D)$ cu
+
+
+\[
+f_n \to f \text{ în } \|\cdot\|_\infty \quad \text{și} \quad g_n \to g \text{ în } \|\cdot\|_\infty.
+\]
+
+
+Avem $g_n = f_n'$ pentru fiecare $n$. Fixăm $x \in [0,1]$. Pentru orice $t \in [0,1]$,
+
+
+\[
+f_n(t) - f_n(0) = \int_0^t f_n'(s)\,ds = \int_0^t g_n(s)\,ds.
+\]
+
+
+Trecând la limită uniform în $t$, folosind convergența uniformă $f_n \to f$ și $g_n \to g$, obținem
+
+
+\[
+f(t) - f(0) = \int_0^t g(s)\,ds \quad \text{pentru toate } t \in [0,1].
+\]
+
+
+Aceasta arată că $f$ este derivabil pe $[0,1]$, cu derivata continuă $g$, deci $f \in C^1([0,1])$ și $f' = g$. Prin urmare, $(f,g) \in \mathcal{G}(D)$, deci graficul lui $D$ este închis.
+\end{proof}
+
+\begin{proposition}
+Fie, pentru fiecare $n \in \mathbb{N}$,
+
+
+\[
+x^{(n)} = (x^{(n)}_1, x^{(n)}_2, \dots) \in \mathbb{R}^{\mathbb{N}},
+\]
+
+
+definit prin
+
+
+\[
+x^{(n)}_k =
+\begin{cases}
+\dfrac{1}{\sqrt{k}}, & \text{dacă } k \le n,\\[4pt]
+0, & \text{dacă } k > n.
+\end{cases}
+\]
+
+
+Determinăm pentru ce valori ale lui $p \in [1,\infty)$ șirul $(x^{(n)})_{n\in\mathbb{N}}$ este Cauchy în $\ell^p$.
+\end{proposition}
+
+\begin{proof}
+Fie $1 \le p < \infty$. Pentru $m>n$, avem
+
+
+\[
+x^{(m)} - x^{(n)} = \bigl(0,\dots,0,\tfrac{1}{\sqrt{n+1}},\tfrac{1}{\sqrt{n+2}},\dots,\tfrac{1}{\sqrt{m}},0,0,\dots\bigr),
+\]
+
+
+deci
+
+
+\[
+\|x^{(m)} - x^{(n)}\|_p^p
+= \sum_{k=n+1}^m \left|\frac{1}{\sqrt{k}}\right|^p
+= \sum_{k=n+1}^m \frac{1}{k^{p/2}}.
+\]
+
+
+Prin urmare, șirul $(x^{(n)})$ este Cauchy în $\ell^p$ dacă și numai dacă seria
+
+
+\[
+\sum_{k=1}^\infty \frac{1}{k^{p/2}}
+\]
+
+
+este convergentă. Aceasta se întâmplă dacă și numai dacă
+
+
+\[
+\frac{p}{2} > 1 \quad \Longleftrightarrow \quad p > 2.
+\]
+
+
+Deci $(x^{(n)})$ este Cauchy în $\ell^p$ exact pentru $p>2$.
+\end{proof}
+
+\begin{proposition}
+Considerăm șirul de funcții $f_n : [0,1] \to \mathbb{R}$, $f_n(x) = x^n$.
+\begin{itemize}
+  \item Este $(f_n)$ Cauchy în $C([0,1])$ cu norma $\|\cdot\|_\infty$?
+  \item Este $(f_n)$ Cauchy în $C([0,1])$ cu norma
+  
+
+\[
+  \|f\|_2 := \left( \int_0^1 |f(x)|^2\,dx \right)^{1/2}?
+  \]
+
+
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+\textbf{Norma supremum.}
+Observăm că $f_n(x)=x^n$ converge punctual către funcția
+
+
+\[
+f(x)=
+\begin{cases}
+0, & x\in[0,1),\\
+1, & x=1,
+\end{cases}
+\]
+
+
+care nu este continuă pe $[0,1]$.
+
+Dacă $(f_n)$ ar fi Cauchy în $(C([0,1]),\|\cdot\|_\infty)$, atunci ar fi și convergent în această normă, iar limita ar fi continuă. Aceasta contrazice faptul că limita punctuală nu este continuă.
+
+Prin urmare, $(f_n)$ nu este Cauchy în $(C([0,1]),\|\cdot\|_\infty)$.
+
+\medskip
+
+\textbf{Norma $L^2$.} Observăm că
+
+
+\[
+\|f_n\|_2^2 = \int_0^1 x^{2n}\,dx = \frac{1}{2n+1} \xrightarrow[n\to\infty]{} 0.
+\]
+
+
+Deci $f_n \to 0$ în norma $\|\cdot\|_2$. Orice șir convergent într-un spațiu normat este Cauchy, deci $(f_n)$ este Cauchy în $(C([0,1]),\|\cdot\|_2)$.
+\end{proof}
+
+\end{document}

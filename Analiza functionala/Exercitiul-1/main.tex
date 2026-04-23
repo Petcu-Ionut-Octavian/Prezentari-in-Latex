@@ -1,0 +1,387 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Analiză Funcțională — Exercițiu}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{theorem}{Teoremă}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{definition}
+Fie
+
+
+\[
+\ell^1 = \left\{ x = (x_n)_{n\ge 1} : \sum_{n=1}^\infty |x_n| < \infty \right\},
+\qquad
+\|x\|_1 = \sum_{n=1}^\infty |x_n|.
+\]
+
+
+
+Definim
+
+
+\[
+Y = \left\{ x \in \ell^1 : \exists N \in \mathbb{N} \text{ astfel încât } x_n = 0 \text{ pentru toate } n \ge N \right\}.
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Subspațiul $Y$ nu este închis în $\ell^1$.
+\end{proposition}
+
+\begin{proof}
+Pentru orice $x = (x_n) \in \ell^1$ definim șirurile trunchiate
+
+
+\[
+x^{(N)} = (x_1, x_2, \dots, x_N, 0, 0, \dots).
+\]
+
+
+Observăm că $x^{(N)} \in Y$ pentru orice $N$.
+
+Calculăm norma diferenței:
+
+
+\[
+\|x - x^{(N)}\|_1 = \sum_{n>N} |x_n|.
+\]
+
+
+
+Deoarece $x \in \ell^1$, restul seriei tinde la zero:
+
+
+\[
+\sum_{n>N} |x_n| \longrightarrow 0 \quad \text{când } N \to \infty.
+\]
+
+
+
+Prin urmare,
+
+
+\[
+x^{(N)} \to x \quad \text{în } \ell^1.
+\]
+
+
+
+Aceasta arată că pentru orice element din $\ell^1$, există un șir convergent din $Y$ care să tindă la el, deci
+
+
+\[
+\overline{Y} = \ell^1.
+\]
+
+
+
+Dar știm că $Y \ne \ell^1$, deci $Y$ nu poate fi închis.
+\end{proof}
+
+\begin{proposition}
+Pentru fiecare $n \in \mathbb{N}^\ast$, definim aplicația liniară
+
+
+\[
+T_n : Y \to \mathbb{R}, \qquad T_n(u) = n\,u_n, \quad u = (u_k)_{k\ge 1} \in Y.
+\]
+
+
+Atunci $T_n \in Y^*$, iar norma lui $T_n$ este
+
+
+\[
+\|T_n\|_{Y^*} = n.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Mai întâi observăm că $T_n$ este liniară, deoarece pentru orice $u,v \in Y$ și $\alpha,\beta \in \mathbb{R}$ avem
+
+
+\[
+T_n(\alpha u + \beta v)
+= n(\alpha u_n + \beta v_n)
+= \alpha n u_n + \beta n v_n
+= \alpha T_n(u) + \beta T_n(v).
+\]
+
+
+
+Arătăm acum că $T_n$ este continuă pe $(Y,\|\cdot\|_1)$. Pentru orice $u \in Y$,
+
+
+\[
+|T_n(u)|
+= |n u_n|
+\le n \sum_{k=1}^\infty |u_k|
+= n \|u\|_1.
+\]
+
+
+Rezultă că
+
+
+\[
+\|T_n\|_{Y^*}
+= \sup_{\|u\|_1 = 1} |T_n(u)|
+\le n.
+\]
+
+
+
+Pentru a obține egalitatea, considerăm vectorul
+
+
+\[
+u^{(n)} = (0,\dots,0,\underbrace{1}_{\text{poziția } n},0,0,\dots),
+\]
+
+
+care aparține lui $Y$ și satisface $\|u^{(n)}\|_1 = 1$. Atunci
+
+
+\[
+T_n(u^{(n)}) = n \cdot 1 = n,
+\]
+
+
+deci
+
+
+\[
+\|T_n\|_{Y^*}
+\ge |T_n(u^{(n)})|
+= n.
+\]
+
+
+
+Combinând cele două inegalități, obținem
+
+
+\[
+\|T_n\|_{Y^*} = n.
+\]
+
+
+Prin urmare, $T_n$ este liniară și continuă pe $Y$, adică $T_n \in Y^*$, și are norma \\$\|T_n\|_{Y^*} = n$.
+
+
+\end{proof}
+
+\begin{proposition}
+Pentru orice $v \in Y$, șirul $\bigl(\lvert T_n(v)\rvert\bigr)_{n \in \mathbb{N}^\ast}$ este mărginit.
+\end{proposition}
+
+\begin{proof}
+Fie $v = (v_k)_{k\ge 1} \in Y$. Prin definiția lui $Y$, există $N \in \mathbb{N}^\ast$ astfel încât
+
+
+\[
+v_k = 0 \quad \text{pentru toate } k \ge N.
+\]
+
+
+Pentru fiecare $n \in \mathbb{N}^\ast$, avem
+
+
+\[
+T_n(v) = n\,v_n,
+\]
+
+
+deci
+
+
+\[
+|T_n(v)| = |n v_n|.
+\]
+
+
+
+Dacă $n \ge N$, atunci $v_n = 0$ și, prin urmare,
+
+
+\[
+|T_n(v)| = |n v_n| = 0.
+\]
+
+
+Astfel, șirul $\bigl(|T_n(v)|\bigr)_{n\in\mathbb{N}^\ast}$ are doar un număr finit de termeni nenuli, și anume pentru $n \in \{1,2,\dots,N-1\}$.
+
+Definim
+
+
+\[
+M := \max_{1 \le n \le N-1} |T_n(v)| = \max_{1 \le n \le N-1} |n v_n|.
+\]
+
+
+Acest maxim există deoarece mulțimea $\{1,\dots,N-1\}$ este finită. Atunci, pentru orice $n \in \mathbb{N}^\ast$,
+
+
+\[
+|T_n(v)| \le M.
+\]
+
+
+
+Rezultă că șirul $\bigl(|T_n(v)|\bigr)_{n\in\mathbb{N}^\ast}$ este mărginit.
+\end{proof}
+
+\begin{proposition}
+Nu putem aplica teorema Banach--Steinhaus pentru a deduce că șirul
+
+
+\[
+\bigl(\|T_n\|_{Y^*}\bigr)_{n\in\mathbb{N}^\ast}
+\]
+
+
+este mărginit.
+\end{proposition}
+
+\begin{proof}
+Teorema Banach--Steinhaus (principiul borelienelor uniforme) se aplică unei familii de operatori liniari continui
+
+
+\[
+\mathcal{F} \subset \mathcal{L}(X,Z),
+\]
+
+
+unde $X$ este un spațiu Banach, iar $Z$ este un spațiu normat. Ipoteza este că pentru fiecare $x \in X$, mulțimea
+
+
+\[
+\{ \|T(x)\| : T \in \mathcal{F} \}
+\]
+
+
+este mărginită; concluzia este că
+
+
+\[
+\sup_{T \in \mathcal{F}} \|T\| < \infty.
+\]
+
+
+
+În situația noastră, familia este $(T_n)_{n\in\mathbb{N}^\ast}$, cu
+
+
+\[
+T_n \in Y^*, \qquad T_n : Y \to \mathbb{R},
+\]
+
+
+iar spațiul de plecare este $Y$, înzestrat cu norma restricție a lui $\|\cdot\|_1$.
+
+Observăm însă că $Y$ \emph{nu este Banach}: în punctul a) am arătat că
+
+
+\[
+\overline{Y}^{\,\ell^1} = \ell^1 \neq Y,
+\]
+
+
+deci $Y$ nu este complet. Prin urmare, ipoteza esențială a teoremei Banach--Steinhaus (completitudinea spațiului de plecare) nu este satisfăcută, și teorema nu este aplicabilă în această formă.
+
+Mai mult, am calculat deja că
+
+
+\[
+\|T_n\|_{Y^*} = n \quad \text{pentru fiecare } n \in \mathbb{N}^\ast,
+\]
+
+
+deci șirul $(\|T_n\|_{Y^*})_{n\in\mathbb{N}^\ast}$ este nemărginit. Dacă am putea aplica teorema Banach--Steinhaus, am obține că acest șir este mărginit, ceea ce ar contrazice calculul direct al normelor. Această contradicție confirmă încă o dată că ipotezele teoremei (în special completitudinea lui $Y$) nu sunt îndeplinite.
+\end{proof}
+
+\begin{proposition}
+Afirmația de la punctul c) nu mai este valabilă dacă înlocuim $Y$ cu $\ell^1$. Mai precis, există $v \in \ell^1$ pentru care șirul
+
+
+\[
+\bigl(|T_n(v)|\bigr)_{n\in\mathbb{N}^\ast}
+\]
+
+
+nu este mărginit, unde $T_n : \ell^1 \to \mathbb{R}$ este definit prin $T_n(u) = n\,u_n$.
+\end{proposition}
+
+\begin{proof}
+Definim $v = (v_k)_{k\ge 1}$ prin
+
+
+
+
+
+\[
+v_k =
+\begin{cases}
+\dfrac{1}{m^2}, & \text{dacă } k = m! \text{ pentru un } m \in \mathbb{N}^\ast,  \\[20pt]
+0, & \text{altfel}.
+\end{cases}
+\]
+
+
+
+
+
+
+Atunci
+
+
+\[
+\sum_{k=1}^\infty |v_k|
+= \sum_{m=1}^\infty \frac{1}{m^2} < \infty,
+\]
+
+
+deci $v \in \ell^1$.
+
+Pentru $n = m!$ avem
+
+
+\[
+T_{m!}(v) = m! \, v_{m!} = m! \cdot \frac{1}{m^2},
+\]
+
+
+de unde
+
+
+\[
+|T_{m!}(v)| = \frac{m!}{m^2} \xrightarrow[m\to\infty]{} \infty.
+\]
+
+
+
+Prin urmare, șirul $\bigl(|T_n(v)|\bigr)_{n\in\mathbb{N}^\ast}$ nu este mărginit, ceea ce arată că proprietatea de la punctul c) nu se extinde la întregul spațiu $\ell^1$.
+\end{proof}
+
+
+\end{document}

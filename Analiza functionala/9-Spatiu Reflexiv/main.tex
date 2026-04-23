@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Analiză Funcțională — Spațiu Reflexiv}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Fie $(E,\|\cdot\|)$ un spațiu normat. Dualul său este
+
+
+\[
+E^* = \{ f : E \to \mathbb{R} \text{ liniar și continuu} \}.
+\]
+
+
+Dualul dualului este
+
+
+\[
+E^{**} = (E^*)^*.
+\]
+
+
+\end{definition}
+
+\begin{definition}
+Aplicația canonică (naturală)
+
+
+\[
+J : E \to E^{**}, \qquad J(x)(f) = f(x),\quad f \in E^*,
+\]
+
+
+se numește \emph{imbedding-ul canonic}.
+\end{definition}
+
+\begin{definition}
+Un spațiu normat $E$ se numește \emph{reflexiv} dacă aplicația canonică
+
+
+\[
+J : E \to E^{**}
+\]
+
+
+este surjectivă, adică
+
+
+\[
+J(E) = E^{**}.
+\]
+
+
+\end{definition}
+
+\end{document}

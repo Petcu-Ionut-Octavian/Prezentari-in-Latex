@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Analiză Funcțională — Spațiu Separabil}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definiție}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+Un spațiu metric $(X,d)$ se numește \emph{separabil} dacă există o mulțime numărabilă
+$D \subseteq X$ care este densă în $X$, adică
+
+
+\[
+\overline{D} = X.
+\]
+
+
+\end{definition}
+
+\begin{definition}
+Un spațiu normat $(E,\|\cdot\|)$ se numește \emph{separabil} dacă spațiul metric
+indus de normă este separabil, adică există o mulțime numărabilă $D \subseteq E$
+cu proprietatea că
+
+
+\[
+\forall x \in E,\ \forall \varepsilon > 0,\ \exists d \in D \text{ astfel încât }
+\|x-d\| < \varepsilon.
+\]
+
+
+\end{definition}
+
+\end{document}
