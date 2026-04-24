@@ -1,0 +1,114 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Modelarea Matematică a Sistemelor Materiale \\ \large Analiza și Simularea Modelelor}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Analiza și simularea modelelor}
+
+Analiza și simularea modelelor matematice reprezintă etape esențiale în înțelegerea comportamentului sistemelor materiale. Ele permit investigarea soluțiilor, stabilității, regimurilor de funcționare și sensibilității la variația parametrilor.
+
+\subsection{6.1. Analiză analitică}
+
+Analiza analitică urmărește obținerea de soluții exacte sau proprietăți fundamentale ale modelului.
+
+\subsubsection*{Soluții exacte}
+Pentru unele modele simple (liniare, cu coeficienți constanți), soluțiile pot fi obținute explicit. De exemplu:
+
+
+\[
+\frac{dx}{dt} = ax \quad \Rightarrow \quad x(t) = x_0 e^{at}.
+\]
+
+
+
+\subsubsection*{Stabilitate}
+Stabilitatea soluțiilor este analizată prin:
+\begin{itemize}
+    \item studiul valorilor proprii ale sistemelor liniare;
+    \item analiza Lyapunov pentru sisteme neliniare;
+    \item determinarea punctelor de echilibru.
+\end{itemize}
+
+\subsubsection*{Regim staționar vs. tranzitoriu}
+Un model poate prezenta:
+\begin{itemize}
+    \item \textbf{regim staționar}: soluții independente de timp;
+    \item \textbf{regim tranzitoriu}: evoluție temporară până la stabilizare.
+\end{itemize}
+
+\subsection{6.2. Analiză numerică}
+
+Pentru majoritatea modelelor reale, soluțiile analitice nu sunt disponibile, fiind necesare metode numerice.
+
+\subsubsection*{Metode Euler și Runge--Kutta}
+Pentru ODE:
+
+
+\[
+x_{n+1} = x_n + h f(x_n, t_n) \quad \text{(Euler)}.
+\]
+
+
+Metodele Runge--Kutta de ordin superior oferă precizie mai mare.
+
+\subsubsection*{Diferențe finite}
+Aproximarea derivatelor:
+
+
+\[
+\frac{\partial u}{\partial x} \approx \frac{u_{i+1} - u_i}{\Delta x}.
+\]
+
+
+
+\subsubsection*{Elemente finite}
+Metodă puternică pentru PDE complexe, bazată pe:
+\begin{itemize}
+    \item împărțirea domeniului în elemente;
+    \item aproximarea soluției prin funcții de bază;
+    \item formularea slabă a problemei.
+\end{itemize}
+
+\subsubsection*{Discretizare spațială și temporală}
+Modelul continuu este transformat într-un sistem discret:
+
+
+\[
+u(x,t) \rightarrow u_{i}^{n}.
+\]
+
+
+
+\subsection{6.3. Validare și calibrare}
+
+Validarea verifică dacă modelul reproduce realitatea.
+
+\subsubsection*{Ajustarea parametrilor}
+Parametrii sunt calibrați pentru a minimiza diferența dintre model și date.
+
+\subsubsection*{Compararea cu măsurători}
+Se utilizează:
+\begin{itemize}
+    \item erori absolute și relative;
+    \item norme $L^2$;
+    \item analize statistice.
+\end{itemize}
+
+\subsubsection*{Analiza erorilor}
+Evaluarea:
+\begin{itemize}
+    \item erorilor de modelare;
+    \item erorilor numerice;
+    \item incertitudinii în date.
+\end{itemize}
+
+\end{document}

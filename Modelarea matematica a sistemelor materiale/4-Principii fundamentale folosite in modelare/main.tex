@@ -1,0 +1,177 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Modelarea Matematică a Sistemelor Materiale \\ \large Principii Fundamentale Folosite în Modelare}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Principii fundamentale folosite în modelare}
+
+Modelarea matematică a sistemelor materiale se bazează pe un set de principii fundamentale care guvernează comportamentul fizic al materialelor și proceselor. Aceste principii sunt esențiale pentru formularea ecuațiilor care descriu evoluția sistemului.
+
+\subsection{4.1. Legi de conservare}
+
+Legile de conservare exprimă faptul că anumite mărimi fizice nu pot fi create sau distruse, ci doar transformate sau transferate. Cele mai importante sunt:
+
+\begin{itemize}
+    \item \textbf{Conservarea masei}
+    \item \textbf{Conservarea energiei}
+    \item \textbf{Conservarea impulsului}
+    \item \textbf{Conservarea sarcinii electrice}
+\end{itemize}
+
+Aceste principii conduc la ecuații generale de bilanț de forma:
+
+
+\[
+\frac{d}{dt}(\text{cantitate}) = \text{intrări} - \text{ieșiri} + \text{producție}.
+\]
+
+
+
+În formă diferențială locală, o lege de conservare poate fi exprimată ca:
+
+
+\[
+\frac{\partial u}{\partial t} + \nabla \cdot \mathbf{J} = S,
+\]
+
+
+unde:
+\begin{itemize}
+    \item $u$ este densitatea mărimii conservate,
+    \item $\mathbf{J}$ este fluxul acesteia,
+    \item $S$ este termenul de producție sau sursă.
+\end{itemize}
+
+Această formulare stă la baza ecuațiilor de transport, difuzie, conducție termică, mecanică fluidelor și electromagnetism.
+
+\subsection{4.2. Relații constitutive}
+
+Relațiile constitutive descriu modul în care materialul răspunde la stimuli externi. Ele leagă variabilele interne ale materialului (tensiuni, deformații, fluxuri, câmpuri) de variabilele externe (forțe, temperatură, viteze, potențiale).
+
+Exemple fundamentale:
+
+\begin{itemize}
+    \item \textbf{Legea lui Hooke (elasticitate liniară)}  
+    
+
+\[
+    \sigma = E \, \varepsilon,
+    \]
+
+
+    unde $\sigma$ este tensiunea, $\varepsilon$ este deformația, iar $E$ este modulul lui Young.
+
+    \item \textbf{Legea lui Fourier (conducție termică)}  
+    
+
+\[
+    \mathbf{q} = -k \nabla T,
+    \]
+
+
+    unde $\mathbf{q}$ este fluxul de căldură, $k$ conductivitatea termică, iar $T$ temperatura.
+
+    \item \textbf{Legea lui Newton (vâscozitate)}  
+    
+
+\[
+    \tau = \mu \frac{du}{dy},
+    \]
+
+
+    unde $\tau$ este tensiunea tangențială, $\mu$ vâscozitatea, iar $u$ viteza fluidului.
+
+    \item \textbf{Legea lui Ohm (conducție electrică)}  
+    
+
+\[
+    \mathbf{J} = \sigma \mathbf{E},
+    \]
+
+
+    unde $\mathbf{J}$ este densitatea de curent, $\sigma$ conductivitatea electrică, iar $\mathbf{E}$ câmpul electric.
+\end{itemize}
+
+Relațiile constitutive sunt esențiale pentru închiderea sistemelor de ecuații provenite din legile de conservare.
+
+\subsection{4.3. Ecuații diferențiale}
+
+Majoritatea sistemelor materiale sunt descrise prin ecuații diferențiale, deoarece acestea surprind evoluția în timp și spațiu a variabilelor fizice.
+
+\subsubsection*{Ecuații diferențiale ordinare (ODE)}
+Apar în sisteme cu un număr finit de variabile de stare:
+
+
+\[
+\frac{dx}{dt} = f(x,t).
+\]
+
+
+
+\subsubsection*{Ecuații diferențiale parțiale (PDE)}
+Apar în fenomene distribuite spațial:
+
+
+\[
+\frac{\partial u}{\partial t} = \mathcal{L}(u, \nabla u, \nabla^2 u, \ldots),
+\]
+
+
+unde $\mathcal{L}$ este un operator diferențial.
+
+Exemple:
+\begin{itemize}
+    \item Ecuația căldurii:
+    
+
+\[
+    \frac{\partial T}{\partial t} = \alpha \nabla^2 T.
+    \]
+
+
+    \item Ecuația undelor:
+    
+
+\[
+    \frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u.
+    \]
+
+
+    \item Ecuațiile Navier–Stokes:
+    
+
+\[
+    \rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla \mathbf{v} \right)
+    = -\nabla p + \mu \nabla^2 \mathbf{v}.
+    \]
+
+
+\end{itemize}
+
+\subsubsection*{Sisteme diferențiale neliniare}
+
+Modelele neliniare apar în:
+\begin{itemize}
+    \item dinamica fluidelor;
+    \item elasticitate neliniară;
+    \item reacții chimice;
+    \item fenomene cu feedback puternic.
+\end{itemize}
+
+Acestea pot prezenta:
+\begin{itemize}
+    \item bifurcații,
+    \item instabilități,
+    \item comportament haotic.
+\end{itemize}
+
+\end{document}

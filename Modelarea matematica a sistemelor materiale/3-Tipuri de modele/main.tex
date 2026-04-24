@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Modelarea Matematică a Sistemelor Materiale \\ \large Tipuri de Modele}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Tipuri de modele}
+
+În modelarea matematică a sistemelor materiale, alegerea tipului de model depinde de natura fenomenului studiat, de nivelul de precizie dorit și de disponibilitatea datelor experimentale. În această secțiune sunt prezentate principalele categorii de modele utilizate în practică.
+
+\subsection{3.1. Modele deterministe}
+
+Modelele deterministe se bazează pe \textbf{legi fizice exacte} și presupun că evoluția sistemului este complet determinată de condițiile inițiale și de ecuațiile care îl descriu. Nu există elemente de aleatoriu în formularea lor.
+
+Aceste modele conduc în mod tipic la:
+\begin{itemize}
+    \item \textbf{ecuații diferențiale ordinare} (ODE), pentru sisteme cu un număr finit de variabile de stare;
+    \item \textbf{ecuații diferențiale parțiale} (PDE), pentru fenomene distribuite în spațiu (transport, difuzie, propagare);
+    \item \textbf{sisteme dinamice} neliniare sau liniare;
+    \item \textbf{modele de transport} (conducție, convecție, radiație).
+\end{itemize}
+
+Aceste modele sunt adecvate atunci când sistemul este bine înțeles și efectele aleatorii sunt neglijabile.
+
+\subsection{3.2. Modele stocastice}
+
+Modelele stocastice includ \textbf{variabile aleatoare} sau termeni de zgomot, fiind utilizate atunci când sistemul prezintă incertitudine sau variabilitate intrinsecă.
+
+Aceste modele sunt utile în:
+\begin{itemize}
+    \item procese cu \textbf{difuzie aleatorie};
+    \item fenomene afectate de \textbf{zgomot termic} sau fluctuații microscopice;
+    \item sisteme cu \textbf{variații ale parametrilor} în timp;
+    \item procese industriale cu incertitudine în măsurători.
+\end{itemize}
+
+Formulările matematice tipice includ:
+\begin{itemize}
+    \item ecuații diferențiale stocastice (SDE);
+    \item procese Markov;
+    \item modele probabilistice discrete.
+\end{itemize}
+
+\subsection{3.3. Modele discrete și continue}
+
+\subsubsection*{Modele discrete}
+Modelele discrete descriu evoluția sistemului în \textbf{pași discreți de timp} sau în \textbf{stări finite}. Sunt utilizate în:
+\begin{itemize}
+    \item procese industriale secvențiale;
+    \item simulări numerice (metode de diferențe finite);
+    \item modele de control digital;
+    \item sisteme cu evenimente discrete.
+\end{itemize}
+
+\subsubsection*{Modele continue}
+Modelele continue descriu evoluția în \textbf{timp continuu} și sunt fundamentale în:
+\begin{itemize}
+    \item mecanică (mișcare, vibrații, elasticitate);
+    \item termodinamică (transfer de căldură);
+    \item dinamica fluidelor;
+    \item electromagnetism.
+\end{itemize}
+
+Aceste modele conduc de obicei la ecuații diferențiale sau integrale.
+
+\subsection{3.4. Modele liniare și neliniare}
+
+\subsubsection*{Modele liniare}
+Modelele liniare sunt caracterizate prin:
+\begin{itemize}
+    \item superpoziția soluțiilor;
+    \item analiză simplă și soluții explicite;
+    \item stabilitate ușor de evaluat;
+    \item comportament previzibil.
+\end{itemize}
+
+Ele sunt utilizate atunci când variațiile sunt mici sau când sistemul poate fi aproximat local printr-un model liniar.
+
+\subsubsection*{Modele neliniare}
+Modelele neliniare apar în majoritatea fenomenelor reale și pot prezenta:
+\begin{itemize}
+    \item comportament complex;
+    \item bifurcații și tranziții de fază;
+    \item instabilități;
+    \item regimuri haotice.
+\end{itemize}
+
+Aceste modele sunt esențiale pentru descrierea fidelă a sistemelor materiale, dar necesită adesea metode numerice pentru analiză.
+
+\end{document}

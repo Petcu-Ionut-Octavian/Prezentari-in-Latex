@@ -1,0 +1,187 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Modelarea Matematică a Sistemelor Materiale \\ \large Exemple de Modele}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Exemple de modele pentru sisteme materiale}
+
+În această secțiune sunt prezentate câteva dintre cele mai importante tipuri de modele utilizate în descrierea sistemelor materiale. Fiecare categorie reflectă un domeniu fizic distinct, dar toate se bazează pe principii comune: legi de conservare, relații constitutive și ecuații diferențiale.
+
+\subsection{5.1. Mecanica materialelor}
+
+Mecanica materialelor studiază comportamentul corpurilor solide supuse la sarcini mecanice. Modelele tipice includ:
+
+\begin{itemize}
+    \item \textbf{bare}, \textbf{grinzi}, \textbf{plăci} — elemente structurale de bază;
+    \item \textbf{tensiuni} şi \textbf{deformaţii} — mărimi fundamentale în analiza materialelor;
+    \item \textbf{modele elastice} — comportament liniar, reversibil;
+    \item \textbf{modele plastice} — comportament ireversibil, cu curgere plastică.
+\end{itemize}
+
+Modelul elastic liniar este descris prin legea lui Hooke:
+
+
+\[
+\sigma = E \, \varepsilon,
+\]
+
+
+unde $\sigma$ este tensiunea, $\varepsilon$ deformația, iar $E$ modulul lui Young.
+
+Pentru grinzi, modelul Euler–Bernoulli conduce la ecuația:
+
+
+\[
+EI \frac{d^4 w}{dx^4} = q(x),
+\]
+
+
+unde $w$ este deplasarea, $I$ momentul de inerție, iar $q(x)$ sarcina distribuită.
+
+\subsection{5.2. Transfer de căldură}
+
+Transferul de căldură apare în trei forme fundamentale:
+
+\begin{itemize}
+    \item \textbf{conducție} (legea lui Fourier);
+    \item \textbf{convecție};
+    \item \textbf{radiație}.
+\end{itemize}
+
+Legea lui Fourier:
+
+
+\[
+\mathbf{q} = -k \nabla T,
+\]
+
+
+unde $\mathbf{q}$ este fluxul de căldură, $k$ conductivitatea termică, iar $T$ temperatura.
+
+Ecuația căldurii:
+
+
+\[
+\frac{\partial T}{\partial t} = \alpha \nabla^2 T,
+\]
+
+
+unde $\alpha$ este difuzivitatea termică.
+
+Convecția este descrisă prin legea lui Newton:
+
+
+\[
+q = h (T_s - T_\infty),
+\]
+
+
+iar radiația prin legea Stefan–Boltzmann:
+
+
+\[
+q = \varepsilon \sigma T^4.
+\]
+
+
+
+\subsection{5.3. Dinamica fluidelor}
+
+Dinamica fluidelor descrie mișcarea fluidelor vâscoase sau nevâscoase. Modelele fundamentale sunt:
+
+\begin{itemize}
+    \item \textbf{ecuațiile Navier–Stokes};
+    \item \textbf{modele de curgere laminară};
+    \item \textbf{modele de curgere turbulentă}.
+\end{itemize}
+
+Ecuațiile Navier–Stokes pentru un fluid incomprimabil:
+
+
+\[
+\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v} \cdot \nabla \mathbf{v} \right)
+= -\nabla p + \mu \nabla^2 \mathbf{v},
+\]
+
+
+
+
+\[
+\nabla \cdot \mathbf{v} = 0.
+\]
+
+
+
+Curgerea laminară este ordonată, iar cea turbulentă prezintă fluctuații haotice, necesitând modele suplimentare (Reynolds-Averaged Navier–Stokes, LES, DNS).
+
+\subsection{5.4. Procese chimice}
+
+Procesele chimice sunt descrise prin modele de:
+
+\begin{itemize}
+    \item \textbf{cinetică chimică};
+    \item \textbf{reacții în lanț};
+    \item \textbf{modele de difuzie–reacție}.
+\end{itemize}
+
+Un model simplu de reacție de ordinul I:
+
+
+\[
+\frac{dC}{dt} = -k C,
+\]
+
+
+unde $C$ este concentrația, iar $k$ constanta de reacție.
+
+Modelele difuzie–reacție combină ecuația lui Fick cu cinetica chimică:
+
+
+\[
+\frac{\partial C}{\partial t} = D \nabla^2 C - k C.
+\]
+
+
+
+Reacțiile în lanț pot fi descrise prin sisteme neliniare de ecuații diferențiale.
+
+\subsection{5.5. Sisteme electromagnetice}
+
+Modelele electromagnetice se bazează pe ecuațiile lui Maxwell:
+
+
+\[
+\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}, \qquad
+\nabla \cdot \mathbf{B} = 0,
+\]
+
+
+
+
+\[
+\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}, \qquad
+\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}.
+\]
+
+
+
+Modelele de circuite electrice (RLC) sunt descrise prin ecuații diferențiale ordinare:
+
+
+\[
+L \frac{dI}{dt} + RI + \frac{1}{C} \int I \, dt = V(t),
+\]
+
+
+unde $R$, $L$, $C$ sunt rezistența, inductanța și capacitatea.
+
+\end{document}
