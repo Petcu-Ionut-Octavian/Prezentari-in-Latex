@@ -1,0 +1,251 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Modelarea Matematică a Sistemelor Materiale \\ \large Capitolul 9: Calcul Tensorial}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Calcul tensorial}
+
+Calculul tensorial este folosit în mecanica teoretică pentru a descrie relațiile dintre forțe,
+mişcări, tensiuni și deformații într-un mod independent de sistemul de coordonate.
+
+\subsection{9.1. Definiția tensorului}
+
+Un tensor de ordinul doi este o aplicație liniară $T : V \to V$ care transformă un vector $u$
+într-un vector $v$:
+
+
+\[
+T(\alpha u + \beta v) = \alpha Tu + \beta Tv.
+\]
+
+
+
+Doi tensori sunt egali dacă:
+
+
+\[
+Tu = Su, \quad \forall u \in V.
+\]
+
+
+
+\subsection{9.2. Componentele unui tensor}
+
+Fie $\{i_1,i_2,i_3\}$ o bază ortonormată. Tensorul $T$ aplicat pe vectorii bazei produce:
+
+
+\[
+Ti_j = T_{1j} i_1 + T_{2j} i_2 + T_{3j} i_3.
+\]
+
+
+
+Matricea asociată tensorului este:
+
+
+\[
+[T] =
+\begin{pmatrix}
+T_{11} & T_{12} & T_{13} \\
+T_{21} & T_{22} & T_{23} \\
+T_{31} & T_{32} & T_{33}
+\end{pmatrix}.
+\]
+
+
+
+Componentele se obțin prin:
+
+
+\[
+T_{ij} = i_i \cdot (T i_j).
+\]
+
+
+
+\subsection{9.3. Produsul tensorial}
+
+Pentru $u,v \in V$, produsul tensorial este aplicația:
+
+
+\[
+(u \otimes v) w = u (v \cdot w).
+\]
+
+
+
+Tensorii $i_i \otimes i_j$ formează o bază a spațiului $\mathrm{Lin}$.
+
+\subsection{9.4. Operații cu tensori}
+
+\paragraph{Suma}
+
+
+\[
+(T+S)_{ij} = T_{ij} + S_{ij}.
+\]
+
+
+
+\paragraph{Produsul de compoziție}
+
+
+\[
+(TS)_{ij} = T_{ik} S_{kj}.
+\]
+
+
+
+\paragraph{Transpusul}
+
+
+\[
+(T^T)_{ij} = T_{ji}.
+\]
+
+
+
+\paragraph{Urma}
+
+
+\[
+\mathrm{tr}(T) = T_{11} + T_{22} + T_{33}.
+\]
+
+
+
+\paragraph{Determinantul}
+
+
+\[
+\det T = \det [T].
+\]
+
+
+
+\paragraph{Produsul scalar}
+
+
+\[
+T \cdot S = T_{ij} S_{ij}.
+\]
+
+
+
+\paragraph{Norma}
+
+
+\[
+\|T\| = \sqrt{T \cdot T}.
+\]
+
+
+
+\subsection{9.5. Schimbarea sistemului de coordonate}
+
+Dacă $Q$ este un tensor ortogonal ($Q^T Q = I$), atunci:
+
+
+
+\[
+[a]' = Q^T [a],
+\]
+
+
+
+
+\[
+[T]' = Q^T [T] Q.
+\]
+
+
+
+\subsection{9.6. Tensori simetrici și antisimetrici}
+
+\paragraph{Tensor simetric}
+
+
+\[
+T^T = T.
+\]
+
+
+
+\paragraph{Tensor antisimetric}
+
+
+\[
+T^T = -T.
+\]
+
+
+
+Orice tensor se descompune în:
+
+
+\[
+T = T_S + T_A,
+\]
+
+
+
+
+\[
+T_S = \frac{1}{2}(T + T^T), \quad
+T_A = \frac{1}{2}(T - T^T).
+\]
+
+
+
+\subsection{9.7. Vectorul coaxial al unui tensor antisimetric}
+
+Pentru un tensor antisimetric $\Omega$ există un vector $\omega$ astfel încât:
+
+
+\[
+\Omega v = \omega \times v.
+\]
+
+
+
+Componentele sunt:
+
+
+\[
+\omega_p = -\frac{1}{2} \varepsilon_{pki} \Omega_{ki}.
+\]
+
+
+
+\subsection{9.8. Exemple fundamentale}
+
+\paragraph{Tensorul rotației}
+Pentru rotație cu unghi $\theta$ în jurul vectorului unitar $n$:
+
+
+\[
+R = (1-\cos\theta)(n \otimes n) + \cos\theta\, I + \sin\theta\, \Omega_n.
+\]
+
+
+
+\paragraph{Tensorul reflexiei}
+Pentru un plan cu normală unitară $n$:
+
+
+\[
+T = I - 2 n \otimes n.
+\]
+
+
+
+\end{document}
