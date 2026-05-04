@@ -1,0 +1,344 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Grafuri și Arbori — Noțiuni Fundamentale și Algoritmi}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducere}
+
+Grafurile sunt structuri fundamentale în informatică, folosite pentru a modela
+rețele, drumuri, relații, dependențe, structuri ierarhice și multe altele.
+Arborii sunt grafuri speciale, fără cicluri, care apar în mod natural în
+structuri de date, algoritmi și modelarea ierarhiilor.
+
+Acest capitol prezintă noțiunile de bază, tipurile de grafuri, reprezentări,
+parcurgeri, arbori, arbori de căutare, arbori parțiali minimali și algoritmi
+clasici precum BFS, DFS, Dijkstra, Kruskal și Prim.
+
+\section{Grafuri — definiții fundamentale}
+
+\subsection{Definiție}
+
+Un \textbf{graf} este o pereche:
+
+
+\[
+G = (V, E),
+\]
+
+
+unde:
+\begin{itemize}
+    \item $V$ este mulțimea vârfurilor (nodurilor),
+    \item $E$ este mulțimea muchiilor.
+\end{itemize}
+
+\subsection{Grafuri orientate și neorientate}
+
+\begin{itemize}
+    \item Într-un \textbf{graf neorientat}, muchiile sunt perechi neordonate $\{u,v\}$.
+    \item Într-un \textbf{graf orientat} (digraf), muchiile sunt perechi ordonate $(u,v)$.
+\end{itemize}
+
+\subsection{Gradele unui nod}
+
+\begin{itemize}
+    \item În graf neorientat: gradul = numărul de muchii incidente.
+    \item În graf orientat:
+    
+
+\[
+    \deg^+(v) = \text{gradul de ieșire}, \quad
+    \deg^-(v) = \text{gradul de intrare}.
+    \]
+
+
+\end{itemize}
+
+\subsection{Lanțuri, drumuri, cicluri}
+
+\begin{itemize}
+    \item \textbf{Lanț}: succesiune de noduri conectate prin muchii.
+    \item \textbf{Drum}: lanț fără repetarea nodurilor.
+    \item \textbf{Ciclu}: drum închis.
+\end{itemize}
+
+\subsection{Conexitate}
+
+\begin{itemize}
+    \item Graf neorientat: \textbf{conex} dacă există drum între orice două noduri.
+    \item Graf orientat: \textbf{tare conex} dacă există drum orientat între orice două noduri.
+\end{itemize}
+
+\section{Reprezentări ale grafurilor}
+
+\subsection{Listă de adiacență}
+
+Pentru fiecare nod păstrăm lista vecinilor săi.
+
+Avantaje:
+\begin{itemize}
+    \item eficient pentru grafuri rare;
+    \item spațiu $O(n + m)$.
+\end{itemize}
+
+\subsection{Matrice de adiacență}
+
+Matrice $n \times n$ unde:
+
+
+\[
+A[i][j] = 
+\begin{cases}
+1, & \text{dacă există muchie } i \to j,\\
+0, & \text{altfel}.
+\end{cases}
+\]
+
+
+
+Avantaje:
+\begin{itemize}
+    \item verificare instantanee a existenței unei muchii;
+    \item spațiu $O(n^2)$.
+\end{itemize}
+
+\section{Parcurgeri fundamentale}
+
+\subsection{Parcurgerea în lățime (BFS)}
+
+BFS explorează graful pe niveluri, folosind o coadă.
+
+\subsubsection*{Pseudocod}
+
+\begin{verbatim}
+BFS(G, s):
+  for each v in V:
+    viz[v] = false
+  queue = empty
+  viz[s] = true
+  enqueue(queue, s)
+
+  while queue not empty:
+    u = dequeue(queue)
+    for each v in adj[u]:
+      if not viz[v]:
+        viz[v] = true
+        enqueue(queue, v)
+\end{verbatim}
+
+\subsubsection*{Complexitate}
+
+
+
+\[
+O(n + m).
+\]
+
+
+
+\subsection{Parcurgerea în adâncime (DFS)}
+
+DFS explorează cât mai adânc posibil înainte de a reveni.
+
+\subsubsection*{Pseudocod}
+
+\begin{verbatim}
+DFS(u):
+  viz[u] = true
+  for each v in adj[u]:
+    if not viz[v]:
+      DFS(v)
+\end{verbatim}
+
+\subsubsection*{Complexitate}
+
+
+
+\[
+O(n + m).
+\]
+
+
+
+\section{Arbori}
+
+\subsection{Definiție}
+
+Un \textbf{arbore} este un graf neorientat, conex, fără cicluri.
+
+Echivalent:
+\begin{itemize}
+    \item între orice două noduri există un drum unic;
+    \item are $n$ noduri și $n-1$ muchii.
+\end{itemize}
+
+\subsection{Arbori înrădăcinați}
+
+Un nod este ales ca rădăcină. Se definesc:
+\begin{itemize}
+    \item părintele,
+    \item copiii,
+    \item nivelul,
+    \item înălțimea.
+\end{itemize}
+
+\section{Arbori binari}
+
+\subsection{Definiție}
+
+Un \textbf{arbore binar} este un arbore în care fiecare nod are cel mult doi copii:
+\begin{itemize}
+    \item copil stâng,
+    \item copil drept.
+\end{itemize}
+
+\subsection{Tipuri de arbori binari}
+
+\begin{itemize}
+    \item complet,
+    \item perfect,
+    \item echilibrat,
+    \item degenerat (listă).
+\end{itemize}
+
+\section{Arbori binari de căutare (BST)}
+
+\subsection{Definiție}
+
+Un arbore binar este BST dacă pentru orice nod $x$:
+
+
+\[
+\text{toate valorile din subarborele stâng} < x < \text{toate valorile din subarborele drept}.
+\]
+
+
+
+\subsection{Operații fundamentale}
+
+\begin{itemize}
+    \item căutare,
+    \item inserare,
+    \item ștergere.
+\end{itemize}
+
+\subsection{Complexități}
+
+
+
+\[
+\text{Best: } O(\log n),\quad
+\text{Worst: } O(n).
+\]
+
+
+
+\section{Arbori parțiali minimali (MST)}
+
+\subsection{Definiție}
+
+Dat un graf ponderat neorientat, un \textbf{arbore parțial minimal} este un arbore
+care conectează toate nodurile cu cost total minim.
+
+\subsection{Algoritmul lui Kruskal}
+
+Sortează muchiile crescător și le adaugă dacă nu formează ciclu (folosind Union-Find).
+
+\subsubsection*{Complexitate}
+
+
+
+\[
+O(m \log m).
+\]
+
+
+
+\subsection{Algoritmul lui Prim}
+
+Construiește MST extinzând treptat un arbore pornind dintr-un nod.
+
+\subsubsection*{Complexitate}
+
+
+
+\[
+O(m \log n).
+\]
+
+
+
+\section{Drumuri minime}
+
+\subsection{Algoritmul lui Dijkstra}
+
+Calculează drumuri minime dintr-o sursă în grafuri cu ponderi pozitive.
+
+\subsubsection*{Complexitate}
+
+
+
+\[
+O(m \log n).
+\]
+
+
+
+\subsection{Algoritmul Bellman-Ford}
+
+Funcționează și cu ponderi negative.
+
+
+
+\[
+O(nm).
+\]
+
+
+
+\section{Grafuri orientate aciclice (DAG)}
+
+\subsection{Definiție}
+
+Un graf orientat fără cicluri se numește DAG.
+
+\subsection{Ordonare topologică}
+
+O ordonare a nodurilor astfel încât toate muchiile merg de la stânga la dreapta.
+
+\subsubsection*{Pseudocod (Kahn)}
+
+\begin{verbatim}
+TopSort(G):
+  compute indegree[v] for all v
+  queue = all v with indegree 0
+  while queue not empty:
+    u = dequeue(queue)
+    output u
+    for each v in adj[u]:
+      indegree[v]--
+      if indegree[v] == 0:
+        enqueue(queue, v)
+\end{verbatim}
+
+\section{Concluzii}
+
+Grafurile și arborii sunt structuri fundamentale în informatică. Ele permit
+modelarea și rezolvarea unor probleme complexe precum căutarea, optimizarea,
+drumurile minime, conectivitatea și ordonarea dependențelor. Algoritmii
+prezentați în acest capitol sunt esențiali pentru orice programator sau
+informatician.
+
+\end{document}

@@ -1,0 +1,308 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Complexitatea Algoritmilor și Teorema Master}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducere}
+
+Analiza complexității algoritmilor este o parte fundamentală a informaticii.
+Scopul ei este să determine cât timp și câtă memorie consumă un algoritm în
+funcție de dimensiunea datelor de intrare.
+
+Complexitatea se exprimă în notații asimptotice precum:
+
+
+\[
+O(\cdot),\ \Omega(\cdot),\ \Theta(\cdot),
+\]
+
+
+care descriu comportamentul algoritmului pentru intrări foarte mari.
+
+\section{Complexitatea temporală}
+
+\subsection{Definiție}
+
+Complexitatea temporală a unui algoritm este funcția $T(n)$ care descrie timpul
+de execuție în funcție de dimensiunea intrării $n$.
+
+În practică, nu măsurăm timpul real (în secunde), ci numărul de operații
+elementare.
+
+\subsection{Notații asimptotice}
+
+\begin{itemize}
+    \item $O(f(n))$: limită superioară (cel mult $f(n)$).
+    \item $\Omega(f(n))$: limită inferioară (cel puțin $f(n)$).
+    \item $\Theta(f(n))$: limită exactă (și $O$, și $\Omega$).
+\end{itemize}
+
+\subsection{Cazuri de analiză}
+
+\begin{itemize}
+    \item \textbf{Cel mai bun caz}: intrarea este favorabilă.
+    \item \textbf{Cazul mediu}: intrarea este aleatoare.
+    \item \textbf{Cel mai rău caz}: intrarea este nefavorabilă.
+\end{itemize}
+
+\section{Complexitatea spațială}
+
+Complexitatea spațială măsoară memoria suplimentară folosită de algoritm.
+
+\begin{itemize}
+    \item Algoritm \textbf{in-place}: folosește $O(1)$ memorie auxiliară.
+    \item Algoritm \textbf{out-of-place}: folosește memorie suplimentară $O(n)$.
+\end{itemize}
+
+\section{Recursivitate și ecuații de recurență}
+
+Algoritmii recursivi (precum Merge Sort, Quick Sort, Binary Search) sunt analizați
+prin \textbf{ecuații de recurență}.
+
+Exemplu:
+
+
+\[
+T(n) = 2T\left(\frac{n}{2}\right) + n.
+\]
+
+
+
+Aceasta descrie un algoritm care împarte problema în două subprobleme de mărime
+$n/2$ și face $n$ operații pentru combinare.
+
+Pentru a rezolva astfel de ecuații folosim \textbf{Teorema Master}.
+
+\section{Teorema Master}
+
+Teorema Master oferă o metodă directă pentru a determina complexitatea recurențelor
+de forma:
+
+
+\[
+T(n) = a\,T\left(\frac{n}{b}\right) + f(n),
+\]
+
+
+unde:
+\begin{itemize}
+    \item $a \ge 1$ este numărul de subprobleme,
+    \item $b > 1$ este factorul de împărțire,
+    \item $f(n)$ este costul combinării rezultatelor.
+\end{itemize}
+
+\subsection{Cazurile Teoremei Master}
+
+Definim:
+
+
+\[
+n^{\log_b a}.
+\]
+
+
+
+\subsubsection*{Cazul 1: $f(n)$ este mai mic decât $n^{\log_b a}$}
+
+Dacă există $\varepsilon > 0$ astfel încât:
+
+
+\[
+f(n) = O\left(n^{\log_b a - \varepsilon}\right),
+\]
+
+
+atunci:
+
+
+\[
+T(n) = \Theta\left(n^{\log_b a}\right).
+\]
+
+
+
+\subsubsection*{Cazul 2: $f(n)$ este egal (asimptotic) cu $n^{\log_b a}$}
+
+Dacă:
+
+
+\[
+f(n) = \Theta\left(n^{\log_b a} \log^k n\right),
+\]
+
+
+atunci:
+
+
+\[
+T(n) = \Theta\left(n^{\log_b a} \log^{k+1} n\right).
+\]
+
+
+
+\subsubsection*{Cazul 3: $f(n)$ este mai mare decât $n^{\log_b a}$}
+
+Dacă există $\varepsilon > 0$ astfel încât:
+
+
+\[
+f(n) = \Omega\left(n^{\log_b a + \varepsilon}\right),
+\]
+
+
+și dacă este îndeplinită condiția de regularitate:
+
+
+\[
+a\,f\left(\frac{n}{b}\right) \le c\,f(n), \quad c < 1,
+\]
+
+
+atunci:
+
+
+\[
+T(n) = \Theta(f(n)).
+\]
+
+
+
+\section{Exemple de aplicare}
+
+\subsection{Merge Sort}
+
+Răspunde recurenței:
+
+
+\[
+T(n) = 2T\left(\frac{n}{2}\right) + n.
+\]
+
+
+
+Aici:
+
+
+\[
+a = 2,\quad b = 2,\quad f(n) = n.
+\]
+
+
+
+Calculăm:
+
+
+\[
+n^{\log_b a} = n^{\log_2 2} = n.
+\]
+
+
+
+Suntem în \textbf{Cazul 2}, deci:
+
+
+\[
+T(n) = \Theta(n \log n).
+\]
+
+
+
+\subsection{Binary Search}
+
+Recurența:
+
+
+\[
+T(n) = T\left(\frac{n}{2}\right) + 1.
+\]
+
+
+
+Aici:
+
+
+\[
+a = 1,\ b = 2,\ f(n) = 1.
+\]
+
+
+
+
+
+\[
+n^{\log_b a} = n^{\log_2 1} = n^0 = 1.
+\]
+
+
+
+Suntem în \textbf{Cazul 2}:
+
+
+\[
+T(n) = \Theta(\log n).
+\]
+
+
+
+\subsection{Quick Sort (cazul mediu)}
+
+Recurența:
+
+
+\[
+T(n) = 2T\left(\frac{n}{2}\right) + n.
+\]
+
+
+
+Identică cu Merge Sort:
+
+
+\[
+T(n) = \Theta(n \log n).
+\]
+
+
+
+\subsection{Quick Sort (cel mai rău caz)}
+
+Recurența:
+
+
+\[
+T(n) = T(n-1) + n.
+\]
+
+
+
+Aceasta se rezolvă prin sumare:
+
+
+\[
+T(n) = n + (n-1) + \cdots + 1 = \Theta(n^2).
+\]
+
+
+
+\section{Concluzii}
+
+\begin{itemize}
+    \item Analiza complexității este esențială pentru a compara algoritmi.
+    \item Notațiile asimptotice descriu comportamentul pentru intrări mari.
+    \item Teorema Master este instrumentul principal pentru recurențe divide et impera.
+    \item Algoritmi precum Merge Sort și Quick Sort (mediu) au complexitate $O(n\log n)$.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Algoritmi de Sortare — Prezentare Explicativă}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducere}
+
+Sortarea este una dintre cele mai fundamentale operații din informatică. 
+Apare în algoritmi de căutare, baze de date, optimizare, grafuri, procesarea datelor
+și în aproape orice aplicație practică. 
+
+Există numeroase metode de sortare, fiecare cu avantaje, dezavantaje și domenii
+în care excelează. În acest capitol prezentăm principalele sortări clasice,
+explicând intuitiv modul lor de funcționare, proprietățile și complexitățile.
+
+\section{Sortarea prin interschimbare (Bubble Sort)}
+
+Bubble Sort este una dintre cele mai simple sortări. Ideea este intuitivă:
+parcurgem vectorul de mai multe ori și comparăm elemente adiacente. Dacă sunt în
+ordine greșită, le interschimbăm. Elementele mari ``urcă'' treptat spre final,
+ca niște bule într-un lichid.
+
+Algoritmul este stabil și funcționează in-place, dar este foarte lent. 
+În cel mai bun caz (vector deja sortat) poate fi liniar dacă detectăm că nu s-au
+făcut schimbări. În medie și în cel mai rău caz are complexitate $O(n^2)$.
+
+Este folosit aproape exclusiv în scop educațional.
+
+\section{Sortarea prin selecție (Selection Sort)}
+
+Selection Sort funcționează prin alegerea repetată a celui mai mic element din
+partea nesortată și mutarea lui la început. La fiecare pas, secvența sortată
+crește cu un element.
+
+Algoritmul este simplu, folosește foarte puține interschimbări (cel mult $n-1$),
+dar necesită $O(n^2)$ comparații indiferent de situație. Nu este stabil, deoarece
+minimul poate proveni dintr-o poziție care schimbă ordinea relativă a elementelor
+egale.
+
+Este util când costul comparațiilor este mic, dar costul schimburilor este mare.
+
+\section{Sortarea prin inserție (Insertion Sort)}
+
+Insertion Sort imită modul în care oamenii sortează cărțile în mână: luăm
+elementele pe rând și le inserăm în poziția corectă în partea deja sortată.
+
+Este stabil, funcționează in-place și este foarte eficient pentru vectori aproape
+sortați, având complexitate $O(n)$ în cel mai bun caz. În medie și în cel mai rău
+caz are complexitate $O(n^2)$.
+
+Este folosit frecvent ca subrutină în algoritmi mai mari, deoarece este rapid pe
+intrări mici.
+
+\section{Counting Sort}
+
+Counting Sort este o sortare fără comparații, construită pe o idee esențială:
+\textbf{poziția finală a unui element într-un vector sortat este determinată de câte elemente sunt strict mai mici decât el}.
+
+Pentru a afla această informație eficient, algoritmul parcurge trei etape:
+
+\begin{enumerate}
+    \item \textbf{Numără aparițiile fiecărei valori} din intervalul permis. 
+    Acesta este doar un pas intermediar, nu scopul final.
+
+    \item \textbf{Transformă numărătorile în prefix-sum}, astfel încât pentru fiecare valoare $v$ să știm:
+    
+
+\[
+    C[v] = \text{numărul de elemente } \le v.
+    \]
+
+
+    Din această informație rezultă imediat:
+    
+
+\[
+    \text{numărul de elemente strict mai mici decât } v = C[v-1].
+    \]
+
+
+
+    \item \textbf{Folosind aceste valori}, fiecare element își poate determina direct poziția finală în vectorul sortat.
+\end{enumerate}
+
+Counting Sort este \textbf{stabil}, foarte rapid și are complexitate:
+
+
+\[
+O(n + k),
+\]
+
+
+unde $k$ este valoarea maximă posibilă. Devine însă ineficient dacă $k$ este foarte mare, deoarece necesită memorie suplimentară proporțională cu $k$.
+
+Este folosit frecvent ca etapă în Radix Sort, unde domeniul valorilor este controlat.
+
+\section{Merge Sort (sortarea prin interclasare)}
+
+Merge Sort este un algoritm clasic de tip \textit{divide et impera}. Ideea lui este elegantă și puternică:
+
+\begin{enumerate}
+    \item împarte vectorul în două jumătăți aproximativ egale;
+    \item sortează recursiv fiecare jumătate;
+    \item interclasează cele două jumătăți sortate într-un singur vector ordonat.
+\end{enumerate}
+
+Interclasarea este operația-cheie: două secvențe deja sortate pot fi combinate într-una singură în timp liniar.
+
+Merge Sort este un algoritm:
+\begin{itemize}
+    \item \textbf{stabil};
+    \item \textbf{foarte robust}, având complexitate garantată:
+    
+
+\[
+    O(n \log n)
+    \]
+
+
+    în orice caz;
+    \item \textbf{nu este in-place}, deoarece necesită memorie suplimentară $O(n)$.
+\end{itemize}
+
+Este preferat în aplicații unde stabilitatea este importantă sau când datele sunt prea mari pentru a încăpea în memorie și sortarea se face pe disc (sortare externă).
+
+\section{Quick Sort}
+
+Quick Sort este considerat în practică unul dintre cei mai rapizi algoritmi de
+sortare. Alege un pivot, împarte vectorul în elemente mai mici și mai mari decât
+pivotul, apoi sortează recursiv cele două părți.
+
+În medie are complexitate $O(n \log n)$, dar în cel mai rău caz poate ajunge la
+$O(n^2)$ dacă pivotul este ales prost. Există însă strategii de alegere a
+pivotului care reduc semnificativ riscul cazului nefavorabil.
+
+Este in-place, dar nu este stabil. În practică este adesea cel mai rapid algoritm
+de sortare generală.
+
+\section{Heap Sort}
+
+Heap Sort folosește o structură de date numită heap (un arbore binar complet cu
+proprietatea de heap). Algoritmul construiește un heap din vector, apoi extrage
+repetat maximul (sau minimul) și îl mută la final.
+
+Are complexitate $O(n \log n)$ în orice caz, este in-place și nu necesită memorie
+suplimentară semnificativă. Nu este stabil.
+
+Este folosit când avem nevoie de performanță garantată și memorie minimă.
+
+\section{Sortarea folosind arbori de căutare (BST Sort)}
+
+Sortarea prin arbori de căutare constă în inserarea tuturor elementelor într-un
+arbore binar de căutare, apoi efectuarea unei parcurgeri in-order, care produce
+elementele în ordine sortată.
+
+Complexitatea depinde de forma arborelui:
+\begin{itemize}
+    \item $O(n \log n)$ în medie,
+    \item $O(n^2)$ în cel mai rău caz (arbore degenerat).
+\end{itemize}
+
+Dacă folosim arbori echilibrați (AVL, Red-Black), complexitatea devine garantat
+$O(n \log n)$.
+
+Algoritmul nu este in-place și nu este stabil.
+
+\section{Concluzii}
+
+Există numeroase algoritmi de sortare, fiecare potrivit pentru situații diferite.
+Algoritmii simpli (Bubble Sort, Selection Sort, Insertion Sort) sunt utili pentru
+înțelegerea conceptelor de bază. Algoritmii avansați (Merge Sort, Quick Sort,
+Heap Sort) sunt folosiți în practică datorită eficienței lor.
+
+Sortările fără comparații (Counting Sort) pot fi extrem de rapide atunci când
+domeniul valorilor este restrâns.
+
+\end{document}
