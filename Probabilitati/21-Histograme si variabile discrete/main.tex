@@ -73,11 +73,10 @@ Funcția $p : S \to [0,1]$ definită prin $p(x_k) = p_k$ se numește
 
 \section{Exemple fundamentale}
 
-\subsection{Variabila Bernoulli}
+\subsection{Distribuția Bernoulli}
 
 \begin{definition}
-O variabilă aleatoare $X$ se numește \textbf{Bernoulli} cu parametru $p \in [0,1]$
-dacă:
+O variabilă aleatoare $X$ se numește \textbf{Bernoulli} cu parametru $p \in [0,1]$ dacă:
 
 
 \[
@@ -85,82 +84,112 @@ dacă:
 \]
 
 
-Notăm:
-
-
-\[
-X \sim \mathrm{Bernoulli}(p).
-\]
-
-
+Notăm $X \sim \mathrm{Bernoulli}(p)$.
 \end{definition}
 
-\begin{example}
-Aruncarea unei monede:
-
-
-\[
-X = 
-\begin{cases}
-1, & \text{dacă apare ``cap''},\\
-0, & \text{dacă apare ``pajură''}.
-\end{cases}
-\]
-
-
-\end{example}
-
-\subsection{Zar cu $k$ fețe}
+\subsection{Distribuția polinomială pe o mulțime finită}
 
 \begin{definition}
-Fie $k \ge 2$. O variabilă aleatoare $X$ se numește
-\textbf{zar cu $k$ fețe} dacă:
+Fie $S = \{x_1, \dots, x_k\}$ o mulțime finită și $p_1, \dots, p_k$ probabilități cu
+$\sum_{i=1}^k p_i = 1$.
+O variabilă aleatoare $X$ cu:
 
 
 \[
-\mathbb{P}(X = i) = \frac{1}{k}, \qquad i = 1, \dots, k.
+\mathbb{P}(X = x_i) = p_i
 \]
 
 
+se numește \textbf{distribuție polinomială} pe $S$.
 \end{definition}
 
-\begin{example}
-Zar obișnuit:
+\subsection{Distribuția geometrică}
+
+\begin{definition}
+O variabilă aleatoare $X$ se numește \textbf{geometrică} cu parametru $p \in (0,1]$ dacă:
 
 
 \[
-X(\Omega) = \{1,2,3,4,5,6\}, \qquad \mathbb{P}(X=i)=\frac{1}{6}.
+\mathbb{P}(X = k) = (1-p)^{k-1} p, \qquad k = 1,2,\dots
 \]
 
 
-\end{example}
+Notăm $X \sim \mathrm{Geom}(p)$.
+\end{definition}
 
-\subsection{Distribuția binomială}
+\subsection{Distribuția binomială negativă}
 
 \begin{definition}
-Fie $n \in \mathbb{N}$ și $p \in [0,1]$.
-O variabilă aleatoare $X$ se numește \textbf{binomială} cu parametrii $(n,p)$ dacă:
+Fie $r \in \mathbb{N}$ și $p \in (0,1]$.
+O variabilă aleatoare $X$ se numește \textbf{binomială negativă} dacă:
+
+
+\[
+\mathbb{P}(X = k) = \binom{k-1}{r-1} p^r (1-p)^{k-r},
+\qquad k = r, r+1, \dots
+\]
+
+
+Notăm $X \sim \mathrm{NegBin}(r,p)$.
+\end{definition}
+
+\subsection{Distribuția Poisson}
+
+\begin{definition}
+O variabilă aleatoare $X$ se numește \textbf{Poisson} cu parametru $\lambda > 0$ dacă:
+
+
+\[
+\mathbb{P}(X = k) = e^{-\lambda} \frac{\lambda^k}{k!},
+\qquad k = 0,1,2,\dots
+\]
+
+
+Notăm $X \sim \mathrm{Poisson}(\lambda)$.
+\end{definition}
+
+\subsection{Distribuția hipergeometrică}
+
+\begin{definition}
+Fie o populație cu $N$ elemente, dintre care $M$ sunt de tip ``succes''.
+Extragem fără înlocuire $n$ elemente.
+Variabila aleatoare $X$ = numărul de succese are distribuție \textbf{hipergeometrică}:
 
 
 \[
 \mathbb{P}(X = k)
-= \binom{n}{k} p^k (1-p)^{n-k},
+= \frac{\binom{M}{k} \binom{N-M}{n-k}}{\binom{N}{n}},
 \qquad k = 0,1,\dots,n.
 \]
 
 
-Notăm:
+Notăm $X \sim \mathrm{Hypergeom}(N,M,n)$.
+\end{definition}
+
+\subsection{Distribuția multinomială}
+
+\begin{definition}
+Fie $n \in \mathbb{N}$ și probabilități $p_1,\dots,p_k$ cu $\sum p_i = 1$.
+Un vector aleator
 
 
 \[
-X \sim \mathrm{Bin}(n,p).
+(X_1,\dots,X_k)
 \]
 
 
+are distribuție \textbf{multinomială} dacă:
+
+
+\[
+\mathbb{P}(X_1 = x_1, \dots, X_k = x_k)
+= \frac{n!}{x_1! \cdots x_k!} p_1^{x_1} \cdots p_k^{x_k},
+\]
+
+
+unde $x_1 + \cdots + x_k = n$.
+Notăm $(X_1,\dots,X_k) \sim \mathrm{Multinomial}(n; p_1,\dots,p_k)$.
 \end{definition}
 
-\begin{example}
-Numărul de succese în $n$ aruncări independente ale unei monede cu probabilitatea $p$ de succes.
-\end{example}
 
 \end{document}

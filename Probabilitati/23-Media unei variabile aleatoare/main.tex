@@ -1,0 +1,790 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Media (Valoarea Așteptată) a unei Variabile Aleatoare}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definiție}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{example}{Exemplu}
+
+\begin{document}
+
+\maketitle
+
+\section{Definiția generală a valorii așteptate}
+
+\begin{definition}
+Fie $X$ o variabilă aleatoare discretă cu valori în mulțimea cel mult numărabilă
+$S = \{x_1, x_2, \dots\}$ și funcție de masă a probabilității $p(x_k) = \mathbb{P}(X = x_k)$.
+\textbf{Valoarea așteptată} (sau \textbf{media}) lui $X$ este
+
+
+\[
+\mathbb{E}[X] := \sum_{k} x_k\, p(x_k),
+\]
+
+
+dacă seria este absolut convergentă, adică $\sum_k |x_k| p(x_k) < \infty$.
+\end{definition}
+
+\begin{definition}
+Fie $X$ o variabilă aleatoare continuă cu densitate $f:\mathbb{R}\to[0,\infty)$.
+\textbf{Valoarea așteptată} a lui $X$ este
+
+
+\[
+\mathbb{E}[X] := \int_{-\infty}^{\infty} x f(x)\, dx,
+\]
+
+
+dacă integrala Lebesgue $\int_{-\infty}^{\infty} |x| f(x)\, dx$ este finită.
+\end{definition}
+
+\section{Proprietăți fundamentale ale valorii așteptate}
+
+\begin{proposition}[Linearitatea]
+Fie $X,Y$ variabile aleatoare cu $\mathbb{E}[|X|]<\infty$, $\mathbb{E}[|Y|]<\infty$ și $a,b\in\mathbb{R}$.
+Atunci
+
+
+\[
+\mathbb{E}[aX + bY] = a\,\mathbb{E}[X] + b\,\mathbb{E}[Y].
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Demonstrăm pentru cazul discret; cazul continuu este analog, cu sume înlocuite de integrale.
+
+Presupunem că $X$ și $Y$ iau valori în mulțimile cel mult numărabile
+$S_X = \{x_i\}$, $S_Y = \{y_j\}$.
+Atunci
+
+
+\[
+\mathbb{E}[aX + bY]
+= \sum_{i,j} (a x_i + b y_j)\, \mathbb{P}(X = x_i, Y = y_j).
+\]
+
+
+Dezvoltăm:
+
+
+\[
+\mathbb{E}[aX + bY]
+= a \sum_{i,j} x_i\, \mathbb{P}(X = x_i, Y = y_j)
++ b \sum_{i,j} y_j\, \mathbb{P}(X = x_i, Y = y_j).
+\]
+
+
+Observăm că
+
+
+\[
+\sum_{j} \mathbb{P}(X = x_i, Y = y_j) = \mathbb{P}(X = x_i),
+\]
+
+
+deci
+
+
+\[
+\sum_{i,j} x_i\, \mathbb{P}(X = x_i, Y = y_j)
+= \sum_i x_i \sum_j \mathbb{P}(X = x_i, Y = y_j)
+= \sum_i x_i\, \mathbb{P}(X = x_i)
+= \mathbb{E}[X].
+\]
+
+
+Analog,
+
+
+\[
+\sum_{i,j} y_j\, \mathbb{P}(X = x_i, Y = y_j)
+= \sum_j y_j\, \mathbb{P}(Y = y_j)
+= \mathbb{E}[Y].
+\]
+
+
+Prin urmare,
+
+
+\[
+\mathbb{E}[aX + bY] = a\,\mathbb{E}[X] + b\,\mathbb{E}[Y].
+\]
+
+
+\end{proof}
+
+\begin{proposition}[Media unei constante]
+Pentru orice constantă $c\in\mathbb{R}$, dacă $X \equiv c$ (adică $X(\omega)=c$ pentru orice $\omega$),
+atunci
+
+
+\[
+\mathbb{E}[X] = c.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+În cazul discret, $X$ ia o singură valoare $c$ cu probabilitate $1$:
+
+
+\[
+\mathbb{E}[X] = \sum_x x\,\mathbb{P}(X=x) = c\cdot \mathbb{P}(X=c) = c\cdot 1 = c.
+\]
+
+
+În cazul continuu, densitatea este concentrată în sens de distribuție la $c$, iar integrala dă același rezultat.
+\end{proof}
+
+\begin{proposition}[Monotonicitate]
+Dacă $X\le Y$ aproape sigur și $\mathbb{E}[X],\mathbb{E}[Y]$ există, atunci
+
+
+\[
+\mathbb{E}[X] \le \mathbb{E}[Y].
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Considerăm variabila $Z = Y - X \ge 0$ aproape sigur.
+Atunci $\mathbb{E}[Z] \ge 0$ (deoarece integrala/suma unei funcții nenegative este nenegativă).
+Dar
+
+
+\[
+\mathbb{E}[Z] = \mathbb{E}[Y-X] = \mathbb{E}[Y] - \mathbb{E}[X],
+\]
+
+
+de unde rezultă $\mathbb{E}[Y] - \mathbb{E}[X] \ge 0$, adică $\mathbb{E}[X] \le \mathbb{E}[Y]$.
+\end{proof}
+
+\section{Mediile distribuțiilor discrete fundamentale}
+
+\subsection{Distribuția Bernoulli}
+
+\begin{definition}
+$X \sim \mathrm{Bernoulli}(p)$ dacă
+
+
+\[
+\mathbb{P}(X=1)=p,\quad \mathbb{P}(X=0)=1-p.
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Dacă $X \sim \mathrm{Bernoulli}(p)$, atunci
+
+
+\[
+\mathbb{E}[X] = p.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Prin definiție:
+
+
+\[
+\mathbb{E}[X] = 0\cdot \mathbb{P}(X=0) + 1\cdot \mathbb{P}(X=1)
+= 0\cdot (1-p) + 1\cdot p = p.
+\]
+
+
+\end{proof}
+
+\subsection{Distribuția polinomială pe o mulțime finită}
+
+\begin{definition}
+Fie $S = \{x_1,\dots,x_k\}$ și $\mathbb{P}(X=x_i)=p_i$, cu $\sum_{i=1}^k p_i=1$.
+Spunem că $X$ are distribuție polinomială pe $S$.
+\end{definition}
+
+\begin{proposition}
+Media lui $X$ este
+
+
+\[
+\mathbb{E}[X] = \sum_{i=1}^k x_i p_i.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Direct din definiția generală a valorii așteptate pentru variabile discrete.
+\end{proof}
+
+\subsection{Distribuția geometrică}
+
+\begin{definition}
+$X \sim \mathrm{Geom}(p)$ dacă
+
+
+\[
+\mathbb{P}(X = k) = (1-p)^{k-1} p,\quad k=1,2,\dots
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Dacă $X \sim \mathrm{Geom}(p)$, atunci
+
+
+\[
+\mathbb{E}[X] = \frac{1}{p}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Avem
+
+
+\[
+\mathbb{E}[X] = \sum_{k=1}^{\infty} k (1-p)^{k-1} p = p \sum_{k=1}^{\infty} k q^{k-1},
+\]
+
+
+unde $q = 1-p$.
+Știm că pentru $|q|<1$,
+
+
+\[
+\sum_{k=1}^{\infty} k q^{k-1} = \frac{1}{(1-q)^2}.
+\]
+
+
+Aceasta se obține derivând seria geometrică $\sum_{k=0}^{\infty} q^k = \frac{1}{1-q}$.
+Deci
+
+
+\[
+\mathbb{E}[X] = p \cdot \frac{1}{(1-q)^2} = p \cdot \frac{1}{p^2} = \frac{1}{p}.
+\]
+
+
+\end{proof}
+
+\subsection{Distribuția binomială negativă}
+
+\begin{definition}
+$X \sim \mathrm{NegBin}(r,p)$ dacă
+
+
+\[
+\mathbb{P}(X = k) = \binom{k-1}{r-1} p^r (1-p)^{k-r},\quad k=r,r+1,\dots
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Dacă $X \sim \mathrm{NegBin}(r,p)$, atunci
+
+
+\[
+\mathbb{E}[X] = \frac{r}{p}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Interpretăm $X$ ca numărul de încercări necesare pentru a obține $r$ succese,
+unde fiecare încercare este Bernoulli$(p)$ și încercările sunt independente.
+Fie $X_i$ numărul de încercări necesare pentru a obține succesul $i$ după succesul $i-1$.
+Atunci $X_i \sim \mathrm{Geom}(p)$, independente, și
+
+
+\[
+X = X_1 + \cdots + X_r.
+\]
+
+
+Prin linearitatea valorii așteptate și rezultatul pentru geometrică:
+
+
+\[
+\mathbb{E}[X] = \sum_{i=1}^r \mathbb{E}[X_i] = r \cdot \frac{1}{p} = \frac{r}{p}.
+\]
+
+
+\end{proof}
+
+\subsection{Distribuția Poisson}
+
+\begin{definition}
+$X \sim \mathrm{Poisson}(\lambda)$ dacă
+
+
+\[
+\mathbb{P}(X = k) = e^{-\lambda} \frac{\lambda^k}{k!},\quad k=0,1,2,\dots
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Dacă $X \sim \mathrm{Poisson}(\lambda)$, atunci
+
+
+\[
+\mathbb{E}[X] = \lambda.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Calculăm:
+
+
+\[
+\mathbb{E}[X] = \sum_{k=0}^{\infty} k e^{-\lambda} \frac{\lambda^k}{k!}
+= e^{-\lambda} \sum_{k=1}^{\infty} k \frac{\lambda^k}{k!}.
+\]
+
+
+Pentru $k\ge1$, $k \frac{\lambda^k}{k!} = \lambda \frac{\lambda^{k-1}}{(k-1)!}$, deci
+
+
+\[
+\mathbb{E}[X] = e^{-\lambda} \lambda \sum_{k=1}^{\infty} \frac{\lambda^{k-1}}{(k-1)!}
+= \lambda e^{-\lambda} \sum_{j=0}^{\infty} \frac{\lambda^{j}}{j!}
+= \lambda e^{-\lambda} e^{\lambda} = \lambda.
+\]
+
+
+\end{proof}
+
+\subsection{Distribuția hipergeometrică}
+
+\begin{definition}
+$X \sim \mathrm{Hypergeom}(N,M,n)$ dacă
+
+
+\[
+\mathbb{P}(X = k)
+= \frac{\binom{M}{k} \binom{N-M}{n-k}}{\binom{N}{n}},
+\quad k=0,1,\dots,n,
+\]
+
+
+unde $N$ este mărimea populației, $M$ numărul de ``succese'' în populație,
+iar $n$ mărimea eșantionului extras fără înlocuire.
+\end{definition}
+
+\begin{proposition}
+Dacă $X \sim \mathrm{Hypergeom}(N,M,n)$, atunci
+
+
+\[
+\mathbb{E}[X] = n \frac{M}{N}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Considerăm indicatorii $I_i$ pentru fiecare element extras, $i=1,\dots,n$:
+$I_i = 1$ dacă al $i$-lea element extras este succes, $0$ altfel.
+Atunci
+
+
+\[
+X = I_1 + \cdots + I_n.
+\]
+
+
+Prin linearitate:
+
+
+\[
+\mathbb{E}[X] = \sum_{i=1}^n \mathbb{E}[I_i].
+\]
+
+
+Dar $\mathbb{E}[I_i] = \mathbb{P}(I_i=1)$ este probabilitatea ca un element extras
+să fie succes. Deoarece extragerile sunt simetrice, această probabilitate este
+
+
+\[
+\mathbb{P}(I_i=1) = \frac{M}{N}.
+\]
+
+
+Deci
+
+
+\[
+\mathbb{E}[X] = \sum_{i=1}^n \frac{M}{N} = n \frac{M}{N}.
+\]
+
+
+\end{proof}
+
+\subsection{Distribuția multinomială}
+
+\begin{definition}
+$(X_1,\dots,X_k) \sim \mathrm{Multinomial}(n; p_1,\dots,p_k)$ dacă
+
+
+\[
+\mathbb{P}(X_1=x_1,\dots,X_k=x_k)
+= \frac{n!}{x_1!\cdots x_k!} p_1^{x_1}\cdots p_k^{x_k},
+\]
+
+
+unde $x_1+\cdots+x_k = n$.
+\end{definition}
+
+\begin{proposition}
+Dacă $(X_1,\dots,X_k) \sim \mathrm{Multinomial}(n; p_1,\dots,p_k)$, atunci
+
+
+\[
+\mathbb{E}[X_i] = n p_i,\quad i=1,\dots,k.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Interpretăm $X_i$ ca numărul de apariții ale categoriei $i$ în $n$ încercări independente,
+fiecare încercare având probabilitatea $p_i$ de a fi în categoria $i$.
+Atunci $X_i$ are distribuție binomială $\mathrm{Bin}(n,p_i)$, iar media unei binomiale este $np_i$.
+Riguros, putem scrie $X_i = \sum_{j=1}^n I_{ij}$, unde $I_{ij}$ este indicatorul că
+încercarea $j$ a căzut în categoria $i$. Atunci
+
+
+\[
+\mathbb{E}[X_i] = \sum_{j=1}^n \mathbb{E}[I_{ij}] = \sum_{j=1}^n p_i = n p_i.
+\]
+
+
+\end{proof}
+
+\section{Mediile distribuțiilor continue fundamentale}
+
+\subsection{Distribuția uniformă pe un interval}
+
+\begin{definition}
+$X \sim \mathrm{Unif}(a,b)$ dacă
+
+
+\[
+f(x) =
+\begin{cases}
+\dfrac{1}{b-a}, & x \in [a,b], \\[6px]
+0, & \text{altfel}.
+\end{cases}
+\]
+
+
+
+\end{definition}
+
+\begin{proposition}
+Dacă $X \sim \mathrm{Unif}(a,b)$, atunci
+
+
+\[
+\mathbb{E}[X] = \frac{a+b}{2}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Prin definiție:
+
+
+\[
+\mathbb{E}[X] = \int_{-\infty}^{\infty} x f(x)\, dx
+= \int_a^b x \frac{1}{b-a}\, dx
+= \frac{1}{b-a} \int_a^b x\, dx.
+\]
+
+
+Calculăm integrala:
+
+
+\[
+\int_a^b x\, dx = \left.\frac{x^2}{2}\right|_a^b = \frac{b^2-a^2}{2}
+= \frac{(b-a)(b+a)}{2}.
+\]
+
+
+Deci
+
+
+\[
+\mathbb{E}[X] = \frac{1}{b-a} \cdot \frac{(b-a)(b+a)}{2} = \frac{a+b}{2}.
+\]
+
+
+\end{proof}
+
+\subsection{Distribuția exponențială}
+
+\begin{definition}
+$X \sim \mathrm{Exp}(\lambda)$ dacă
+
+
+\[
+f(x) =
+\begin{cases}
+\lambda e^{-\lambda x}, & x \ge 0,\\
+0, & x < 0.
+\end{cases}
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Dacă $X \sim \mathrm{Exp}(\lambda)$, atunci
+
+
+\[
+\mathbb{E}[X] = \frac{1}{\lambda}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+
+
+\[
+\mathbb{E}[X] = \int_0^{\infty} x \lambda e^{-\lambda x}\, dx.
+\]
+
+
+Facem schimbarea de variabilă $t = \lambda x$, $x = t/\lambda$, $dx = dt/\lambda$:
+
+
+\[
+\mathbb{E}[X] = \int_0^{\infty} \frac{t}{\lambda} \lambda e^{-t} \frac{1}{\lambda}\, dt
+= \frac{1}{\lambda} \int_0^{\infty} t e^{-t}\, dt.
+\]
+
+
+Dar
+
+
+\[
+\int_0^{\infty} t e^{-t}\, dt = \Gamma(2) = 1!,
+\]
+
+
+deci
+
+
+\[
+\mathbb{E}[X] = \frac{1}{\lambda}.
+\]
+
+
+\end{proof}
+
+\subsection{Distribuția Gamma}
+
+\begin{definition}
+$X \sim \mathrm{Gamma}(\alpha,\lambda)$ dacă
+
+
+\[
+f(x) =
+\begin{cases}
+\dfrac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\lambda x}, & x \ge 0,\\[6pt]
+0, & x < 0.
+\end{cases}
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Dacă $X \sim \mathrm{Gamma}(\alpha,\lambda)$, atunci
+
+
+\[
+\mathbb{E}[X] = \frac{\alpha}{\lambda}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+
+
+\[
+\mathbb{E}[X] = \int_0^{\infty} x \frac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha-1} e^{-\lambda x}\, dx
+= \frac{\lambda^\alpha}{\Gamma(\alpha)} \int_0^{\infty} x^{\alpha} e^{-\lambda x}\, dx.
+\]
+
+
+Schimbăm variabila $t = \lambda x$, $x = t/\lambda$, $dx = dt/\lambda$:
+
+
+\[
+\mathbb{E}[X] = \frac{\lambda^\alpha}{\Gamma(\alpha)}
+\int_0^{\infty} \left(\frac{t}{\lambda}\right)^{\alpha} e^{-t} \frac{1}{\lambda}\, dt
+= \frac{\lambda^\alpha}{\Gamma(\alpha)} \cdot \frac{1}{\lambda^{\alpha+1}}
+\int_0^{\infty} t^{\alpha} e^{-t}\, dt.
+\]
+
+
+Dar
+
+
+\[
+\int_0^{\infty} t^{\alpha} e^{-t}\, dt = \Gamma(\alpha+1) = \alpha \Gamma(\alpha).
+\]
+
+
+Deci
+
+
+\[
+\mathbb{E}[X] = \frac{1}{\lambda} \cdot \frac{\Gamma(\alpha+1)}{\Gamma(\alpha)}
+= \frac{1}{\lambda} \cdot \alpha = \frac{\alpha}{\lambda}.
+\]
+
+
+\end{proof}
+
+\subsection{Distribuția normală}
+
+\begin{definition}
+$X \sim \mathcal{N}(\mu,\sigma^2)$ dacă
+
+
+\[
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}
+\exp\!\left( -\frac{(x - \mu)^2}{2\sigma^2} \right).
+\]
+
+
+\end{definition}
+
+\begin{proposition}
+Dacă $X \sim \mathcal{N}(\mu,\sigma^2)$, atunci
+
+
+\[
+\mathbb{E}[X] = \mu.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Facem schimbarea de variabilă $Z = \frac{X-\mu}{\sigma}$.
+Atunci $Z \sim \mathcal{N}(0,1)$, iar $X = \mu + \sigma Z$.
+Prin linearitatea valorii așteptate:
+
+
+\[
+\mathbb{E}[X] = \mathbb{E}[\mu + \sigma Z]
+= \mu + \sigma \mathbb{E}[Z].
+\]
+
+
+Rămâne să arătăm că $\mathbb{E}[Z]=0$ pentru $Z\sim\mathcal{N}(0,1)$.
+Densitatea lui $Z$ este
+
+
+\[
+\varphi(z) = \frac{1}{\sqrt{2\pi}} e^{-z^2/2},
+\]
+
+
+care este funcție pară: $\varphi(-z)=\varphi(z)$.
+Atunci
+
+
+\[
+\mathbb{E}[Z] = \int_{-\infty}^{\infty} z \varphi(z)\, dz.
+\]
+
+
+Funcția $z\varphi(z)$ este impară, deci integrala pe $\mathbb{R}$ este $0$.
+Prin urmare $\mathbb{E}[Z]=0$ și
+
+
+\[
+\mathbb{E}[X] = \mu.
+\]
+
+
+\end{proof}
+
+\section{Legături între distribuții: Exp și Gamma}
+
+\begin{proposition}
+Dacă $X_1,\dots,X_n$ sunt independente și $X_i \sim \mathrm{Exp}(\lambda)$,
+atunci
+
+
+\[
+S_n = X_1 + \cdots + X_n \sim \mathrm{Gamma}(n,\lambda),
+\]
+
+
+iar
+
+
+\[
+\mathbb{E}[S_n] = \frac{n}{\lambda}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Fiecare $X_i$ are distribuție Gamma cu parametri $(\alpha=1,\lambda)$.
+Se poate arăta (prin convoluție sau prin transformate Laplace) că suma a două variabile
+Gamma independente cu același parametru de rată $\lambda$ și forme $\alpha_1,\alpha_2$
+este Gamma$(\alpha_1+\alpha_2,\lambda)$.
+Prin inducție, $S_n \sim \mathrm{Gamma}(n,\lambda)$.
+
+Pentru medie, folosim linearitatea:
+
+
+\[
+\mathbb{E}[S_n] = \sum_{i=1}^n \mathbb{E}[X_i]
+= n \cdot \frac{1}{\lambda} = \frac{n}{\lambda},
+\]
+
+
+în acord cu formula pentru Gamma$(n,\lambda)$.
+\end{proof}
+
+\end{document}

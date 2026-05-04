@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Variabile Continue cu Densitate}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definiție}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{example}{Exemplu}
+
+\begin{document}
+
+\maketitle
+
+\section{Variabile aleatoare continue}
+
+\begin{definition}
+O variabilă aleatoare $X$ se numește \textbf{continuă} dacă există o funcție
+$f : \mathbb{R} \to [0,\infty)$, numită \textbf{densitate}, astfel încât:
+
+
+\[
+\mathbb{P}(X \in B) = \int_B f(x)\, dx
+\]
+
+
+pentru orice mulțime boreliană $B \subseteq \mathbb{R}$.
+Funcția $f$ satisface:
+
+
+\[
+f(x) \ge 0, \qquad \int_{-\infty}^{\infty} f(x)\, dx = 1.
+\]
+
+
+\end{definition}
+
+\section{Exemple fundamentale de distribuții continue}
+
+\subsection{Distribuția uniformă pe un interval}
+
+\begin{definition}
+Fie $a < b$. O variabilă aleatoare $X$ are distribuție \textbf{uniformă} pe intervalul $[a,b]$ dacă:
+
+
+\[
+f(x) =
+\begin{cases}
+\dfrac{1}{b-a}, & x \in [a,b], \\[12pt]
+0, & \text{altfel}.
+\end{cases}
+\]
+
+
+Notăm $X \sim \mathrm{Unif}(a,b)$.
+\end{definition}
+
+\subsection{Distribuția exponențială}
+
+\begin{definition}
+O variabilă aleatoare $X$ se numește \textbf{exponențială} cu parametru $\lambda > 0$ dacă are densitatea:
+
+
+\[
+f(x) =
+\begin{cases}
+\lambda e^{-\lambda x}, & x \ge 0,\\
+0, & x < 0.
+\end{cases}
+\]
+
+
+Notăm $X \sim \mathrm{Exp}(\lambda)$.
+\end{definition}
+
+\subsection{Distribuția Gamma}
+
+\begin{definition}
+Fie $\alpha > 0$ (parametrul de formă) și $\lambda > 0$ (parametrul de rată).
+O variabilă aleatoare $X$ are distribuție \textbf{Gamma} dacă:
+
+
+\[
+f(x) =
+\begin{cases}
+\dfrac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\lambda x}, & x \ge 0,\\[6pt]
+0, & x < 0.
+\end{cases}
+\]
+
+
+Notăm $X \sim \mathrm{Gamma}(\alpha,\lambda)$.
+\end{definition}
+
+\subsection{Distribuția normală (gaussiană)}
+
+\begin{definition}
+Fie $\mu \in \mathbb{R}$ și $\sigma > 0$.
+O variabilă aleatoare $X$ se numește \textbf{normală} cu medie $\mu$ și deviație standard $\sigma$ dacă:
+
+
+\[
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}
+\exp\!\left( -\frac{(x - \mu)^2}{2\sigma^2} \right).
+\]
+
+
+Notăm $X \sim \mathcal{N}(\mu,\sigma^2)$.
+\end{definition}
+
+\end{document}
