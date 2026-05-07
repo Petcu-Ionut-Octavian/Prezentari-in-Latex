@@ -177,6 +177,68 @@ Dar
 de unde rezultă $\mathbb{E}[Y] - \mathbb{E}[X] \ge 0$, adică $\mathbb{E}[X] \le \mathbb{E}[Y]$.
 \end{proof}
 
+\section{Teorema de transport (discretă și continuă)}
+
+\begin{proposition}[Teorema de transport – cazul discret]
+Fie $X$ o variabilă aleatoare discretă cu valori în mulțimea cel mult numărabilă
+$S = \{x_k\}$ și fie $g:S\to\mathbb{R}$ o funcție arbitrară.
+Dacă seria $\sum_k |g(x_k)|\,\mathbb{P}(X=x_k)$ este convergentă, atunci
+
+
+
+\[
+\mathbb{E}[\,g(X)\,] = \sum_{k} g(x_k)\,\mathbb{P}(X = x_k).
+\]
+
+
+
+\end{proposition}
+
+\begin{proof}
+Variabila $g(X)$ este discretă și ia valorile $g(x_k)$ cu probabilitățile
+$\mathbb{P}(X=x_k)$. Aplicăm definiția valorii așteptate pentru variabile discrete.
+\end{proof}
+
+\begin{proposition}[Teorema de transport – cazul continuu]
+Fie $X$ o variabilă aleatoare continuă cu densitate $f$ și fie $g:\mathbb{R}\to\mathbb{R}$ o funcție măsurabilă.
+Dacă integrala Lebesgue $\int_{\mathbb{R}} |g(x)| f(x)\,dx$ este finită, atunci
+
+
+
+\[
+\mathbb{E}[\,g(X)\,] = \int_{-\infty}^{\infty} g(x)\, f(x)\, dx.
+\]
+
+
+
+\end{proposition}
+
+\begin{proof}
+Variabila $g(X)$ are distribuție indusă de $X$ prin aplicația $g$.
+Prin definiția valorii așteptate pentru variabile continue, integrăm funcția $g(x)$
+ponderată cu densitatea lui $X$.
+\end{proof}
+
+\begin{example}
+Dacă $g(x)=x^2$, teorema de transport dă formula generală pentru momentul de ordinul al doilea:
+
+
+
+\[
+\mathbb{E}[X^2] =
+\begin{cases}
+\sum_k x_k^2\,\mathbb{P}(X=x_k), & \text{(discret)} \\[6pt]
+\int_{-\infty}^{\infty} x^2 f(x)\,dx, & \text{(continuu)}.
+\end{cases}
+\]
+
+
+
+\end{example}
+
+\bigskip
+
+
 \section{Mediile distribuțiilor discrete fundamentale}
 
 \subsection{Distribuția Bernoulli}
