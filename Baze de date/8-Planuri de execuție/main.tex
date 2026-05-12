@@ -1,0 +1,207 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Planuri de Execuție în SQL}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Ce este un Plan de Execuție}
+Un plan de execuție reprezintă blueprint-ul intern al motorului SQL care descrie:
+\begin{itemize}[noitemsep]
+    \item modul de accesare a datelor (Index Scan, Full Table Scan)
+    \item strategia de îmbinare a tabelelor (Nested Loop, Hash Join, Merge Join)
+    \item ordinea operațiilor
+    \item costul estimat al fiecărei operații
+    \item cardinalitatea estimată (numărul de rânduri procesate)
+\end{itemize}
+
+Planul este generat de optimizatorul bazei de date şi poate fi afişat prin comenzi precum \texttt{EXPLAIN}, \texttt{EXPLAIN ANALYZE} sau \texttt{DBMS\_XPLAN.DISPLAY}.
+
+\section{Tipuri de Operații în Planurile de Execuție}
+
+\subsection{Full Table Scan}
+\textbf{Descriere:} Motorul citeşte întregul tabel rând cu rând.  
+\textbf{Utilizare:} când nu există index util sau filtrul nu este selectiv.
+
+\textbf{Pseudo-implementare:}
+\begin{verbatim}
+for row in Table:
+    if condition(row):
+        output(row)
+\end{verbatim}
+
+\subsection{Index Scan}
+\textbf{Descriere:} Parcurge indexul secvenţial, nu direct pe cheie.  
+\textbf{Utilizare:} când filtrul foloseşte o coloană indexată, dar intervalul este larg.
+
+\textbf{Pseudo-implementare:}
+\begin{verbatim}
+for entry in Index:
+    if condition(entry.key):
+        fetch row(entry)
+\end{verbatim}
+
+\subsection{Index Seek}
+\textbf{Descriere:} Acces direct în index prin căutare binară.  
+\textbf{Utilizare:} cel mai rapid acces, când filtrul este foarte selectiv.
+
+\textbf{Pseudo-implementare:}
+\begin{verbatim}
+node = BTree.root
+while node not leaf:
+    node = choose_child(node, search_key)
+return fetch_rows(node, search_key)
+\end{verbatim}
+
+\subsection{Nested Loop Join}
+\textbf{Descriere:} Pentru fiecare rând din tabelul A, caută rândurile corespunzătoare în tabelul B.  
+\textbf{Utilizare:} seturi mici sau când B are index pe coloana de join.
+
+\textbf{Pseudo-implementare:}
+\begin{verbatim}
+for rowA in A:
+    for rowB in B where rowB.key = rowA.key:
+        output(rowA, rowB)
+\end{verbatim}
+
+\subsection{Hash Join}
+\textbf{Descriere:} Construieşte un hash table pentru tabelul mai mic, apoi îl sondează cu rândurile din tabelul mare.  
+\textbf{Utilizare:} seturi mari, fără indexuri.
+
+\textbf{Pseudo-implementare:}
+\begin{verbatim}
+hash = {}
+for rowA in A:
+    hash[rowA.key].append(rowA)
+
+for rowB in B:
+    if rowB.key in hash:
+        for rowA in hash[rowB.key]:
+            output(rowA, rowB)
+\end{verbatim}
+
+\subsection{Merge Join}
+\textbf{Descriere:} Ambele tabele sunt sortate după cheia de join, apoi parcurse simultan.  
+\textbf{Utilizare:} când datele sunt deja sortate sau există indexuri ordonate.
+
+\textbf{Pseudo-implementare:}
+\begin{verbatim}
+i = j = 0
+while i < len(A) and j < len(B):
+    if A[i].key == B[j].key:
+        output(A[i], B[j])
+        i += 1; j += 1
+    elif A[i].key < B[j].key:
+        i += 1
+    else:
+        j += 1
+\end{verbatim}
+
+\subsection{Sort}
+\textbf{Descriere:} Operaţie costisitoare, necesară pentru ORDER BY, GROUP BY sau Merge Join.
+
+\textbf{Pseudo-implementare:}
+\begin{verbatim}
+sorted_rows = quicksort(rows)
+\end{verbatim}
+
+\subsection{Filter}
+\textbf{Descriere:} Aplică predicatul din clauza WHERE.
+
+\textbf{Pseudo-implementare:}
+\begin{verbatim}
+for row in rows:
+    if condition(row):
+        output(row)
+\end{verbatim}
+
+\section{Hinturi SQL}
+
+Hinturile SQL sunt instrucțiuni speciale inserate în comentarii, folosite pentru a influenţa modul în care optimizatorul generează planul de execuţie. Ele nu modifică logica interogării, ci doar strategia de execuţie.
+
+\subsection{Oracle SQL}
+
+Hinturile se inserează imediat după cuvântul \texttt{SELECT} sub forma unui comentariu special:
+
+\begin{verbatim}
+SELECT /*+ HINT_NAME */ coloane
+FROM tabel;
+\end{verbatim}
+
+Exemple:
+
+\begin{itemize}
+    \item \textbf{Forţare Index}
+\begin{verbatim}
+SELECT /*+ INDEX(emp emp_idx) */ *
+FROM employees emp
+WHERE emp.department_id = 50;
+\end{verbatim}
+
+    \item \textbf{Forţare Full Table Scan}
+\begin{verbatim}
+SELECT /*+ FULL(emp) */ *
+FROM employees emp;
+\end{verbatim}
+
+    \item \textbf{Forţare Hash Join}
+\begin{verbatim}
+SELECT /*+ USE_HASH(e d) */ e.name, d.name
+FROM employees e
+JOIN departments d ON e.dept_id = d.id;
+\end{verbatim}
+
+    \item \textbf{Forţare Nested Loop}
+\begin{verbatim}
+SELECT /*+ USE_NL(e d) */ e.name, d.name
+FROM employees e
+JOIN departments d ON e.dept_id = d.id;
+\end{verbatim}
+\end{itemize}
+
+\subsection{SQL Server}
+
+SQL Server nu foloseşte hinturi în comentarii, ci direct în sintaxă:
+
+\begin{verbatim}
+SELECT coloane
+FROM tabel WITH (INDEX(index_name));
+\end{verbatim}
+
+Exemple:
+
+\begin{itemize}
+    \item \textbf{Forţare Index}
+\begin{verbatim}
+SELECT *
+FROM Employees WITH (INDEX(emp_idx))
+WHERE DepartmentID = 50;
+\end{verbatim}
+
+    \item \textbf{Forţare NOLOCK}\\
+Hintul \texttt{NOLOCK} permite citirea datelor fără a achiziţiona shared locks, ignorând astfel blocările existente. Acest lucru poate îmbunătăţi concurenţa şi reduce blocajele, însă poate produce citiri incorecte precum dirty reads, non-repeatable reads sau phantom reads.
+\begin{verbatim}
+SELECT *
+FROM Employees WITH (NOLOCK);
+\end{verbatim}
+\end{itemize}
+
+\subsection{PostgreSQL}
+
+PostgreSQL nu suportă hinturi nativ.  
+Hinturile pot fi folosite doar prin extensia \texttt{pg\_hint\_plan}:
+
+\begin{verbatim}
+SELECT /*+ IndexScan(employees emp_idx) */ *
+FROM employees
+WHERE department_id = 50;
+\end{verbatim}
+
+
+\end{document}

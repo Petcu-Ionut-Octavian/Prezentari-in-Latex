@@ -1,0 +1,247 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[romanian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Niveluri de izolare ale tranzacțiilor în baze de date}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Introducere}
+
+Într-un sistem de gestiune a bazelor de date (SGBD) multi-utilizator, mai multe tranzacții rulează concurent și accesează aceleași date. Pentru a păstra consistența, SGBD-ul trebuie să controleze modul în care aceste tranzacții se „văd” una pe alta. Acest control se face prin \emph{nivelurile de izolare} ale tranzacțiilor.
+
+Izolarea este una dintre proprietățile ACID:
+\begin{itemize}[leftmargin=1.5cm]
+  \item \textbf{Atomicitate} -- tranzacția este indivizibilă: ori se execută complet, ori nu se execută deloc.
+  \item \textbf{Consistență} -- tranzacția duce baza de date dintr-o stare consistentă în alta.
+  \item \textbf{Izolare} -- efectele unei tranzacții nu sunt vizibile altor tranzacții „în mijlocul” execuției.
+  \item \textbf{Durabilitate} -- odată confirmate, modificările supraviețuiesc căderilor de sistem.
+\end{itemize}
+
+Standardul SQL definește patru niveluri de izolare:
+\begin{enumerate}[leftmargin=1.5cm]
+  \item Read Uncommitted
+  \item Read Committed
+  \item Repeatable Read
+  \item Serializable
+\end{enumerate}
+
+Unele SGBD-uri introduc și variante bazate pe versiuni (de exemplu, \emph{Snapshot Isolation}), dar acestea se raportează tot la aceleași fenomene de concurență.
+
+\section{Fenomenelor de concurență}
+
+Nivelurile de izolare sunt definite în funcție de ce tipuri de anomalii sunt permise sau interzise.
+
+\subsection{Dirty read}
+
+\textbf{Dirty read} apare când o tranzacție citește date modificate de o altă tranzacție care nu a făcut încă \texttt{COMMIT}.
+
+Exemplu:
+\begin{itemize}[leftmargin=1.5cm]
+  \item T1: \texttt{UPDATE Cont SET sold = sold - 100 WHERE id = 1;} (fără \texttt{COMMIT} încă)
+  \item T2: citește \texttt{sold} pentru contul 1 și vede valoarea diminuată.
+  \item T1: face \texttt{ROLLBACK}.
+\end{itemize}
+T2 a citit o valoare care, logic, „nu a existat niciodată” în baza de date confirmată.
+
+\subsection{Non-repeatable read}
+
+\textbf{Non-repeatable read} apare când o tranzacție citește de două ori același rând și obține valori diferite, deoarece o altă tranzacție a modificat acel rând între cele două citiri.
+
+Exemplu:
+\begin{itemize}[leftmargin=1.5cm]
+  \item T1: citește \texttt{sold} pentru contul 1.
+  \item T2: modifică \texttt{sold} pentru contul 1 și face \texttt{COMMIT}.
+  \item T1: citește din nou \texttt{sold} pentru contul 1 și vede o altă valoare.
+\end{itemize}
+
+\subsection{Phantom read}
+
+\textbf{Phantom read} apare când o tranzacție execută de două ori aceeași interogare pe un set de rânduri, iar între cele două execuții o altă tranzacție inserează sau șterge rânduri care satisfac aceeași condiție.
+
+Exemplu:
+\begin{itemize}[leftmargin=1.5cm]
+  \item T1: \texttt{SELECT * FROM Comenzi WHERE total > 1000;}
+  \item T2: inserează o comandă nouă cu \texttt{total > 1000} și face \texttt{COMMIT}.
+  \item T1: re-execută interogarea și obține un set de rânduri diferit (apare un „fantom”).
+\end{itemize}
+
+\subsection{Serialization anomaly}
+
+\textbf{Serialization anomaly} apare când rezultatul unui set de tranzacții concurente nu este echivalent cu niciun ordin serial (una câte una) al acelor tranzacții. Este o formă mai generală de anomalie, care poate implica combinații de citiri și scrieri.
+
+\section{Tabel de sinteză pentru nivelurile de izolare}
+
+Standardul SQL leagă nivelurile de izolare de fenomenele permise sau interzise:
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Nivel} & \textbf{Dirty read} & \textbf{Non-repeatable read} & \textbf{Phantom read} & \textbf{Serialization anomaly} \\
+\midrule
+Read Uncommitted & permis & permis & permis & permis \\
+Read Committed   & interzis & permis & permis & permis \\
+Repeatable Read  & interzis & interzis & permis & permis \\
+Serializable     & interzis & interzis & interzis & interzis \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Read Uncommitted}
+
+\subsection{Descriere}
+
+\textbf{Read Uncommitted} este cel mai slab nivel de izolare. Tranzacțiile pot citi date neconfirmate ale altor tranzacții. Acest lucru maximizează concurența, dar permite toate tipurile de anomalii: dirty read, non-repeatable read, phantom read.
+
+\subsection{Avantaje și dezavantaje}
+
+\begin{itemize}[leftmargin=1.5cm]
+  \item \textbf{Avantaje:} blocări minime, throughput mare, potrivit pentru rapoarte unde o mică inexactitate este acceptabilă.
+  \item \textbf{Dezavantaje:} consistență slabă, risc de decizii bazate pe date care vor fi anulate.
+\end{itemize}
+
+\subsection{Exemplu SQL (generic)}
+
+\begin{verbatim}
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+BEGIN TRANSACTION;
+
+SELECT * FROM Conturi;
+
+COMMIT;
+\end{verbatim}
+
+\section{Read Committed}
+
+\subsection{Descriere}
+
+\textbf{Read Committed} este, de obicei, nivelul implicit în multe SGBD-uri. O tranzacție poate citi doar date care au fost deja confirmate de alte tranzacții. Dirty read este eliminat, dar non-repeatable read și phantom read pot apărea.
+
+\subsection{Avantaje și dezavantaje}
+
+\begin{itemize}[leftmargin=1.5cm]
+  \item \textbf{Avantaje:} elimină citirile murdare, oferă un echilibru bun între consistență și performanță.
+  \item \textbf{Dezavantaje:} aceeași interogare poate da rezultate diferite în cadrul aceleiași tranzacții.
+\end{itemize}
+
+\subsection{Exemplu SQL}
+
+\begin{verbatim}
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+BEGIN TRANSACTION;
+
+SELECT sold FROM Conturi WHERE id = 1;
+
+-- între timp, altă tranzacție poate modifica sold-ul și face COMMIT
+
+SELECT sold FROM Conturi WHERE id = 1;
+
+COMMIT;
+\end{verbatim}
+
+\section{Repeatable Read}
+
+\subsection{Descriere}
+
+\textbf{Repeatable Read} garantează că, dacă o tranzacție citește un rând, nici o altă tranzacție nu poate modifica sau șterge acel rând până când prima tranzacție nu se termină. Astfel, non-repeatable read este eliminat. Totuși, pot apărea phantom read, deoarece alte tranzacții pot insera rânduri noi care satisfac aceeași condiție de căutare.
+
+\subsection{Avantaje și dezavantaje}
+
+\begin{itemize}[leftmargin=1.5cm]
+  \item \textbf{Avantaje:} citirile asupra acelorași rânduri sunt consistente în cadrul tranzacției.
+  \item \textbf{Dezavantaje:} mai multe blocări, risc mai mare de blocaje (deadlock), phantom read încă posibil.
+\end{itemize}
+
+\subsection{Exemplu SQL}
+
+\begin{verbatim}
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+BEGIN TRANSACTION;
+
+SELECT * FROM Conturi WHERE id = 1;
+
+-- altă tranzacție nu poate modifica/șterge rândul cu id = 1
+-- dar poate insera un cont nou care să apară în alte interogări
+
+COMMIT;
+\end{verbatim}
+
+\section{Serializable}
+
+\subsection{Descriere}
+
+\textbf{Serializable} este cel mai puternic nivel de izolare. Execuția concurentă a tranzacțiilor este garantată a fi echivalentă cu o execuție serială (una după alta) într-o anumită ordine. Sunt eliminate dirty read, non-repeatable read și phantom read, precum și anomaliile de serializare.
+
+\subsection{Avantaje și dezavantaje}
+
+\begin{itemize}[leftmargin=1.5cm]
+  \item \textbf{Avantaje:} consistență maximă, comportament ușor de raționat (ca și cum tranzacțiile ar rula pe rând).
+  \item \textbf{Dezavantaje:} blocări extinse, concurență redusă, risc crescut de blocaje și time-out-uri.
+\end{itemize}
+
+\subsection{Exemplu SQL}
+
+\begin{verbatim}
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+BEGIN TRANSACTION;
+
+SELECT * FROM Comenzi WHERE total > 1000;
+
+-- altă tranzacție nu poate insera/șterge/ modifica rânduri
+-- care ar afecta rezultatul interogării de mai sus
+
+COMMIT;
+\end{verbatim}
+
+\section{Snapshot Isolation (versiuni de rânduri)}
+
+Unele SGBD-uri (de exemplu, SQL Server, PostgreSQL) oferă un mecanism de izolare bazat pe versiuni de rânduri, numit adesea \textbf{Snapshot Isolation}. Ideea este că fiecare tranzacție vede o „fotografie” (snapshot) consistentă a bazei de date la momentul începerii tranzacției, fără a bloca citirile.
+
+\subsection{Caracteristici}
+
+\begin{itemize}[leftmargin=1.5cm]
+  \item Citirile nu blochează scrierile și invers, deoarece se lucrează cu versiuni.
+  \item Elimină dirty read și non-repeatable read.
+  \item Phantom read poate fi eliminat în funcție de implementare.
+  \item Pot apărea conflicte la commit (de exemplu, două tranzacții modifică același rând pe baza aceleiași versiuni).
+\end{itemize}
+
+\section{Compromisul între consistență și concurență}
+
+Nivelurile de izolare reprezintă un compromis între:
+\begin{itemize}[leftmargin=1.5cm]
+  \item \textbf{Consistență} (mai puține anomalii, comportament mai „serial”)
+  \item \textbf{Concurență} (mai puține blocări, throughput mai mare)
+\end{itemize}
+
+În practică:
+\begin{itemize}[leftmargin=1.5cm]
+  \item Read Uncommitted este rar folosit în aplicații critice.
+  \item Read Committed este un default rezonabil pentru multe aplicații.
+  \item Repeatable Read și Serializable se folosesc în zone unde consistența este mai importantă decât performanța.
+  \item Snapshot Isolation oferă adesea un compromis bun: citiri consistente cu blocări reduse.
+\end{itemize}
+
+\section{Concluzii}
+
+Nivelurile de izolare sunt esențiale pentru proiectarea și înțelegerea comportamentului tranzacțiilor într-o bază de date. Alegerea nivelului potrivit depinde de:
+\begin{itemize}[leftmargin=1.5cm]
+  \item cerințele de consistență ale aplicației,
+  \item toleranța la anomalii de citire,
+  \item cerințele de performanță și scalabilitate.
+\end{itemize}
+
+Înțelegerea fenomenelor (dirty read, non-repeatable read, phantom read, serialization anomaly) și a modului în care fiecare nivel de izolare le permite sau le interzice este cheia pentru a configura corect un SGBD și pentru a scrie tranzacții robuste.
+
+\end{document}

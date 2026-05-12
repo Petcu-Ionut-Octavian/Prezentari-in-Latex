@@ -1,0 +1,364 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Algebre Relaționale: Reguli, Operatorii și Echivalențe}
+\author{Petcu Ionuț Octavian}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Introducere}
+Algebra relațională este un limbaj formal pentru manipularea și interogarea datelor în modelul relațional. Ea operează pe relații (tabele) și produce relații noi ca rezultat.
+
+O relație $R$ este un set de tuple:
+
+
+\[
+R \subseteq D_1 \times D_2 \times \dots \times D_n.
+\]
+
+
+
+\section{Operatorii fundamentali}
+
+\subsection{1. Selecția ($\sigma$)}
+\textbf{Definiție:}
+
+
+\[
+\sigma_{\theta}(R) = \{ t \in R \mid t \text{ satisface condiția } \theta \}.
+\]
+
+
+
+\textbf{Exemplu:}
+
+
+\[
+\sigma_{\text{salariu} > 3000}(Angajati)
+\]
+
+
+
+\subsection{2. Proiecția ($\pi$)}
+\textbf{Definiție:}
+
+
+\[
+\pi_{A_1, A_2, \dots, A_k}(R) = \{ (t[A_1], \dots, t[A_k]) \mid t \in R \}.
+\]
+
+
+
+\textbf{Exemplu:}
+
+
+\[
+\pi_{nume, salariu}(Angajati)
+\]
+
+
+
+\subsection{3. Reuniunea ($\cup$)}
+\textbf{Definiție:}
+
+
+\[
+R \cup S = \{ t \mid t \in R \text{ sau } t \in S \}.
+\]
+
+
+
+\textbf{Condiție:} $R$ și $S$ trebuie să fie \textit{compatibile} (aceleași atribute).
+
+\subsection{4. Intersecția ($\cap$)}
+
+
+\[
+R \cap S = \{ t \mid t \in R \text{ și } t \in S \}.
+\]
+
+
+
+\subsection{5. Diferența ($-$)}
+
+
+\[
+R - S = \{ t \mid t \in R \text{ și } t \notin S \}.
+\]
+
+
+
+\subsection{6. Produsul cartezian ($\times$)}
+
+
+\[
+R \times S = \{ t_R \circ t_S \mid t_R \in R, t_S \in S \}.
+\]
+
+
+
+\subsection{7. Renumirea ($\rho$)}
+
+
+\[
+\rho_{A \rightarrow B}(R)
+\]
+
+
+
+\section{Operatori derivați}
+
+\subsection{1. Join natural ($\bowtie$)}
+\textbf{Definiție:}
+
+
+\[
+R \bowtie S = \sigma_{R.A = S.A}(R \times S)
+\]
+
+
+unde $A$ sunt atributele comune.
+
+\textbf{Exemplu:}
+
+
+\[
+Angajati \bowtie Departamente
+\]
+
+
+
+\subsection{2. Theta-join ($\bowtie_{\theta}$)}
+
+
+\[
+R \bowtie_{\theta} S = \sigma_{\theta}(R \times S)
+\]
+
+
+
+\subsection{3. Semi-join ($\ltimes$)}
+
+
+\[
+R \ltimes S = \pi_{\text{atribute}(R)}(R \bowtie S)
+\]
+
+
+
+\subsection{4. Anti-join}
+
+
+\[
+R \setminus\!\!\bowtie S = R - (R \ltimes S)
+\]
+
+
+
+\subsection{5. Diviziunea ($\div$)}
+Pentru relații:
+
+
+\[
+R(X,Y), \quad S(Y)
+\]
+
+
+
+
+
+\[
+R \div S = \{ x \mid \forall y \in S, (x,y) \in R \}
+\]
+
+
+
+\textbf{Echivalent:}
+
+
+\[
+R \div S = \pi_X(R) - \pi_X((\pi_X(R) \times S) - R)
+\]
+
+
+
+\section{Echivalențe importante}
+
+\subsection{1. Selecția se distribuie peste reuniune}
+
+
+\[
+\sigma_{\theta}(R \cup S) = \sigma_{\theta}(R) \cup \sigma_{\theta}(S)
+\]
+
+
+
+\subsection{2. Selecția se distribuie peste produs}
+
+
+\[
+\sigma_{\theta}(R \times S) = R \bowtie_{\theta} S
+\]
+
+
+
+\subsection{3. Proiecția peste selecție}
+
+
+\[
+\pi_L(\sigma_{\theta}(R)) = \sigma_{\theta'}(\pi_L(R))
+\]
+
+
+dacă $\theta$ implică doar atribute din $L$.
+
+\subsection{4. Join natural ca operator derivat}
+
+
+\[
+R \bowtie S = \pi_{A \cup B}(\sigma_{R.C = S.C}(R \times S))
+\]
+
+
+
+\section{Exemple complete}
+
+\subsection{Exemplul 1: Angajați și departamente}
+
+
+\[
+Rez = \pi_{nume, denumire}(Angajati \bowtie Departamente)
+\]
+
+
+
+\subsection{Exemplul 2: Angajați cu salariu mare în IT}
+
+
+\[
+Rez = \sigma_{salariu > 5000}(\sigma_{dept = \text{IT}}(Angajati))
+\]
+
+
+
+\subsection{Exemplul 3: Diviziune}
+Găsește angajații care știu \textbf{toate limbajele} din setul $S$.
+
+
+
+\[
+Rez = Cunostinte(angajat, limbaj) \div S(limbaj)
+\]
+
+
+\section{Reguli fundamentale ale algebrei relaționale}
+
+În această secțiune prezentăm cele mai importante reguli de transformare,
+echivalență și optimizare din algebra relațională. Aceste reguli sunt
+esențiale pentru rescrierea interogărilor și demonstrarea echivalenței
+între expresii relaționale.
+
+\subsection*{Reguli principale}
+
+\begin{enumerate}
+    \item \textbf{Selecțiile sunt comutative}
+    
+
+\[
+        \sigma_{\theta_1}(\sigma_{\theta_2}(R)) = 
+        \sigma_{\theta_2}(\sigma_{\theta_1}(R))
+    \]
+
+
+
+    \item \textbf{Proiecțiile sunt idempotente}
+    
+
+\[
+        \pi_A(\pi_B(R)) = \pi_A(R) \quad \text{dacă } A \subseteq B
+    \]
+
+
+
+    \item \textbf{Selecția se distribuie peste reuniune}
+    
+
+\[
+        \sigma_{\theta}(R \cup S) = 
+        \sigma_{\theta}(R) \cup \sigma_{\theta}(S)
+    \]
+
+
+
+    \item \textbf{Proiecția se distribuie peste reuniune}
+    
+
+\[
+        \pi_A(R \cup S) = \pi_A(R) \cup \pi_A(S)
+    \]
+
+
+
+    \item \textbf{Join-ul natural este comutativ}
+    
+
+\[
+        R \bowtie S = S \bowtie R
+    \]
+
+
+
+    \item \textbf{Join-ul natural este asociativ}
+    
+
+\[
+        (R \bowtie S) \bowtie T = R \bowtie (S \bowtie T)
+    \]
+
+
+
+    \item \textbf{Selecția peste produs cartezian devine theta-join}
+    
+
+\[
+        \sigma_{\theta}(R \times S) = R \bowtie_{\theta} S
+    \]
+
+
+
+    \item \textbf{Intersecția exprimată prin diferență}
+    
+
+\[
+        R \cap S = R - (R - S)
+    \]
+
+
+
+    \item \textbf{Reuniunea exprimată prin diferență}
+    
+
+\[
+        R \cup S = (R - S) \cup S
+    \]
+
+
+
+    \item \textbf{Diviziunea exprimată prin operatori de bază}
+    
+
+\[
+        R \div S = \pi_X(R) - 
+        \pi_X\big((\pi_X(R) \times S) - R\big)
+    \]
+
+
+\end{enumerate}
+
+
+
+\end{document}
