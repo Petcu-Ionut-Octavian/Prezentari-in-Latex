@@ -1,0 +1,776 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Media, Varianta și Covarianța Variabilelor Aleatoare}
+\author{}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definiție}
+\newtheorem{proposition}{Propoziție}
+\newtheorem{example}{Exemplu}
+
+\begin{document}
+
+\maketitle
+
+\section{Media}
+
+\subsection{Caz discret}
+
+\begin{definition}
+Fie $X$ o variabilă aleatoare discretă cu valori $x_k$ și funcție de masă $p(x_k)$. Atunci
+
+
+\[
+\mathbb{E}[X] = \sum_k x_k\, p(x_k),
+\]
+
+
+dacă seria $\sum_k |x_k| p(x_k)$ este convergentă.
+\end{definition}
+
+\subsection{Caz continuu}
+
+\begin{definition}
+Fie $X$ o variabilă aleatoare continuă cu densitate $f$. Atunci
+
+
+\[
+\mathbb{E}[X] = \int_{-\infty}^{\infty} x f(x)\, dx,
+\]
+
+
+dacă integrala $\int |x| f(x)\, dx$ este finită.
+\end{definition}
+
+\section{Varianta}
+
+\subsection{Definiția generală}
+
+\begin{definition}
+Pentru o variabilă aleatoare $X$ cu media $\mu = \mathbb{E}[X]$, varianta este
+
+
+\[
+\mathrm{Var}(X) = \mathbb{E}[(X - \mu)^2].
+\]
+
+
+\end{definition}
+
+\begin{proposition}[Formula dezvoltată]
+
+
+\[
+\mathrm{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2.
+\]
+
+
+\end{proposition}
+
+\subsection{Caz discret}
+
+Dacă $X$ ia valori $x_k$ cu probabilități $p(x_k)$, atunci
+
+
+\[
+\mathrm{Var}(X)
+= \sum_k (x_k - \mu)^2 p(x_k)
+= \sum_k x_k^2 p(x_k) - \left(\sum_k x_k p(x_k)\right)^2.
+\]
+
+
+
+\subsection{Caz continuu}
+
+Dacă $X$ are densitate $f$, atunci
+
+
+\[
+\mathrm{Var}(X)
+= \int_{-\infty}^{\infty} (x - \mu)^2 f(x)\, dx
+= \int x^2 f(x)\, dx - \left(\int x f(x)\, dx\right)^2.
+\]
+
+
+
+\section{Covarianța}
+
+\subsection{Definiția generală}
+
+\begin{definition}
+Pentru variabile aleatoare $X$ și $Y$ cu medii finite,
+
+
+\[
+\mathrm{Cov}(X,Y)
+= \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])].
+\]
+
+
+\end{definition}
+
+\begin{proposition}[Formula dezvoltată]
+
+
+\[
+\mathrm{Cov}(X,Y)
+= \mathbb{E}[XY] - \mathbb{E}[X]\,\mathbb{E}[Y].
+\]
+
+
+\end{proposition}
+
+\subsection{Caz discret}
+
+Dacă $(X,Y)$ ia valori $(x_i,y_j)$ cu probabilități $p_{ij}$, atunci
+
+
+\[
+\mathrm{Cov}(X,Y)
+= \sum_{i,j} x_i y_j\, p_{ij}
+- \left(\sum_i x_i p_X(x_i)\right)
+  \left(\sum_j y_j p_Y(y_j)\right).
+\]
+
+
+
+\subsection{Caz continuu}
+
+Dacă $(X,Y)$ au densitate comună $f(x,y)$, atunci
+
+
+\[
+\mathrm{Cov}(X,Y)
+= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+xy\, f(x,y)\, dx\, dy
+- \left(\int x f_X(x)\, dx\right)
+  \left(\int y f_Y(y)\, dy\right).
+\]
+
+
+
+\section{Exemple fundamentale}
+
+\subsection{Bernoulli}
+
+Dacă $X \sim \mathrm{Bernoulli}(p)$, atunci
+
+
+\[
+\mathbb{P}(X=1)=p,\quad \mathbb{P}(X=0)=1-p.
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathrm{Bernoulli}(p)$:
+
+
+\[
+\mathbb{E}[X] = p,\qquad
+\mathrm{Var}(X) = p(1-p).
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+
+
+\[
+\mathbb{E}[X] = 0\cdot(1-p) + 1\cdot p = p.
+\]
+
+
+
+
+\[
+\mathbb{E}[X^2] = 0^2(1-p) + 1^2 p = p.
+\]
+
+
+Deci
+
+
+\[
+\mathrm{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2 = p - p^2 = p(1-p).
+\]
+
+
+\end{proof}
+
+\subsection{Binomială}
+
+Dacă $X \sim \mathrm{Bin}(n,p)$, atunci
+
+
+\[
+\mathbb{P}(X=k) = \binom{n}{k} p^k (1-p)^{n-k},\quad k=0,\dots,n.
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathrm{Bin}(n,p)$:
+
+
+\[
+\mathbb{E}[X] = np,\qquad
+\mathrm{Var}(X) = np(1-p).
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Scriem $X = X_1 + \cdots + X_n$, unde $X_i \sim \mathrm{Bernoulli}(p)$ independente.
+Atunci
+
+
+\[
+\mathbb{E}[X] = \sum_{i=1}^n \mathbb{E}[X_i] = \sum_{i=1}^n p = np.
+\]
+
+
+Cum $X_i$ sunt independente,
+
+
+\[
+\mathrm{Var}(X) = \sum_{i=1}^n \mathrm{Var}(X_i) = \sum_{i=1}^n p(1-p) = np(1-p).
+\]
+
+
+\end{proof}
+
+\subsection{Geometrică}
+
+Dacă $X \sim \mathrm{Geom}(p)$, atunci
+
+
+\[
+\mathbb{P}(X=k) = (1-p)^{k-1}p,\quad k=1,2,\dots
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathrm{Geom}(p)$:
+
+
+\[
+\mathbb{E}[X] = \frac{1}{p},\qquad
+\mathrm{Var}(X) = \frac{1-p}{p^2}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Folosim seriile:
+
+
+\[
+\mathbb{E}[X] = \sum_{k=1}^\infty k(1-p)^{k-1}p = p \sum_{k=1}^\infty k q^{k-1},\ q=1-p.
+\]
+
+
+Se știe
+
+
+\[
+\sum_{k=1}^\infty k q^{k-1} = \frac{1}{(1-q)^2} = \frac{1}{p^2},
+\]
+
+
+deci $\mathbb{E}[X]=\frac{1}{p}$.
+
+Pentru $\mathbb{E}[X^2]$:
+
+
+\[
+\mathbb{E}[X^2] = \sum_{k=1}^\infty k^2 q^{k-1} p.
+\]
+
+
+Se poate arăta (prin derivări succesive ale seriei geometrice) că
+
+
+\[
+\sum_{k=1}^\infty k^2 q^{k-1} = \frac{1+q}{(1-q)^3} = \frac{2-p}{p^3}.
+\]
+
+
+Deci
+
+
+\[
+\mathbb{E}[X^2] = p \cdot \frac{2-p}{p^3} = \frac{2-p}{p^2}.
+\]
+
+
+Atunci
+
+
+\[
+\mathrm{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+= \frac{2-p}{p^2} - \frac{1}{p^2} = \frac{1-p}{p^2}.
+\]
+
+
+\end{proof}
+
+\subsection{Binomială negativă}
+
+Dacă $X \sim \mathrm{NegBin}(r,p)$, atunci
+
+
+\[
+\mathbb{P}(X=k) = \binom{k-1}{r-1} p^r (1-p)^{k-r},\quad k=r,r+1,\dots
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathrm{NegBin}(r,p)$:
+
+
+\[
+\mathbb{E}[X] = \frac{r}{p},\qquad
+\mathrm{Var}(X) = \frac{r(1-p)}{p^2}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Interpretăm $X$ ca sumă a $r$ variabile geometrice independente:
+
+
+\[
+X = X_1 + \cdots + X_r,\quad X_i \sim \mathrm{Geom}(p).
+\]
+
+
+Atunci
+
+
+\[
+\mathbb{E}[X] = \sum_{i=1}^r \mathbb{E}[X_i] = r \cdot \frac{1}{p} = \frac{r}{p},
+\]
+
+
+
+
+\[
+\mathrm{Var}(X) = \sum_{i=1}^r \mathrm{Var}(X_i) = r \cdot \frac{1-p}{p^2} = \frac{r(1-p)}{p^2}.
+\]
+
+
+\end{proof}
+
+\subsection{Poisson}
+
+Dacă $X \sim \mathrm{Poisson}(\lambda)$:
+
+
+\[
+\mathbb{P}(X=k) = e^{-\lambda}\frac{\lambda^k}{k!},\quad k=0,1,2,\dots
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathrm{Poisson}(\lambda)$:
+
+
+\[
+\mathbb{E}[X] = \lambda,\qquad
+\mathrm{Var}(X) = \lambda.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+
+
+\[
+\mathbb{E}[X] = \sum_{k=0}^\infty k e^{-\lambda}\frac{\lambda^k}{k!}
+= e^{-\lambda}\sum_{k=1}^\infty k \frac{\lambda^k}{k!}
+= e^{-\lambda}\sum_{k=1}^\infty \lambda \frac{\lambda^{k-1}}{(k-1)!}
+= \lambda e^{-\lambda} \sum_{j=0}^\infty \frac{\lambda^j}{j!} = \lambda.
+\]
+
+
+Similar, se obține $\mathbb{E}[X(X-1)] = \lambda^2$, de unde
+
+
+\[
+\mathrm{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+= \mathbb{E}[X(X-1)] + \mathbb{E}[X] - \lambda^2 = \lambda^2 + \lambda - \lambda^2 = \lambda.
+\]
+
+
+\end{proof}
+
+\subsection{Hipergeometrică}
+
+Dacă $X \sim \mathrm{Hypergeom}(N,M,n)$:
+
+
+\[
+\mathbb{P}(X=k) = \frac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}},\quad k=0,\dots,n.
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathrm{Hypergeom}(N,M,n)$:
+
+
+\[
+\mathbb{E}[X] = n\frac{M}{N},\qquad
+\mathrm{Var}(X) = n\frac{M}{N}\left(1-\frac{M}{N}\right)\frac{N-n}{N-1}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Fie $I_i$ indicatorul că al $i$-lea element extras este succes, $i=1,\dots,n$.
+Atunci $X = \sum_{i=1}^n I_i$.
+Prin simetrie,
+
+
+\[
+\mathbb{P}(I_i=1) = \frac{M}{N},\quad \mathbb{E}[I_i]=\frac{M}{N},
+\]
+
+
+deci
+
+
+\[
+\mathbb{E}[X] = \sum_{i=1}^n \mathbb{E}[I_i] = n\frac{M}{N}.
+\]
+
+
+Pentru varianță, se folosește
+
+
+\[
+\mathrm{Var}(X) = \sum_{i=1}^n \mathrm{Var}(I_i) + 2\sum_{i<j}\mathrm{Cov}(I_i,I_j),
+\]
+
+
+și se obține formula cunoscută
+
+
+\[
+\mathrm{Var}(X) = n\frac{M}{N}\left(1-\frac{M}{N}\right)\frac{N-n}{N-1}.
+\]
+
+
+\end{proof}
+
+\subsection{Multinomială}
+
+Dacă $(X_1,\dots,X_k) \sim \mathrm{Multinomial}(n;p_1,\dots,p_k)$:
+
+
+\[
+\mathbb{P}(X_1=x_1,\dots,X_k=x_k)
+= \frac{n!}{x_1!\cdots x_k!} p_1^{x_1}\cdots p_k^{x_k},\quad \sum_i x_i = n.
+\]
+
+
+
+\begin{proposition}
+Pentru $(X_1,\dots,X_k) \sim \mathrm{Multinomial}(n;p_1,\dots,p_k)$:
+
+
+\[
+\mathbb{E}[X_i] = np_i,\qquad
+\mathrm{Var}(X_i) = np_i(1-p_i),\qquad
+\mathrm{Cov}(X_i,X_j) = -np_ip_j\ (i\neq j).
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Scriem $X_i = \sum_{t=1}^n I_{t,i}$, unde $I_{t,i}$ este indicatorul că a $t$-a încercare cade în categoria $i$.
+Atunci
+
+
+\[
+\mathbb{E}[X_i] = \sum_{t=1}^n \mathbb{E}[I_{t,i}] = \sum_{t=1}^n p_i = np_i.
+\]
+
+
+
+
+\[
+\mathrm{Var}(X_i) = \sum_{t=1}^n \mathrm{Var}(I_{t,i}) = n p_i(1-p_i).
+\]
+
+
+Pentru $i\neq j$,
+
+
+\[
+\mathrm{Cov}(X_i,X_j) = \sum_{t=1}^n \mathrm{Cov}(I_{t,i},I_{t,j})
+= n\left(\mathbb{E}[I_{t,i}I_{t,j}] - p_ip_j\right).
+\]
+
+
+Dar $I_{t,i}I_{t,j}=0$ (o încercare nu poate fi simultan în două categorii), deci
+
+
+\[
+\mathrm{Cov}(X_i,X_j) = n(0 - p_ip_j) = -np_ip_j.
+\]
+
+
+\end{proof}
+
+\subsection{Uniformă continuă}
+
+Dacă $X \sim \mathrm{Unif}(a,b)$:
+
+
+\[
+f(x) = \frac{1}{b-a},\ x\in[a,b].
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathrm{Unif}(a,b)$:
+
+
+\[
+\mathbb{E}[X] = \frac{a+b}{2},\qquad
+\mathrm{Var}(X) = \frac{(b-a)^2}{12}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+
+
+\[
+\mathbb{E}[X] = \int_a^b x \frac{1}{b-a}\,dx
+= \frac{1}{b-a}\left.\frac{x^2}{2}\right|_a^b
+= \frac{b^2-a^2}{2(b-a)} = \frac{a+b}{2}.
+\]
+
+
+
+
+\[
+\mathbb{E}[X^2] = \int_a^b x^2 \frac{1}{b-a}\,dx
+= \frac{1}{b-a}\left.\frac{x^3}{3}\right|_a^b
+= \frac{b^3-a^3}{3(b-a)} = \frac{a^2+ab+b^2}{3}.
+\]
+
+
+Deci
+
+
+\[
+\mathrm{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+= \frac{a^2+ab+b^2}{3} - \frac{(a+b)^2}{4}
+= \frac{(b-a)^2}{12}.
+\]
+
+
+\end{proof}
+
+\subsection{Exponențială}
+
+Dacă $X \sim \mathrm{Exp}(\lambda)$:
+
+
+\[
+f(x) = \lambda e^{-\lambda x},\ x\ge0.
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathrm{Exp}(\lambda)$:
+
+
+\[
+\mathbb{E}[X] = \frac{1}{\lambda},\qquad
+\mathrm{Var}(X) = \frac{1}{\lambda^2}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+
+
+\[
+\mathbb{E}[X] = \int_0^\infty x \lambda e^{-\lambda x}\,dx.
+\]
+
+
+Cu $t=\lambda x$,
+
+
+\[
+\mathbb{E}[X] = \frac{1}{\lambda}\int_0^\infty t e^{-t}\,dt = \frac{1}{\lambda}\Gamma(2) = \frac{1}{\lambda}.
+\]
+
+
+Similar,
+
+
+\[
+\mathbb{E}[X^2] = \int_0^\infty x^2 \lambda e^{-\lambda x}\,dx
+= \frac{1}{\lambda^2}\int_0^\infty t^2 e^{-t}\,dt = \frac{1}{\lambda^2}\Gamma(3) = \frac{2}{\lambda^2}.
+\]
+
+
+Deci
+
+
+\[
+\mathrm{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+= \frac{2}{\lambda^2} - \frac{1}{\lambda^2} = \frac{1}{\lambda^2}.
+\]
+
+
+\end{proof}
+
+\subsection{Gamma}
+
+Dacă $X \sim \mathrm{Gamma}(\alpha,\lambda)$:
+
+
+\[
+f(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha-1} e^{-\lambda x},\ x\ge0.
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathrm{Gamma}(\alpha,\lambda)$:
+
+
+\[
+\mathbb{E}[X] = \frac{\alpha}{\lambda},\qquad
+\mathrm{Var}(X) = \frac{\alpha}{\lambda^2}.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+
+
+\[
+\mathbb{E}[X] = \int_0^\infty x \frac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha-1} e^{-\lambda x}\,dx
+= \frac{\lambda^\alpha}{\Gamma(\alpha)}\int_0^\infty x^\alpha e^{-\lambda x}\,dx.
+\]
+
+
+Cu $t=\lambda x$,
+
+
+\[
+\mathbb{E}[X] = \frac{\lambda^\alpha}{\Gamma(\alpha)}\frac{1}{\lambda^{\alpha+1}}\int_0^\infty t^\alpha e^{-t}\,dt
+= \frac{1}{\lambda}\frac{\Gamma(\alpha+1)}{\Gamma(\alpha)} = \frac{\alpha}{\lambda}.
+\]
+
+
+Analog,
+
+
+\[
+\mathbb{E}[X^2] = \frac{\lambda^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha+1} e^{-\lambda x}\,dx
+= \frac{1}{\lambda^2}\frac{\Gamma(\alpha+2)}{\Gamma(\alpha)} = \frac{\alpha(\alpha+1)}{\lambda^2}.
+\]
+
+
+Deci
+
+
+\[
+\mathrm{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+= \frac{\alpha(\alpha+1)}{\lambda^2} - \frac{\alpha^2}{\lambda^2}
+= \frac{\alpha}{\lambda^2}.
+\]
+
+
+\end{proof}
+
+\subsection{Normală}
+
+Dacă $X \sim \mathcal{N}(\mu,\sigma^2)$:
+
+
+\[
+f(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right).
+\]
+
+
+
+\begin{proposition}
+Pentru $X \sim \mathcal{N}(\mu,\sigma^2)$:
+
+
+\[
+\mathbb{E}[X] = \mu,\qquad
+\mathrm{Var}(X) = \sigma^2.
+\]
+
+
+\end{proposition}
+
+\begin{proof}
+Scriem $X = \mu + \sigma Z$, unde $Z \sim \mathcal{N}(0,1)$.
+Atunci
+
+
+\[
+\mathbb{E}[X] = \mu + \sigma \mathbb{E}[Z].
+\]
+
+
+Densitatea lui $Z$ este pară, deci $z\varphi(z)$ este impară și
+
+
+\[
+\mathbb{E}[Z] = \int_{-\infty}^\infty z\varphi(z)\,dz = 0,
+\]
+
+
+deci $\mathbb{E}[X]=\mu$.
+
+Pentru varianță,
+
+
+\[
+\mathrm{Var}(X) = \mathrm{Var}(\mu + \sigma Z) = \sigma^2 \mathrm{Var}(Z).
+\]
+
+
+Se știe că $\mathrm{Var}(Z)=1$, deci $\mathrm{Var}(X)=\sigma^2$.
+\end{proof}
+
+
+\end{document}
